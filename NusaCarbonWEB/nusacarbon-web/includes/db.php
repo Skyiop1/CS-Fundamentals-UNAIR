@@ -10,7 +10,7 @@ $charset = 'utf8mb4';
 
 // HARDCODE URL PUBLIK RAILWAY (Anti Gagal)
 // Jika di server live, paksa pakai ini!
-$railwayPublicUrl = 'mysql://root:BGfxDBOxTobfmWYFgdotVlliwcPAZEYM@mainline.proxy.rlwy.net:22385/railway';
+$railwayPublicUrl = 'mysql://root:BGfDBOxTobfmWYFgdotV]liwPAZEYM@mainline.proxy.rlwy.net:22385/railway';
 
 $dbUrl = getenv('MYSQL_URL') ?: getenv('MYSQL_PUBLIC_URL') ?: getenv('DATABASE_URL');
 if (!$dbUrl) {
