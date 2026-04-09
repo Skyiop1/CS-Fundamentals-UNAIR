@@ -6,6 +6,19 @@ requireRole('admin');
 require_once '../includes/db.php';
 require_once '../includes/helpers.php';
 
+// Proses aksi persetujuan/penolakan KYC
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['user_id'], $_POST['action'])) {
+    $target_user_id = (int) $_POST['user_id'];
+    $new_status = ($_POST['action'] === 'approve') ? 'verified' : 'rejected';
+    
+    $stmt_update = $pdo->prepare("UPDATE users SET status_kyc = ? WHERE id_user = ?");
+    $stmt_update->execute([$new_status, $target_user_id]);
+    
+    // Redirect untuk menghindari re-submission saat refresh
+    header("Location: dashboard.php");
+    exit;
+}
+
 // Example overview count
 $stmt_users = $pdo->query("SELECT COUNT(*) FROM users");
 $total_users = $stmt_users->fetchColumn();
@@ -70,8 +83,11 @@ require_once '../includes/header.php';
                     <td class="text-sm"><?= formatDate($u['created_at']) ?></td>
                     <td><span class="badge badge--pending">Pending</span></td>
                     <td>
-                        <button class="btn-primary btn-sm"><i data-lucide="check-circle" width="14"></i> Approve</button>
-                        <button class="btn-outline btn-sm" style="color: var(--color-rejected); border-color: var(--color-rejected);"><i data-lucide="x-circle" width="14"></i> Reject</button>
+                        <form method="POST" style="display: flex; gap: 8px; margin: 0;">
+                            <input type="hidden" name="user_id" value="<?= $u['id_user'] ?>">
+                            <button type="submit" name="action" value="approve" class="btn-primary btn-sm" onclick="return confirm('Yakin ingin menyetujui user ini?');"><i data-lucide="check-circle" width="14"></i> Approve</button>
+                            <button type="submit" name="action" value="reject" class="btn-outline btn-sm" style="color: var(--color-rejected); border-color: var(--color-rejected);" onclick="return confirm('Tolak verifikasi user ini?');"><i data-lucide="x-circle" width="14"></i> Reject</button>
+                        </form>
                     </td>
                 </tr>
                 <?php endforeach; ?>
