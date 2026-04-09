@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Dashboard project owner NusaCarbon untuk monitoring proyek, progres MRV, token issuance, dan upload dokumen." />
+  <title>Project Owner Dashboard | NusaCarbon</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+  <div class="container site-header__inner">
+    <a class="brand" href="index.html" aria-label="NusaCarbon home">
+      <img src="assets/img/logo.svg" alt="Logo NusaCarbon" />
+      <span>NusaCarbon</span>
+    </a>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <div class="site-nav__links">
+        <a href="index.html">Home</a>
+        <a href="marketplace.html">Marketplace</a>
+        <a href="project-detail.html">Project Detail</a>
+        <a href="buyer-dashboard.html">Buyer Dashboard</a>
+        <a href="owner-dashboard.html">Owner Dashboard</a>
+      </div>
+      <div class="site-nav__actions">
+        <a class="btn btn--secondary" href="login.html">Login</a>
+        <a class="btn btn--primary" href="register.html">Get Started</a>
+      </div>
+    </nav>
+  </div>
+</header>
+    <main>
+      <section class="page-hero">
+        <div class="container page-hero__layout">
+          <div>
+            <p class="eyebrow">Owner Workspace</p>
+            <h1 class="dashboard-page__title">Project Owner Dashboard</h1>
+            <p class="page-hero__lead">Kelola daftar proyek karbon, status verifikasi, progres MRV, penerbitan token, dan dokumen pendukung dari satu dashboard.</p>
+          </div>
+          <div class="dashboard-actions">
+            <a class="btn btn--secondary" href="form-upload.html">Upload Documents</a>
+            <a class="btn btn--primary" href="form-project.html">Add New Project</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--tight">
+        <div class="container dashboard-layout">
+          <section>
+            <div class="stats-grid">
+              <article class="card"><div class="metric"><span class="metric__label">Active Projects</span><strong class="metric__value">8</strong><span class="metric__delta">2 new submissions this quarter</span></div></article>
+              <article class="card"><div class="metric"><span class="metric__label">Tokens Issued</span><strong class="metric__value">320K</strong><span class="metric__delta">Across 5 verified batches</span></div></article>
+              <article class="card"><div class="metric"><span class="metric__label">Average MRV Progress</span><strong class="metric__value">84%</strong></div><div class="progress"><span style="width:84%;"></span></div></article>
+              <article class="card"><div class="metric"><span class="metric__label">Pending Verification</span><strong class="metric__value">3</strong><span class="metric__delta">Need document follow-up</span></div></article>
+            </div>
+
+            <article class="card table-card" style="margin-top:1.5rem;">
+              <div class="table-card__header">
+                <div>
+                  <h2 class="card__title">Project Portfolio</h2>
+                  <p class="card__text">Daftar proyek aktif milik owner beserta status verifikasi dan progress MRV.</p>
+                </div>
+                <a class="btn btn--ghost" href="data-tables.html">Open Full Table</a>
+              </div>
+              <div class="table-responsive">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Project</th>
+                      <th scope="col">Location</th>
+                      <th scope="col">Verification</th>
+                      <th scope="col">MRV Progress</th>
+                      <th scope="col">Tokens Issued</th>
+                      <th scope="col">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>Katingan Blue Carbon</strong></td>
+                      <td>Central Kalimantan</td>
+                      <td><span class="badge badge--success">Verified</span></td>
+                      <td><div class="progress"><span style="width: 92%;"></span></div><span class="small-text">92%</span></td>
+                      <td>85,000</td>
+                      <td><a href="form-upload.html">Upload docs</a></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Papua Forest Community</strong></td>
+                      <td>Papua</td>
+                      <td><span class="badge badge--warning">Pending</span></td>
+                      <td><div class="progress"><span style="width: 68%;"></span></div><span class="small-text">68%</span></td>
+                      <td>0</td>
+                      <td><a href="form-upload.html">Submit evidence</a></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Java Solar Offset</strong></td>
+                      <td>East Java</td>
+                      <td><span class="badge badge--success">Verified</span></td>
+                      <td><div class="progress"><span style="width: 88%;"></span></div><span class="small-text">88%</span></td>
+                      <td>120,000</td>
+                      <td><a href="project-detail.html">View detail</a></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Sulawesi Wind Cluster</strong></td>
+                      <td>South Sulawesi</td>
+                      <td><span class="badge badge--info">Review</span></td>
+                      <td><div class="progress"><span style="width: 74%;"></span></div><span class="small-text">74%</span></td>
+                      <td>55,000</td>
+                      <td><a href="form-project.html">Edit data</a></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+          </section>
+
+          <aside class="dashboard-side">
+            <article class="card">
+              <h2 class="card__title">Verification Checklist</h2>
+              <ul class="check-list check-list--dark">
+                <li>Land certificate uploaded</li>
+                <li>Polygon map validated</li>
+                <li>Baseline report attached</li>
+                <li>Monitoring photos verified</li>
+                <li>Technical report awaiting reviewer signature</li>
+              </ul>
+            </article>
+            <article class="card">
+              <h2 class="card__title">Next Submission</h2>
+              <p class="card__text">Papua Forest Community requires additional drone imagery and business permit before final validation.</p>
+              <div class="card__actions">
+                <a class="btn btn--primary btn--full" href="form-upload.html">Upload Missing Files</a>
+              </div>
+            </article>
+            <article class="card highlight-card">
+              <h2 class="card__title">Token Issuance Window</h2>
+              <p>Next issuance batch opens on 22 June 2026 after verifier approval for MRV checkpoint Q2.</p>
+            </article>
+          </aside>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <section>
+        <a class="brand" href="index.html">
+          <img src="assets/img/logo.svg" alt="Logo NusaCarbon" />
+          <span>NusaCarbon</span>
+        </a>
+        <p class="small-text">Platform marketplace kredit karbon berbasis blockchain untuk MRV digital, tokenisasi, retirement, dan sertifikat offset digital.</p>
+      </section>
+      <section>
+        <h4>Platform</h4>
+        <ul class="footer-links">
+          <li><a href="marketplace.html">Marketplace</a></li>
+          <li><a href="form-project.html">Project Registry</a></li>
+          <li><a href="data-tables.html">Data Tables</a></li>
+        </ul>
+      </section>
+      <section>
+        <h4>Solutions</h4>
+        <ul class="footer-links">
+          <li><a href="project-detail.html">Digital MRV</a></li>
+          <li><a href="buyer-dashboard.html">Buyer Portfolio</a></li>
+          <li><a href="owner-dashboard.html">Project Owner Tools</a></li>
+        </ul>
+      </section>
+      <section>
+        <h4>Compliance</h4>
+        <ul class="footer-links">
+          <li><a href="form-upload.html">Upload Verification Docs</a></li>
+          <li><a href="data-tables.html">Blockchain History</a></li>
+          <li><a href="login.html">Access Portal</a></li>
+        </ul>
+      </section>
+    </div>
+    <div class="footer-bottom">© 2026 NusaCarbon. All rights reserved. Built for HTML & CSS learning stage.</div>
+  </div>
+</footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Tabel data NusaCarbon untuk daftar proyek, transaksi token, retirement, sertifikat digital, dan blockchain history." />
+  <title>Data Tables | NusaCarbon</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+  <div class="container site-header__inner">
+    <a class="brand" href="index.html" aria-label="NusaCarbon home">
+      <img src="assets/img/logo.svg" alt="Logo NusaCarbon" />
+      <span>NusaCarbon</span>
+    </a>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <div class="site-nav__links">
+        <a href="index.html">Home</a>
+        <a href="marketplace.html">Marketplace</a>
+        <a href="project-detail.html">Project Detail</a>
+        <a href="buyer-dashboard.html">Buyer Dashboard</a>
+        <a href="owner-dashboard.html">Owner Dashboard</a>
+      </div>
+      <div class="site-nav__actions">
+        <a class="btn btn--secondary" href="login.html">Login</a>
+        <a class="btn btn--primary" href="register.html">Get Started</a>
+      </div>
+    </nav>
+  </div>
+</header>
+    <main>
+      <section class="page-hero">
+        <div class="container page-hero__layout">
+          <div>
+            <p class="eyebrow">Tables & Records</p>
+            <h1 class="page-hero__title">Tabel Data Token, Transaksi, Retirement, dan Sertifikat</h1>
+            <p class="page-hero__lead">Halaman ini menampilkan contoh tabel HTML semantik lengkap dengan thead, tbody, th, dan td.</p>
+          </div>
+          <div class="page-hero__actions">
+            <a class="btn btn--secondary" href="marketplace.html">Back to Marketplace</a>
+            <a class="btn btn--primary" href="buyer-dashboard.html">Open Dashboard</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--tight">
+        <div class="container tables-layout">
+          <section>
+            <article class="card table-card">
+              <div class="table-card__header">
+                <div>
+                  <h2 class="card__title">Project List</h2>
+                  <p class="card__text">Contoh tabel daftar proyek karbon yang sudah terdaftar di marketplace.</p>
+                </div>
+              </div>
+              <div class="table-responsive">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Project ID</th>
+                      <th scope="col">Project Name</th>
+                      <th scope="col">Location</th>
+                      <th scope="col">Type</th>
+                      <th scope="col">Verification</th>
+                      <th scope="col">Price / ton</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>PRJ-001</td><td>Katingan Mentaya Project</td><td>Central Kalimantan</td><td>Forest Conservation</td><td>Verified</td><td>$12.50</td></tr>
+                    <tr><td>PRJ-002</td><td>Sumatra Mangrove Restoration</td><td>North Sumatra</td><td>Blue Carbon</td><td>Verified</td><td>$18.00</td></tr>
+                    <tr><td>PRJ-003</td><td>Sulawesi Wind Farm II</td><td>South Sulawesi</td><td>Renewable Energy</td><td>Pending</td><td>$9.75</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+
+            <article class="card table-card" style="margin-top:1.5rem;">
+              <div class="table-card__header">
+                <div>
+                  <h2 class="card__title">Token Transactions</h2>
+                  <p class="card__text">Contoh data transaksi token karbon.</p>
+                </div>
+              </div>
+              <div class="table-responsive">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Transaction ID</th>
+                      <th scope="col">Buyer</th>
+                      <th scope="col">Project</th>
+                      <th scope="col">Quantity</th>
+                      <th scope="col">Hash</th>
+                      <th scope="col">Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>TX-1021</td><td>Acme Corp</td><td>Amazon Protection</td><td>150 tCO₂e</td><td>0x4f8...2ca1</td><td>Confirmed</td></tr>
+                    <tr><td>TX-1022</td><td>EcoLogix</td><td>East Java Solar Park</td><td>300 tCO₂e</td><td>0x98d...13bf</td><td>Confirmed</td></tr>
+                    <tr><td>TX-1023</td><td>BlueWorks</td><td>Papua Community Forestry</td><td>90 tCO₂e</td><td>0x18c...43ea</td><td>Pending</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+          </section>
+
+          <aside>
+            <article class="card table-card">
+              <div class="table-card__header">
+                <div>
+                  <h2 class="card__title">Retirement Records</h2>
+                  <p class="card__text">Contoh retirement token untuk offset claim.</p>
+                </div>
+              </div>
+              <div class="table-responsive">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Retirement ID</th>
+                      <th scope="col">Token ID</th>
+                      <th scope="col">Amount</th>
+                      <th scope="col">Date</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>RET-301</td><td>TKN-8821</td><td>500 tCO₂e</td><td>18 May 2026</td></tr>
+                    <tr><td>RET-302</td><td>TKN-4451</td><td>250 tCO₂e</td><td>10 May 2026</td></tr>
+                    <tr><td>RET-303</td><td>TKN-9910</td><td>700 tCO₂e</td><td>27 Apr 2026</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+
+            <article class="card table-card" style="margin-top:1.5rem;">
+              <div class="table-card__header">
+                <div>
+                  <h2 class="card__title">Digital Certificates & Blockchain History</h2>
+                  <p class="card__text">Contoh tabel sertifikat digital dan hash blockchain.</p>
+                </div>
+              </div>
+              <div class="table-responsive">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Certificate No.</th>
+                      <th scope="col">Owner</th>
+                      <th scope="col">Retired Amount</th>
+                      <th scope="col">Transaction Hash</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>CERT-2026-001</td><td>Acme Corp</td><td>500 tCO₂e</td><td>0x71c...92a1</td></tr>
+                    <tr><td>CERT-2026-002</td><td>GreenTech Innovations</td><td>145.5 tCO₂e</td><td>0x1c9...e4f2</td></tr>
+                    <tr><td>CERT-2026-003</td><td>TechGiant Offset Program</td><td>1,200 tCO₂e</td><td>0x4f1...2d88</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+          </aside>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <section>
+        <a class="brand" href="index.html">
+          <img src="assets/img/logo.svg" alt="Logo NusaCarbon" />
+          <span>NusaCarbon</span>
+        </a>
+        <p class="small-text">Platform marketplace kredit karbon berbasis blockchain untuk MRV digital, tokenisasi, retirement, dan sertifikat offset digital.</p>
+      </section>
+      <section>
+        <h4>Platform</h4>
+        <ul class="footer-links">
+          <li><a href="marketplace.html">Marketplace</a></li>
+          <li><a href="form-project.html">Project Registry</a></li>
+          <li><a href="data-tables.html">Data Tables</a></li>
+        </ul>
+      </section>
+      <section>
+        <h4>Solutions</h4>
+        <ul class="footer-links">
+          <li><a href="project-detail.html">Digital MRV</a></li>
+          <li><a href="buyer-dashboard.html">Buyer Portfolio</a></li>
+          <li><a href="owner-dashboard.html">Project Owner Tools</a></li>
+        </ul>
+      </section>
+      <section>
+        <h4>Compliance</h4>
+        <ul class="footer-links">
+          <li><a href="form-upload.html">Upload Verification Docs</a></li>
+          <li><a href="data-tables.html">Blockchain History</a></li>
+          <li><a href="login.html">Access Portal</a></li>
+        </ul>
+      </section>
+    </div>
+    <div class="footer-bottom">© 2026 NusaCarbon. All rights reserved. Built for HTML & CSS learning stage.</div>
+  </div>
+</footer>
+  </div>
+</body>
+</html>

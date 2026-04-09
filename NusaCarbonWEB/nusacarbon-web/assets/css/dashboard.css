@@ -1,0 +1,139 @@
+/* assets/css/dashboard.css */
+
+.dashboard-layout {
+  padding: var(--space-xl) 0;
+}
+
+.dashboard-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-xl);
+}
+@media (min-width: 640px) {
+  .dashboard-header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.dashboard-title { margin: 0; }
+.dashboard-subtitle { margin: 0; color: var(--color-text-muted); font-size: var(--text-sm); }
+
+/* Quick Action Row */
+.quick-actions {
+  display: flex;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+/* Stats Row Grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+@media (min-width: 640px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .stats-grid { grid-template-columns: repeat(4, 1fr); } }
+
+/* Main layout grid (Detail/Buy Widget) */
+.split-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-xl);
+  align-items: start;
+}
+@media (min-width: 1024px) {
+  .split-layout { grid-template-columns: 2fr 1fr; }
+}
+
+/* Marketplace Filter Bar */
+.filter-bar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  background: var(--color-surface);
+  padding: var(--space-md);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  margin-bottom: var(--space-xl);
+}
+@media (min-width: 768px) {
+  .filter-bar {
+    flex-direction: row;
+    align-items: flex-end;
+  }
+  .filter-bar .form-group {
+    margin-bottom: 0;
+    flex: 1;
+  }
+}
+
+/* Marketplace Grid */
+.marketplace-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+}
+@media (min-width: 640px) { .marketplace-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .marketplace-grid { grid-template-columns: repeat(3, 1fr); } }
+
+.marketplace-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 0; /* Override .card padding */
+}
+.marketplace-card .card-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  background-color: var(--color-border);
+}
+.marketplace-card .card-body {
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  flex: 1;
+}
+.marketplace-card .card-footer {
+  padding: var(--space-md);
+  background: var(--color-bg);
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Login/Register Centered Layout */
+.auth-layout {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-md);
+  background: var(--gradient-hero);
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 440px;
+}
+
+/* Chart containers */
+.chart-container {
+  position: relative;
+  height: 300px;
+  width: 100%;
+  margin-top: var(--space-md);
+}
+
+.chart-container-sm {
+  position: relative;
+  height: 220px;
+  width: 100%;
+  margin-top: var(--space-md);
+}

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Halaman registrasi user untuk platform NusaCarbon." />
+  <title>Register | NusaCarbon</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+  <div class="container site-header__inner">
+    <a class="brand" href="index.html" aria-label="NusaCarbon home">
+      <img src="assets/img/logo.svg" alt="Logo NusaCarbon" />
+      <span>NusaCarbon</span>
+    </a>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <div class="site-nav__links">
+        <a href="index.html">Home</a>
+        <a href="marketplace.html">Marketplace</a>
+        <a href="project-detail.html">Project Detail</a>
+        <a href="buyer-dashboard.html">Buyer Dashboard</a>
+        <a href="owner-dashboard.html">Owner Dashboard</a>
+      </div>
+      <div class="site-nav__actions">
+        <a class="btn btn--secondary" href="login.html">Login</a>
+        <a class="btn btn--primary" href="register.html">Get Started</a>
+      </div>
+    </nav>
+  </div>
+</header>
+    <main class="auth">
+      <div class="container auth__layout">
+        <section class="auth__card" aria-labelledby="register-title">
+          <h1 class="auth__title" id="register-title">Create your NusaCarbon account</h1>
+          <p class="auth__lead">Form registrasi user dengan input teks, email, telepon, select role, dan validasi HTML5 dasar.</p>
+          <form class="form" action="#" method="post">
+            <div class="form-grid form-grid--2">
+              <div class="form-group">
+                <label for="full-name">Full Name</label>
+                <input class="input" id="full-name" name="full_name" type="text" placeholder="Muhammad Dafi Aritama" required />
+              </div>
+              <div class="form-group">
+                <label for="company-name">Company / Organization</label>
+                <input class="input" id="company-name" name="company_name" type="text" placeholder="Acme Corp / Forest Nusantara" required />
+              </div>
+            </div>
+            <div class="form-grid form-grid--2">
+              <div class="form-group">
+                <label for="register-email">Email Address</label>
+                <input class="input" id="register-email" name="email" type="email" placeholder="nama@company.com" required />
+              </div>
+              <div class="form-group">
+                <label for="phone-number">Phone Number</label>
+                <input class="input" id="phone-number" name="phone" type="tel" placeholder="+62 812 3456 7890" required />
+              </div>
+            </div>
+            <div class="form-grid form-grid--2">
+              <div class="form-group">
+                <label for="user-role">Role</label>
+                <select class="select" id="user-role" name="role" required>
+                  <option value="">Pilih role</option>
+                  <option value="buyer">Buyer</option>
+                  <option value="project-owner">Project Owner</option>
+                  <option value="verifier">Verifier / Auditor</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="province">Province / State</label>
+                <select class="select" id="province" name="province" required>
+                  <option value="">Pilih provinsi</option>
+                  <option>DKI Jakarta</option>
+                  <option>Jawa Timur</option>
+                  <option>Kalimantan Tengah</option>
+                  <option>Nusa Tenggara Timur</option>
+                  <option>Papua</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-grid form-grid--2">
+              <div class="form-group">
+                <label for="register-password">Password</label>
+                <input class="input" id="register-password" name="password" type="password" placeholder="Minimal 8 karakter" minlength="8" required />
+              </div>
+              <div class="form-group">
+                <label for="confirm-password">Confirm Password</label>
+                <input class="input" id="confirm-password" name="confirm_password" type="password" placeholder="Ulangi password" minlength="8" required />
+              </div>
+            </div>
+            <label class="checkbox" for="terms-check">
+              <input id="terms-check" name="terms" type="checkbox" required />
+              <span>Saya setuju dengan Terms of Service dan kebijakan penggunaan data platform.</span>
+            </label>
+            <button class="btn btn--primary btn--full" type="submit">Submit & Start</button>
+            <p class="form-help">Sudah punya akun? <a href="login.html"><strong>Kembali ke login</strong></a>.</p>
+          </form>
+        </section>
+        <aside class="auth__panel" aria-labelledby="register-side-title">
+          <p class="eyebrow">Why register?</p>
+          <h2 class="auth__title" id="register-side-title">Mulai dari registrasi user dan lanjut ke input proyek</h2>
+          <ul class="feature-list">
+            <li>Buyer dapat membeli kredit karbon dan mengunduh sertifikat retirement</li>
+            <li>Project owner dapat mengunggah proyek, dokumen, dan data MRV</li>
+            <li>Verifier dapat meninjau evidence pendukung untuk validasi</li>
+          </ul>
+        </aside>
+      </div>
+    </main>
+    <footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <section>
+        <a class="brand" href="index.html">
+          <img src="assets/img/logo.svg" alt="Logo NusaCarbon" />
+          <span>NusaCarbon</span>
+        </a>
+        <p class="small-text">Platform marketplace kredit karbon berbasis blockchain untuk MRV digital, tokenisasi, retirement, dan sertifikat offset digital.</p>
+      </section>
+      <section>
+        <h4>Platform</h4>
+        <ul class="footer-links">
+          <li><a href="marketplace.html">Marketplace</a></li>
+          <li><a href="form-project.html">Project Registry</a></li>
+          <li><a href="data-tables.html">Data Tables</a></li>
+        </ul>
+      </section>
+      <section>
+        <h4>Solutions</h4>
+        <ul class="footer-links">
+          <li><a href="project-detail.html">Digital MRV</a></li>
+          <li><a href="buyer-dashboard.html">Buyer Portfolio</a></li>
+          <li><a href="owner-dashboard.html">Project Owner Tools</a></li>
+        </ul>
+      </section>
+      <section>
+        <h4>Compliance</h4>
+        <ul class="footer-links">
+          <li><a href="form-upload.html">Upload Verification Docs</a></li>
+          <li><a href="data-tables.html">Blockchain History</a></li>
+          <li><a href="login.html">Access Portal</a></li>
+        </ul>
+      </section>
+    </div>
+    <div class="footer-bottom">© 2026 NusaCarbon. All rights reserved. Built for HTML & CSS learning stage.</div>
+  </div>
+</footer>
+  </div>
+</body>
+</html>

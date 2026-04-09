@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Dashboard buyer NusaCarbon untuk portfolio token, recent activity, retirement, dan certificate." />
+  <title>Buyer Dashboard | NusaCarbon</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+  <div class="container site-header__inner">
+    <a class="brand" href="index.html" aria-label="NusaCarbon home">
+      <img src="assets/img/logo.svg" alt="Logo NusaCarbon" />
+      <span>NusaCarbon</span>
+    </a>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <div class="site-nav__links">
+        <a href="index.html">Home</a>
+        <a href="marketplace.html">Marketplace</a>
+        <a href="project-detail.html">Project Detail</a>
+        <a href="buyer-dashboard.html">Buyer Dashboard</a>
+        <a href="owner-dashboard.html">Owner Dashboard</a>
+      </div>
+      <div class="site-nav__actions">
+        <a class="btn btn--secondary" href="login.html">Login</a>
+        <a class="btn btn--primary" href="register.html">Get Started</a>
+      </div>
+    </nav>
+  </div>
+</header>
+    <main>
+      <section class="page-hero">
+        <div class="container page-hero__layout">
+          <div>
+            <p class="eyebrow">Dashboard Overview</p>
+            <h1 class="dashboard-page__title">Buyer Dashboard</h1>
+            <p class="page-hero__lead">Pantau carbon credits, target offset, aktivitas blockchain, dan sertifikat offset digital Anda.</p>
+          </div>
+          <div class="dashboard-actions">
+            <a class="btn btn--secondary" href="data-tables.html">Export Report</a>
+            <a class="btn btn--primary" href="marketplace.html">Buy Credits</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--tight">
+        <div class="container dashboard-layout">
+          <section>
+            <div class="stats-grid">
+              <article class="card">
+                <div class="metric"><span class="metric__label">Total Offsets Retired</span><strong class="metric__value">12,450</strong><span>tCO₂e</span><span class="metric__delta">+12% vs last month</span></div>
+              </article>
+              <article class="card">
+                <div class="metric"><span class="metric__label">Portfolio Balance</span><strong class="metric__value">450</strong><span>Tokens</span><span class="metric__delta">+5% new tokens acquired</span></div>
+              </article>
+              <article class="card">
+                <div class="metric"><span class="metric__label">Footprint Offset Goal</span><strong class="metric__value">78%</strong><span>Complete</span></div>
+                <div class="progress" aria-label="Footprint offset goal"><span style="width:78%;"></span></div>
+                <p class="small-text">Target: Net Zero by 2030</p>
+              </article>
+            </div>
+
+            <article class="card table-card" style="margin-top:1.5rem;">
+              <div class="table-card__header">
+                <div>
+                  <h2 class="card__title">Owned Carbon Tokens</h2>
+                  <p class="card__text">Ringkasan token yang dimiliki buyer beserta statusnya.</p>
+                </div>
+                <a class="btn btn--ghost" href="data-tables.html">View All</a>
+              </div>
+              <div class="table-responsive">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Token ID</th>
+                      <th scope="col">Project Name</th>
+                      <th scope="col">Vintage</th>
+                      <th scope="col">Status</th>
+                      <th scope="col">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>TKN-8821</td>
+                      <td>
+                        <div class="table__project">
+                          <img src="assets/img/project-forest.svg" alt="Thumbnail proyek Amazon Protection" />
+                          <div><strong>Amazon Protection</strong><br /><span class="small-text">Brazil</span></div>
+                        </div>
+                      </td>
+                      <td>2023</td>
+                      <td><span class="badge badge--success">Active</span></td>
+                      <td><a class="btn btn--ghost" href="#">Retire</a></td>
+                    </tr>
+                    <tr>
+                      <td>TKN-9923</td>
+                      <td>
+                        <div class="table__project">
+                          <img src="assets/img/project-solar.svg" alt="Thumbnail proyek Solar Grid Expansion" />
+                          <div><strong>Solar Grid Expansion</strong><br /><span class="small-text">India</span></div>
+                        </div>
+                      </td>
+                      <td>2022</td>
+                      <td><span class="badge badge--success">Active</span></td>
+                      <td><a class="btn btn--ghost" href="#">Retire</a></td>
+                    </tr>
+                    <tr>
+                      <td>TKN-1102</td>
+                      <td>
+                        <div class="table__project">
+                          <img src="assets/img/project-wind.svg" alt="Thumbnail proyek Wind Power Initiative" />
+                          <div><strong>Wind Power Initiative</strong><br /><span class="small-text">Germany</span></div>
+                        </div>
+                      </td>
+                      <td>2023</td>
+                      <td><span class="badge badge--warning">Pending</span></td>
+                      <td><a class="btn btn--ghost" href="project-detail.html">Details</a></td>
+                    </tr>
+                    <tr>
+                      <td>TKN-4451</td>
+                      <td>
+                        <div class="table__project">
+                          <img src="assets/img/project-seedling.svg" alt="Thumbnail proyek Reforestation Alpha" />
+                          <div><strong>Reforestation Alpha</strong><br /><span class="small-text">Indonesia</span></div>
+                        </div>
+                      </td>
+                      <td>2021</td>
+                      <td><span class="badge badge--info">Retired</span></td>
+                      <td><a class="btn btn--ghost" href="data-tables.html">Certificate</a></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+
+            <article class="card highlight-card" style="margin-top:1.5rem;">
+              <p class="eyebrow">New Opportunity</p>
+              <h2 class="card__title">Blue Carbon Mangrove Restoration</h2>
+              <p>Invest in high-impact coastal ecosystems. Verified by Verra, this project offers premium carbon credits with biodiversity co-benefits for local communities.</p>
+              <div class="card__actions"><a class="btn btn--primary" href="project-detail.html">View Project</a></div>
+            </article>
+          </section>
+
+          <aside class="dashboard-side">
+            <article class="card">
+              <h2 class="card__title">Recent Activity</h2>
+              <div class="timeline">
+                <div class="timeline__item">
+                  <span class="timeline__dot"></span>
+                  <div class="timeline__content">
+                    <h3>Credits Retired</h3>
+                    <p class="card__text">Successfully retired 500 tons from Amazon Project.</p>
+                    <p class="small-text">Hash 0x3a...8f92 • 2 hours ago</p>
+                  </div>
+                </div>
+                <div class="timeline__item">
+                  <span class="timeline__dot"></span>
+                  <div class="timeline__content">
+                    <h3>Purchase Completed</h3>
+                    <p class="card__text">Bought 150 tokens of Solar Farm Expansion.</p>
+                    <p class="small-text">Yesterday</p>
+                  </div>
+                </div>
+                <div class="timeline__item">
+                  <span class="timeline__dot"></span>
+                  <div class="timeline__content">
+                    <h3>Transfer Incoming</h3>
+                    <p class="card__text">Received 200 tokens from wallet 0x8b...22c1.</p>
+                    <p class="small-text">3 days ago</p>
+                  </div>
+                </div>
+                <div class="timeline__item">
+                  <span class="timeline__dot"></span>
+                  <div class="timeline__content">
+                    <h3>Certificate Generated</h3>
+                    <p class="card__text">Annual Offset Certificate 2025 is ready.</p>
+                    <p class="small-text">1 week ago</p>
+                  </div>
+                </div>
+              </div>
+              <div class="card__actions"><a class="btn btn--secondary btn--full" href="data-tables.html">View All On-chain History</a></div>
+            </article>
+            <article class="card">
+              <h2 class="card__title">Latest Certificate</h2>
+              <img src="assets/img/certificate.svg" alt="Preview sertifikat offset digital buyer" />
+            </article>
+          </aside>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <section>
+        <a class="brand" href="index.html">
+          <img src="assets/img/logo.svg" alt="Logo NusaCarbon" />
+          <span>NusaCarbon</span>
+        </a>
+        <p class="small-text">Platform marketplace kredit karbon berbasis blockchain untuk MRV digital, tokenisasi, retirement, dan sertifikat offset digital.</p>
+      </section>
+      <section>
+        <h4>Platform</h4>
+        <ul class="footer-links">
+          <li><a href="marketplace.html">Marketplace</a></li>
+          <li><a href="form-project.html">Project Registry</a></li>
+          <li><a href="data-tables.html">Data Tables</a></li>
+        </ul>
+      </section>
+      <section>
+        <h4>Solutions</h4>
+        <ul class="footer-links">
+          <li><a href="project-detail.html">Digital MRV</a></li>
+          <li><a href="buyer-dashboard.html">Buyer Portfolio</a></li>
+          <li><a href="owner-dashboard.html">Project Owner Tools</a></li>
+        </ul>
+      </section>
+      <section>
+        <h4>Compliance</h4>
+        <ul class="footer-links">
+          <li><a href="form-upload.html">Upload Verification Docs</a></li>
+          <li><a href="data-tables.html">Blockchain History</a></li>
+          <li><a href="login.html">Access Portal</a></li>
+        </ul>
+      </section>
+    </div>
+    <div class="footer-bottom">© 2026 NusaCarbon. All rights reserved. Built for HTML & CSS learning stage.</div>
+  </div>
+</footer>
+  </div>
+</body>
+</html>

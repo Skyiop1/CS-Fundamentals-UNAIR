@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Form upload dokumen verifikasi NusaCarbon untuk sertifikat lahan, polygon map, foto lokasi, dan laporan teknis." />
+  <title>Upload Verification Documents | NusaCarbon</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+  <div class="container site-header__inner">
+    <a class="brand" href="index.html" aria-label="NusaCarbon home">
+      <img src="assets/img/logo.svg" alt="Logo NusaCarbon" />
+      <span>NusaCarbon</span>
+    </a>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <div class="site-nav__links">
+        <a href="index.html">Home</a>
+        <a href="marketplace.html">Marketplace</a>
+        <a href="project-detail.html">Project Detail</a>
+        <a href="buyer-dashboard.html">Buyer Dashboard</a>
+        <a href="owner-dashboard.html">Owner Dashboard</a>
+      </div>
+      <div class="site-nav__actions">
+        <a class="btn btn--secondary" href="login.html">Login</a>
+        <a class="btn btn--primary" href="register.html">Get Started</a>
+      </div>
+    </nav>
+  </div>
+</header>
+    <main>
+      <section class="page-hero">
+        <div class="container page-hero__layout">
+          <div>
+            <p class="eyebrow">Document Center</p>
+            <h1 class="page-hero__title">Form Upload Dokumen Verifikasi</h1>
+            <p class="page-hero__lead">Unggah dokumen pendukung proyek seperti sertifikat lahan, polygon map, izin usaha, foto lokasi, dan laporan teknis.</p>
+          </div>
+          <div class="page-hero__actions">
+            <a class="btn btn--secondary" href="form-project.html">Back to Project Form</a>
+            <a class="btn btn--primary" href="owner-dashboard.html">Owner Dashboard</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--tight">
+        <div class="container form-layout">
+          <section>
+            <form class="form" action="#" method="post" enctype="multipart/form-data">
+              <fieldset class="fieldset">
+                <legend class="fieldset__legend">Project Reference</legend>
+                <div class="form-grid form-grid--2">
+                  <div class="form-group">
+                    <label for="upload-project-id">Project ID</label>
+                    <input class="input" id="upload-project-id" name="project_id" type="text" placeholder="NUSA-2026-001" required />
+                  </div>
+                  <div class="form-group">
+                    <label for="document-batch">Submission Batch</label>
+                    <input class="input" id="document-batch" name="submission_batch" type="text" placeholder="Batch-Q2-2026" required />
+                  </div>
+                </div>
+              </fieldset>
+
+              <fieldset class="fieldset">
+                <legend class="fieldset__legend">Upload Files</legend>
+                <div class="form-group">
+                  <label for="land-certificate">Sertifikat Lahan (PDF/JPG/PNG)</label>
+                  <input id="land-certificate" name="land_certificate" type="file" accept=".pdf,.jpg,.jpeg,.png" required />
+                </div>
+                <div class="form-group">
+                  <label for="polygon-map">Polygon Map / Geo Evidence</label>
+                  <input id="polygon-map" name="polygon_map" type="file" accept=".pdf,.jpg,.jpeg,.png,.geojson,.kml" required />
+                </div>
+                <div class="form-group">
+                  <label for="location-photos">Foto Lokasi</label>
+                  <input id="location-photos" name="location_photos" type="file" accept=".jpg,.jpeg,.png" multiple required />
+                </div>
+                <div class="form-group">
+                  <label for="business-permit">Izin Usaha / Legal Permit</label>
+                  <input id="business-permit" name="business_permit" type="file" accept=".pdf,.jpg,.jpeg,.png" required />
+                </div>
+                <div class="form-group">
+                  <label for="technical-report">Laporan Teknis / MRV Report</label>
+                  <input id="technical-report" name="technical_report" type="file" accept=".pdf,.doc,.docx" required />
+                </div>
+              </fieldset>
+
+              <fieldset class="fieldset">
+                <legend class="fieldset__legend">Declaration</legend>
+                <div class="form-group">
+                  <label for="upload-notes">Notes for Verifier</label>
+                  <textarea class="textarea" id="upload-notes" name="notes" placeholder="Tambahkan catatan singkat untuk verifier, misalnya perubahan area, update baseline, atau revisi laporan."></textarea>
+                </div>
+                <label class="checkbox" for="declaration-check">
+                  <input id="declaration-check" name="declaration" type="checkbox" required />
+                  <span>Saya menyatakan seluruh dokumen yang diunggah benar dan sesuai kondisi proyek.</span>
+                </label>
+              </fieldset>
+
+              <div class="form-actions">
+                <button class="btn btn--primary" type="submit">Upload Documents</button>
+                <a class="btn btn--secondary" href="data-tables.html">View Submission Tables</a>
+              </div>
+            </form>
+          </section>
+
+          <aside class="detail-side">
+            <article class="card">
+              <h2 class="card__title">Accepted File Types</h2>
+              <ul class="check-list check-list--dark">
+                <li>PDF untuk laporan dan legal document</li>
+                <li>JPG/PNG untuk foto lapangan dan bukti visual</li>
+                <li>GEOJSON/KML untuk polygon map</li>
+                <li>Multiple upload untuk foto lokasi</li>
+              </ul>
+            </article>
+            <article class="card highlight-card">
+              <h2 class="card__title">Accessibility Tip</h2>
+              <p>Setiap input file memiliki label yang jelas agar lebih mudah dipahami dan diuji pada browser modern.</p>
+            </article>
+          </aside>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <section>
+        <a class="brand" href="index.html">
+          <img src="assets/img/logo.svg" alt="Logo NusaCarbon" />
+          <span>NusaCarbon</span>
+        </a>
+        <p class="small-text">Platform marketplace kredit karbon berbasis blockchain untuk MRV digital, tokenisasi, retirement, dan sertifikat offset digital.</p>
+      </section>
+      <section>
+        <h4>Platform</h4>
+        <ul class="footer-links">
+          <li><a href="marketplace.html">Marketplace</a></li>
+          <li><a href="form-project.html">Project Registry</a></li>
+          <li><a href="data-tables.html">Data Tables</a></li>
+        </ul>
+      </section>
+      <section>
+        <h4>Solutions</h4>
+        <ul class="footer-links">
+          <li><a href="project-detail.html">Digital MRV</a></li>
+          <li><a href="buyer-dashboard.html">Buyer Portfolio</a></li>
+          <li><a href="owner-dashboard.html">Project Owner Tools</a></li>
+        </ul>
+      </section>
+      <section>
+        <h4>Compliance</h4>
+        <ul class="footer-links">
+          <li><a href="form-upload.html">Upload Verification Docs</a></li>
+          <li><a href="data-tables.html">Blockchain History</a></li>
+          <li><a href="login.html">Access Portal</a></li>
+        </ul>
+      </section>
+    </div>
+    <div class="footer-bottom">© 2026 NusaCarbon. All rights reserved. Built for HTML & CSS learning stage.</div>
+  </div>
+</footer>
+  </div>
+</body>
+</html>

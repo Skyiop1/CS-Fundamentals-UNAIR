@@ -1,0 +1,142 @@
+/* assets/css/main.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Brand colors */
+  --color-primary:        #047857;  /* emerald-700 */
+  --color-primary-active: #059669;  /* emerald-600 */
+  --color-primary-dark:   #065F46;  /* emerald-800 */
+  --color-secondary:      #0D9488;  /* teal-600 */
+  --color-secondary-dark: #0F766E;  /* teal-700 */
+
+  /* Backgrounds */
+  --color-bg:      #F8FAFC;  /* slate-50 */
+  --color-surface: #FFFFFF;
+  --color-dark:    #0F172A;
+
+  /* Text */
+  --color-text-primary:   #0F172A;  /* slate-900 */
+  --color-text-secondary: #4B5563;  /* gray-600 */
+  --color-text-muted:     #94A3B8;  /* slate-400 */
+
+  /* Borders */
+  --color-border: #E5E7EB;  /* gray-200 */
+
+  /* Status */
+  --color-verified:    #059669; --color-verified-bg:  #ECFDF5;
+  --color-pending:     #F59E0B; --color-pending-bg:   #FFFBEB;
+  --color-rejected:    #DC2626; --color-rejected-bg:  #FEF2F2;
+  --color-transfer:    #2563EB; --color-transfer-bg:  #EFF6FF;
+
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #059669, #0D9488);
+  --gradient-hero:    linear-gradient(135deg, #ECFDF5, #F0FDFA, #EFF6FF);
+  --gradient-logo:    linear-gradient(135deg, #059669, #0F766E);
+
+  /* Spacing */
+  --space-xs:  4px; --space-sm: 8px; --space-md: 16px;
+  --space-lg: 24px; --space-xl: 32px; --space-2xl: 48px;
+
+  /* Radius */
+  --radius-sm: 6px; --radius-md: 8px; --radius-lg: 12px; --radius-xl: 16px; --radius-full: 9999px;
+
+  /* Shadow */
+    /* Effects */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 25px -5px rgba(5, 150, 105, 0.15), 0 8px 10px -6px rgba(5, 150, 105, 0.1);
+    --shadow-glow: 0 0 20px rgba(5, 150, 105, 0.3);
+    
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+    --radius-full: 9999px;
+
+    /* Backgrounds & Glass */
+    --gradient-hero: linear-gradient(135deg, var(--color-dark) 0%, #064e3b 100%);
+    --gradient-primary: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    --glass-bg: rgba(255, 255, 255, 0.85);
+    --glass-border: 1px solid rgba(255, 255, 255, 0.4);
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05); --font-sans: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+
+  /* Type Scale */
+  --text-xs:   0.75rem;   /* 12px */
+  --text-sm:   0.875rem;  /* 14px */
+  --text-base: 1rem;      /* 16px */
+  --text-lg:   1.125rem;  /* 18px */
+  --text-xl:   1.25rem;   /* 20px */
+  --text-2xl:  1.5rem;    /* 24px */
+  --text-3xl:  1.875rem;  /* 30px */
+  --text-4xl:  2.25rem;   /* 36px */
+
+  /* Animation */
+  --transition-fast:   0.1s ease;
+  --transition-base:   0.2s ease;
+  --transition-slow:   0.35s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-bg);
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-text-primary);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+h1 { font-size: var(--text-3xl); margin-bottom: var(--space-md); }
+h2 { font-size: var(--text-2xl); margin-bottom: var(--space-md); }
+h3 { font-size: var(--text-xl); margin-bottom: var(--space-sm); font-weight: 600; }
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: opacity var(--transition-base);
+}
+a:hover {
+  opacity: 0.8;
+}
+
+p {
+  margin-bottom: var(--space-md);
+}
+
+.text-muted {
+  color: var(--color-text-muted);
+}
+.text-xs { font-size: var(--text-xs); }
+.text-sm { font-size: var(--text-sm); }
+.text-lg { font-size: var(--text-lg); }
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+}
+
+/* Base animations */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.fade-up {
+  animation: fadeUp 0.35s ease forwards;
+}
+
+.card:nth-child(1) { animation-delay: 0ms; }
+.card:nth-child(2) { animation-delay: 50ms; }
+.card:nth-child(3) { animation-delay: 100ms; }
+.card:nth-child(4) { animation-delay: 150ms; }

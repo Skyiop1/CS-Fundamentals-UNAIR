@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" fill="none">
+<rect width="1200" height="720" rx="36" fill="#FFFFFF"/>
+<path d="M90 600H1110" stroke="#D7E5D9" stroke-width="4"/>
+<path d="M90 480H1110" stroke="#E8F1EA" stroke-width="3" stroke-dasharray="12 12"/>
+<path d="M90 360H1110" stroke="#E8F1EA" stroke-width="3" stroke-dasharray="12 12"/>
+<path d="M90 240H1110" stroke="#E8F1EA" stroke-width="3" stroke-dasharray="12 12"/>
+<path d="M90 600C178 584 265 540 353 494C441 448 529 386 618 398C706 410 794 312 882 264C970 216 1020 190 1110 146" stroke="#17C964" stroke-width="8" stroke-linecap="round"/>
+<path d="M90 600C178 584 265 540 353 494C441 448 529 386 618 398C706 410 794 312 882 264C970 216 1020 190 1110 146V600H90Z" fill="url(#g)" fill-opacity="0.35"/>
+<circle cx="618" cy="398" r="13" fill="#FFFFFF" stroke="#17C964" stroke-width="6"/>
+<circle cx="882" cy="264" r="13" fill="#FFFFFF" stroke="#17C964" stroke-width="6"/>
+<text x="90" y="660" fill="#607265" font-size="26" font-family="Arial">Jan</text>
+<text x="245" y="660" fill="#607265" font-size="26" font-family="Arial">Mar</text>
+<text x="405" y="660" fill="#607265" font-size="26" font-family="Arial">May</text>
+<text x="565" y="660" fill="#607265" font-size="26" font-family="Arial">Jul</text>
+<text x="725" y="660" fill="#607265" font-size="26" font-family="Arial">Sep</text>
+<text x="885" y="660" fill="#607265" font-size="26" font-family="Arial">Nov</text>
+<defs>
+<linearGradient id="g" x1="600" y1="146" x2="600" y2="600" gradientUnits="userSpaceOnUse">
+<stop stop-color="#17C964"/>
+<stop offset="1" stop-color="#17C964" stop-opacity="0"/>
+</linearGradient>
+</defs>
+</svg>

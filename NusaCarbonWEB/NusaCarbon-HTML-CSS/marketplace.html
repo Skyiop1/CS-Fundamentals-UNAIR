@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Halaman marketplace proyek karbon NusaCarbon dengan filter lokasi, tipe proyek, dan status verifikasi." />
+  <title>Marketplace Projects | NusaCarbon</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+  <div class="container site-header__inner">
+    <a class="brand" href="index.html" aria-label="NusaCarbon home">
+      <img src="assets/img/logo.svg" alt="Logo NusaCarbon" />
+      <span>NusaCarbon</span>
+    </a>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <div class="site-nav__links">
+        <a href="index.html">Home</a>
+        <a href="marketplace.html">Marketplace</a>
+        <a href="project-detail.html">Project Detail</a>
+        <a href="buyer-dashboard.html">Buyer Dashboard</a>
+        <a href="owner-dashboard.html">Owner Dashboard</a>
+      </div>
+      <div class="site-nav__actions">
+        <a class="btn btn--secondary" href="login.html">Login</a>
+        <a class="btn btn--primary" href="register.html">Get Started</a>
+      </div>
+    </nav>
+  </div>
+</header>
+    <main>
+      <section class="page-hero">
+        <div class="container page-hero__layout">
+          <div>
+            <p class="eyebrow">Live Market • 142 Active Projects</p>
+            <h1 class="page-hero__title">Indonesian Carbon Projects</h1>
+            <p class="page-hero__lead">Temukan proyek kredit karbon yang relevan berdasarkan lokasi, tipe proyek, harga per ton CO₂e, dan status verifikasi.</p>
+          </div>
+          <div class="page-hero__actions">
+            <a class="btn btn--secondary" href="data-tables.html">View Ledger Tables</a>
+            <a class="btn btn--primary" href="login.html">Connect Wallet</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--tight">
+        <div class="container filter-layout">
+          <aside class="filters" aria-label="Project filters">
+            <div class="card">
+              <h2 class="card__title">Filter Projects</h2>
+              <form class="form" action="#" method="get">
+                <fieldset class="fieldset">
+                  <legend class="fieldset__legend">Location</legend>
+                  <label class="checkbox" for="loc-kalimantan"><input id="loc-kalimantan" type="checkbox" name="location" checked /> <span>Kalimantan</span></label>
+                  <label class="checkbox" for="loc-sumatra"><input id="loc-sumatra" type="checkbox" name="location" /> <span>Sumatra</span></label>
+                  <label class="checkbox" for="loc-papua"><input id="loc-papua" type="checkbox" name="location" /> <span>Papua</span></label>
+                  <label class="checkbox" for="loc-java"><input id="loc-java" type="checkbox" name="location" /> <span>Java</span></label>
+                </fieldset>
+                <fieldset class="fieldset">
+                  <legend class="fieldset__legend">Price Range</legend>
+                  <div class="form-grid form-grid--2">
+                    <div class="form-group">
+                      <label for="price-min">Minimum</label>
+                      <input class="input" id="price-min" type="number" name="price_min" min="1" value="5" />
+                    </div>
+                    <div class="form-group">
+                      <label for="price-max">Maximum</label>
+                      <input class="input" id="price-max" type="number" name="price_max" min="1" value="50" />
+                    </div>
+                  </div>
+                </fieldset>
+                <fieldset class="fieldset">
+                  <legend class="fieldset__legend">Project Type</legend>
+                  <label class="checkbox" for="type-forest"><input id="type-forest" type="checkbox" checked /> <span>Forest Conservation</span></label>
+                  <label class="checkbox" for="type-mangrove"><input id="type-mangrove" type="checkbox" checked /> <span>Blue Carbon (Mangrove)</span></label>
+                  <label class="checkbox" for="type-renewable"><input id="type-renewable" type="checkbox" /> <span>Renewable Energy</span></label>
+                  <label class="checkbox" for="type-afforestation"><input id="type-afforestation" type="checkbox" /> <span>Afforestation</span></label>
+                </fieldset>
+                <fieldset class="fieldset">
+                  <legend class="fieldset__legend">Verification</legend>
+                  <label class="radio" for="ver-all"><input id="ver-all" type="radio" name="verification" checked /> <span>All Projects</span></label>
+                  <label class="radio" for="ver-verified"><input id="ver-verified" type="radio" name="verification" /> <span>Verified (Verra/Gold)</span></label>
+                  <label class="radio" for="ver-pending"><input id="ver-pending" type="radio" name="verification" /> <span>Pending Verification</span></label>
+                </fieldset>
+                <button class="btn btn--dark btn--full" type="submit">Apply Filters</button>
+              </form>
+            </div>
+          </aside>
+
+          <section>
+            <div class="project-grid">
+              <article class="card project-card">
+                <div class="project-card__media">
+                  <img src="assets/img/project-forest.svg" alt="Ilustrasi proyek hutan Katingan Mentaya" />
+                  <div class="project-card__badges">
+                    <span class="badge badge--success">Verified</span>
+                    <span class="badge badge--dark">Forest</span>
+                  </div>
+                </div>
+                <div class="project-card__body">
+                  <h2 class="project-card__title">Katingan Mentaya Project</h2>
+                  <div class="project-card__meta">
+                    <span class="small-text">Central Kalimantan, Indonesia</span>
+                    <div class="project-card__footer">
+                      <div class="metric"><span class="metric__label">Available</span><strong>150,000 tCO₂e</strong></div>
+                      <div class="metric"><span class="metric__label">Price</span><strong>$12.50 / ton</strong></div>
+                    </div>
+                  </div>
+                  <div class="card__actions"><a class="btn btn--secondary btn--full" href="project-detail.html">View Details</a></div>
+                </div>
+              </article>
+
+              <article class="card project-card">
+                <div class="project-card__media">
+                  <img src="assets/img/project-mangrove.svg" alt="Ilustrasi proyek mangrove Sumatra" />
+                  <div class="project-card__badges">
+                    <span class="badge badge--success">Verified</span>
+                    <span class="badge badge--dark">Blue Carbon</span>
+                  </div>
+                </div>
+                <div class="project-card__body">
+                  <h2 class="project-card__title">Sumatra Mangrove Restoration</h2>
+                  <div class="project-card__meta">
+                    <span class="small-text">North Sumatra, Indonesia</span>
+                    <div class="project-card__footer">
+                      <div class="metric"><span class="metric__label">Available</span><strong>85,400 tCO₂e</strong></div>
+                      <div class="metric"><span class="metric__label">Price</span><strong>$18.00 / ton</strong></div>
+                    </div>
+                  </div>
+                  <div class="card__actions"><a class="btn btn--secondary btn--full" href="project-detail.html">View Details</a></div>
+                </div>
+              </article>
+
+              <article class="card project-card">
+                <div class="project-card__media">
+                  <img src="assets/img/project-wind.svg" alt="Ilustrasi proyek turbin angin Sulawesi" />
+                  <div class="project-card__badges">
+                    <span class="badge badge--warning">Pending</span>
+                    <span class="badge badge--dark">Renewable</span>
+                  </div>
+                </div>
+                <div class="project-card__body">
+                  <h2 class="project-card__title">Sulawesi Wind Farm Phase II</h2>
+                  <div class="project-card__meta">
+                    <span class="small-text">South Sulawesi, Indonesia</span>
+                    <div class="project-card__footer">
+                      <div class="metric"><span class="metric__label">Available</span><strong>220,000 tCO₂e</strong></div>
+                      <div class="metric"><span class="metric__label">Price</span><strong>$9.75 / ton</strong></div>
+                    </div>
+                  </div>
+                  <div class="card__actions"><a class="btn btn--secondary btn--full" href="project-detail.html">View Details</a></div>
+                </div>
+              </article>
+
+              <article class="card project-card">
+                <div class="project-card__media">
+                  <img src="assets/img/project-seedling.svg" alt="Ilustrasi proyek afforestation Papua" />
+                  <div class="project-card__badges">
+                    <span class="badge badge--warning">Pending</span>
+                    <span class="badge badge--dark">Afforestation</span>
+                  </div>
+                </div>
+                <div class="project-card__body">
+                  <h2 class="project-card__title">Papua Community Forestry</h2>
+                  <div class="project-card__meta">
+                    <span class="small-text">Papua, Indonesia</span>
+                    <div class="project-card__footer">
+                      <div class="metric"><span class="metric__label">Available</span><strong>12,500 tCO₂e</strong></div>
+                      <div class="metric"><span class="metric__label">Price</span><strong>$16.00 / ton</strong></div>
+                    </div>
+                  </div>
+                  <div class="card__actions"><a class="btn btn--secondary btn--full" href="project-detail.html">View Details</a></div>
+                </div>
+              </article>
+
+              <article class="card project-card">
+                <div class="project-card__media">
+                  <img src="assets/img/project-forest.svg" alt="Ilustrasi proyek biodiversitas Rimba Raya" />
+                  <div class="project-card__badges">
+                    <span class="badge badge--success">Verified</span>
+                    <span class="badge badge--dark">Forest</span>
+                  </div>
+                </div>
+                <div class="project-card__body">
+                  <h2 class="project-card__title">Rimba Raya Biodiversity</h2>
+                  <div class="project-card__meta">
+                    <span class="small-text">Central Kalimantan, Indonesia</span>
+                    <div class="project-card__footer">
+                      <div class="metric"><span class="metric__label">Available</span><strong>45,200 tCO₂e</strong></div>
+                      <div class="metric"><span class="metric__label">Price</span><strong>$14.20 / ton</strong></div>
+                    </div>
+                  </div>
+                  <div class="card__actions"><a class="btn btn--secondary btn--full" href="project-detail.html">View Details</a></div>
+                </div>
+              </article>
+
+              <article class="card project-card">
+                <div class="project-card__media">
+                  <img src="assets/img/project-solar.svg" alt="Ilustrasi proyek solar park East Java" />
+                  <div class="project-card__badges">
+                    <span class="badge badge--success">Verified</span>
+                    <span class="badge badge--dark">Solar</span>
+                  </div>
+                </div>
+                <div class="project-card__body">
+                  <h2 class="project-card__title">East Java Solar Park</h2>
+                  <div class="project-card__meta">
+                    <span class="small-text">East Java, Indonesia</span>
+                    <div class="project-card__footer">
+                      <div class="metric"><span class="metric__label">Available</span><strong>92,150 tCO₂e</strong></div>
+                      <div class="metric"><span class="metric__label">Price</span><strong>$10.50 / ton</strong></div>
+                    </div>
+                  </div>
+                  <div class="card__actions"><a class="btn btn--secondary btn--full" href="project-detail.html">View Details</a></div>
+                </div>
+              </article>
+            </div>
+          </section>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <section>
+        <a class="brand" href="index.html">
+          <img src="assets/img/logo.svg" alt="Logo NusaCarbon" />
+          <span>NusaCarbon</span>
+        </a>
+        <p class="small-text">Platform marketplace kredit karbon berbasis blockchain untuk MRV digital, tokenisasi, retirement, dan sertifikat offset digital.</p>
+      </section>
+      <section>
+        <h4>Platform</h4>
+        <ul class="footer-links">
+          <li><a href="marketplace.html">Marketplace</a></li>
+          <li><a href="form-project.html">Project Registry</a></li>
+          <li><a href="data-tables.html">Data Tables</a></li>
+        </ul>
+      </section>
+      <section>
+        <h4>Solutions</h4>
+        <ul class="footer-links">
+          <li><a href="project-detail.html">Digital MRV</a></li>
+          <li><a href="buyer-dashboard.html">Buyer Portfolio</a></li>
+          <li><a href="owner-dashboard.html">Project Owner Tools</a></li>
+        </ul>
+      </section>
+      <section>
+        <h4>Compliance</h4>
+        <ul class="footer-links">
+          <li><a href="form-upload.html">Upload Verification Docs</a></li>
+          <li><a href="data-tables.html">Blockchain History</a></li>
+          <li><a href="login.html">Access Portal</a></li>
+        </ul>
+      </section>
+    </div>
+    <div class="footer-bottom">© 2026 NusaCarbon. All rights reserved. Built for HTML & CSS learning stage.</div>
+  </div>
+</footer>
+  </div>
+</body>
+</html>

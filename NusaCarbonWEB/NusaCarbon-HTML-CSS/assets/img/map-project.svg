@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="780" viewBox="0 0 1200 780" fill="none">
+<rect width="1200" height="780" rx="40" fill="#CFE8D7"/>
+<path d="M85 570C160 430 268 410 360 346C447 286 465 214 557 177C622 151 748 161 826 220C912 285 989 327 1048 296C1102 267 1134 237 1134 237" stroke="#75A8B8" stroke-width="7" stroke-linecap="round"/>
+<path d="M112 125C227 132 286 176 352 226C436 288 531 310 626 298C746 282 830 202 917 160C986 127 1050 129 1126 164" stroke="#97C1C9" stroke-width="6" stroke-linecap="round" stroke-dasharray="14 16"/>
+<path d="M168 690L290 575L436 628L594 488L764 538L920 402L1048 470" stroke="#4E7560" stroke-width="8" stroke-linecap="round" stroke-dasharray="1 24"/>
+<circle cx="372" cy="332" r="15" fill="#17C964"/>
+<circle cx="523" cy="238" r="15" fill="#17C964"/>
+<circle cx="800" cy="252" r="15" fill="#17C964"/>
+<circle cx="936" cy="404" r="15" fill="#17C964"/>
+<rect x="64" y="604" width="266" height="96" rx="20" fill="#0C1E13" fill-opacity="0.82"/>
+<text x="96" y="652" fill="#FFFFFF" font-size="32" font-family="Arial" font-weight="700">Project Polygon</text>
+<text x="96" y="686" fill="#BFD0C5" font-size="22" font-family="Arial">Pará, Brazil • VCS-1392</text>
+</svg>

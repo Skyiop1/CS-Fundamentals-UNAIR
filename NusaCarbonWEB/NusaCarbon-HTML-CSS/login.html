@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Halaman login NusaCarbon untuk buyer, project owner, dan verifier." />
+  <title>Login | NusaCarbon</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+  <div class="container site-header__inner">
+    <a class="brand" href="index.html" aria-label="NusaCarbon home">
+      <img src="assets/img/logo.svg" alt="Logo NusaCarbon" />
+      <span>NusaCarbon</span>
+    </a>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <div class="site-nav__links">
+        <a href="index.html">Home</a>
+        <a href="marketplace.html">Marketplace</a>
+        <a href="project-detail.html">Project Detail</a>
+        <a href="buyer-dashboard.html">Buyer Dashboard</a>
+        <a href="owner-dashboard.html">Owner Dashboard</a>
+      </div>
+      <div class="site-nav__actions">
+        <a class="btn btn--secondary" href="login.html">Login</a>
+        <a class="btn btn--primary" href="register.html">Get Started</a>
+      </div>
+    </nav>
+  </div>
+</header>
+    <main class="auth">
+      <div class="container auth__layout">
+        <section class="auth__panel" aria-labelledby="login-info-title">
+          <p class="eyebrow">NusaCarbon Access Portal</p>
+          <h1 class="auth__title" id="login-info-title">Masuk ke workspace carbon marketplace Anda</h1>
+          <p class="auth__lead">Gunakan halaman ini untuk buyer, project owner, dan verifier. Struktur form sudah disiapkan dengan validasi dasar HTML5.</p>
+          <ul class="feature-list">
+            <li>Buyer memantau portfolio token dan retirement certificate</li>
+            <li>Project owner mengelola proyek, MRV, dan upload dokumen</li>
+            <li>Verifier memeriksa data, status validasi, dan evidence pendukung</li>
+          </ul>
+        </section>
+
+        <section class="auth__card" aria-labelledby="login-form-title">
+          <h2 class="auth__title" id="login-form-title">Login</h2>
+          <p class="auth__lead">Masukkan email dan password untuk mengakses dashboard.</p>
+          <form class="form" action="#" method="post">
+            <div class="form-group">
+              <label for="login-email">Email</label>
+              <input class="input" id="login-email" name="email" type="email" placeholder="nama@nusacarbon.id" required aria-required="true" />
+            </div>
+            <div class="form-group">
+              <label for="login-password">Password</label>
+              <input class="input" id="login-password" name="password" type="password" placeholder="Masukkan password" minlength="8" required aria-required="true" />
+            </div>
+            <label class="checkbox" for="remember-me">
+              <input id="remember-me" name="remember" type="checkbox" />
+              <span>Remember me on this device</span>
+            </label>
+            <button class="btn btn--primary btn--full" type="submit">Login</button>
+            <p class="form-help">Belum punya akun? <a href="register.html"><strong>Daftar di sini</strong></a>.</p>
+          </form>
+        </section>
+      </div>
+    </main>
+    <footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <section>
+        <a class="brand" href="index.html">
+          <img src="assets/img/logo.svg" alt="Logo NusaCarbon" />
+          <span>NusaCarbon</span>
+        </a>
+        <p class="small-text">Platform marketplace kredit karbon berbasis blockchain untuk MRV digital, tokenisasi, retirement, dan sertifikat offset digital.</p>
+      </section>
+      <section>
+        <h4>Platform</h4>
+        <ul class="footer-links">
+          <li><a href="marketplace.html">Marketplace</a></li>
+          <li><a href="form-project.html">Project Registry</a></li>
+          <li><a href="data-tables.html">Data Tables</a></li>
+        </ul>
+      </section>
+      <section>
+        <h4>Solutions</h4>
+        <ul class="footer-links">
+          <li><a href="project-detail.html">Digital MRV</a></li>
+          <li><a href="buyer-dashboard.html">Buyer Portfolio</a></li>
+          <li><a href="owner-dashboard.html">Project Owner Tools</a></li>
+        </ul>
+      </section>
+      <section>
+        <h4>Compliance</h4>
+        <ul class="footer-links">
+          <li><a href="form-upload.html">Upload Verification Docs</a></li>
+          <li><a href="data-tables.html">Blockchain History</a></li>
+          <li><a href="login.html">Access Portal</a></li>
+        </ul>
+      </section>
+    </div>
+    <div class="footer-bottom">© 2026 NusaCarbon. All rights reserved. Built for HTML & CSS learning stage.</div>
+  </div>
+</footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Form input project karbon NusaCarbon untuk registrasi proyek secara digital." />
+  <title>Form Input Project | NusaCarbon</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+  <div class="container site-header__inner">
+    <a class="brand" href="index.html" aria-label="NusaCarbon home">
+      <img src="assets/img/logo.svg" alt="Logo NusaCarbon" />
+      <span>NusaCarbon</span>
+    </a>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <div class="site-nav__links">
+        <a href="index.html">Home</a>
+        <a href="marketplace.html">Marketplace</a>
+        <a href="project-detail.html">Project Detail</a>
+        <a href="buyer-dashboard.html">Buyer Dashboard</a>
+        <a href="owner-dashboard.html">Owner Dashboard</a>
+      </div>
+      <div class="site-nav__actions">
+        <a class="btn btn--secondary" href="login.html">Login</a>
+        <a class="btn btn--primary" href="register.html">Get Started</a>
+      </div>
+    </nav>
+  </div>
+</header>
+    <main>
+      <section class="page-hero">
+        <div class="container page-hero__layout">
+          <div>
+            <p class="eyebrow">Project Registry</p>
+            <h1 class="page-hero__title">Form Input Project Karbon</h1>
+            <p class="page-hero__lead">Gunakan form ini untuk mendaftarkan proyek karbon baru. Seluruh field sudah disiapkan dengan label yang jelas dan validasi dasar HTML5.</p>
+          </div>
+          <div class="page-hero__actions">
+            <a class="btn btn--secondary" href="form-upload.html">Upload Supporting Docs</a>
+            <a class="btn btn--primary" href="owner-dashboard.html">Back to Owner Dashboard</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--tight">
+        <div class="container form-layout">
+          <section>
+            <form class="form" action="#" method="post">
+              <fieldset class="fieldset">
+                <legend class="fieldset__legend">Project Identity</legend>
+                <div class="form-grid form-grid--2">
+                  <div class="form-group">
+                    <label for="project-name">Project Name</label>
+                    <input class="input" id="project-name" name="project_name" type="text" placeholder="Nusa Tenggara Mangrove Restoration" required />
+                  </div>
+                  <div class="form-group">
+                    <label for="project-id">Project ID</label>
+                    <input class="input" id="project-id" name="project_id" type="text" placeholder="NUSA-2026-001" required />
+                  </div>
+                </div>
+                <div class="form-grid form-grid--2">
+                  <div class="form-group">
+                    <label for="project-type">Project Type</label>
+                    <select class="select" id="project-type" name="project_type" required>
+                      <option value="">Pilih tipe proyek</option>
+                      <option>Forest Conservation</option>
+                      <option>Blue Carbon (Mangrove)</option>
+                      <option>Renewable Energy</option>
+                      <option>Afforestation / Reforestation</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="vintage-year">Vintage Year</label>
+                    <input class="input" id="vintage-year" name="vintage_year" type="number" min="2020" max="2035" placeholder="2026" required />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="project-summary">Project Summary</label>
+                  <textarea class="textarea" id="project-summary" name="project_summary" placeholder="Deskripsikan tujuan proyek, dampak lingkungan, dan manfaat sosial..." required></textarea>
+                </div>
+              </fieldset>
+
+              <fieldset class="fieldset">
+                <legend class="fieldset__legend">Location & Methodology</legend>
+                <div class="form-grid form-grid--3">
+                  <div class="form-group">
+                    <label for="country">Country</label>
+                    <input class="input" id="country" name="country" type="text" value="Indonesia" required />
+                  </div>
+                  <div class="form-group">
+                    <label for="province-input">Province</label>
+                    <input class="input" id="province-input" name="province" type="text" placeholder="Nusa Tenggara Timur" required />
+                  </div>
+                  <div class="form-group">
+                    <label for="district-input">District / Regency</label>
+                    <input class="input" id="district-input" name="district" type="text" placeholder="Manggarai Barat" required />
+                  </div>
+                </div>
+                <div class="form-grid form-grid--2">
+                  <div class="form-group">
+                    <label for="methodology">Methodology Standard</label>
+                    <select class="select" id="methodology" name="methodology" required>
+                      <option value="">Pilih metodologi</option>
+                      <option>VCS / Verra</option>
+                      <option>Gold Standard</option>
+                      <option>ICVCM-aligned Methodology</option>
+                      <option>National Carbon Registry</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="area-size">Project Area (ha)</label>
+                    <input class="input" id="area-size" name="area_size" type="number" min="1" placeholder="1520" required />
+                  </div>
+                </div>
+              </fieldset>
+
+              <fieldset class="fieldset">
+                <legend class="fieldset__legend">Carbon & MRV Data</legend>
+                <div class="form-grid form-grid--3">
+                  <div class="form-group">
+                    <label for="estimated-credits">Estimated Credits (tCO₂e)</label>
+                    <input class="input" id="estimated-credits" name="estimated_credits" type="number" min="1" placeholder="250000" required />
+                  </div>
+                  <div class="form-group">
+                    <label for="monitoring-start">Monitoring Start</label>
+                    <input class="input" id="monitoring-start" name="monitoring_start" type="date" required />
+                  </div>
+                  <div class="form-group">
+                    <label for="monitoring-end">Monitoring End</label>
+                    <input class="input" id="monitoring-end" name="monitoring_end" type="date" required />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="mrv-description">MRV Description</label>
+                  <textarea class="textarea" id="mrv-description" name="mrv_description" placeholder="Jelaskan sumber data MRV: sensor, citra satelit, sampling lapangan, audit trail, dll." required></textarea>
+                </div>
+              </fieldset>
+
+              <fieldset class="fieldset">
+                <legend class="fieldset__legend">Contact Person</legend>
+                <div class="form-grid form-grid--2">
+                  <div class="form-group">
+                    <label for="contact-name">PIC Name</label>
+                    <input class="input" id="contact-name" name="contact_name" type="text" placeholder="Raka Pratama" required />
+                  </div>
+                  <div class="form-group">
+                    <label for="contact-email">PIC Email</label>
+                    <input class="input" id="contact-email" name="contact_email" type="email" placeholder="pic@company.com" required />
+                  </div>
+                </div>
+              </fieldset>
+
+              <div class="form-actions">
+                <button class="btn btn--primary" type="submit">Submit Project</button>
+                <a class="btn btn--secondary" href="form-upload.html">Continue to Document Upload</a>
+              </div>
+            </form>
+          </section>
+
+          <aside class="detail-side">
+            <article class="card">
+              <h2 class="card__title">Input Guidance</h2>
+              <ul class="check-list check-list--dark">
+                <li>Isi nama proyek sesuai dokumen legal</li>
+                <li>Gunakan lokasi dan metodologi yang konsisten</li>
+                <li>Pastikan estimasi kredit masuk akal</li>
+                <li>Jelaskan MRV secara singkat namun jelas</li>
+                <li>Lanjutkan ke upload dokumen setelah submit</li>
+              </ul>
+            </article>
+            <article class="card highlight-card">
+              <h2 class="card__title">Best Practice</h2>
+              <p>Semua field penting dibuat <strong>required</strong> agar mahasiswa bisa mempraktikkan validasi dasar HTML5 sebelum menambahkan JavaScript.</p>
+            </article>
+          </aside>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <section>
+        <a class="brand" href="index.html">
+          <img src="assets/img/logo.svg" alt="Logo NusaCarbon" />
+          <span>NusaCarbon</span>
+        </a>
+        <p class="small-text">Platform marketplace kredit karbon berbasis blockchain untuk MRV digital, tokenisasi, retirement, dan sertifikat offset digital.</p>
+      </section>
+      <section>
+        <h4>Platform</h4>
+        <ul class="footer-links">
+          <li><a href="marketplace.html">Marketplace</a></li>
+          <li><a href="form-project.html">Project Registry</a></li>
+          <li><a href="data-tables.html">Data Tables</a></li>
+        </ul>
+      </section>
+      <section>
+        <h4>Solutions</h4>
+        <ul class="footer-links">
+          <li><a href="project-detail.html">Digital MRV</a></li>
+          <li><a href="buyer-dashboard.html">Buyer Portfolio</a></li>
+          <li><a href="owner-dashboard.html">Project Owner Tools</a></li>
+        </ul>
+      </section>
+      <section>
+        <h4>Compliance</h4>
+        <ul class="footer-links">
+          <li><a href="form-upload.html">Upload Verification Docs</a></li>
+          <li><a href="data-tables.html">Blockchain History</a></li>
+          <li><a href="login.html">Access Portal</a></li>
+        </ul>
+      </section>
+    </div>
+    <div class="footer-bottom">© 2026 NusaCarbon. All rights reserved. Built for HTML & CSS learning stage.</div>
+  </div>
+</footer>
+  </div>
+</body>
+</html>

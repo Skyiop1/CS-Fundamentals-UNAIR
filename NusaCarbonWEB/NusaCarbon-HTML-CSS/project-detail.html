@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Halaman detail proyek karbon NusaCarbon dengan data MRV, spesifikasi proyek, dan riwayat transaksi blockchain." />
+  <title>Project Detail & MRV Data | NusaCarbon</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+  <div class="container site-header__inner">
+    <a class="brand" href="index.html" aria-label="NusaCarbon home">
+      <img src="assets/img/logo.svg" alt="Logo NusaCarbon" />
+      <span>NusaCarbon</span>
+    </a>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <div class="site-nav__links">
+        <a href="index.html">Home</a>
+        <a href="marketplace.html">Marketplace</a>
+        <a href="project-detail.html">Project Detail</a>
+        <a href="buyer-dashboard.html">Buyer Dashboard</a>
+        <a href="owner-dashboard.html">Owner Dashboard</a>
+      </div>
+      <div class="site-nav__actions">
+        <a class="btn btn--secondary" href="login.html">Login</a>
+        <a class="btn btn--primary" href="register.html">Get Started</a>
+      </div>
+    </nav>
+  </div>
+</header>
+    <main>
+      <section class="page-hero">
+        <div class="container">
+          <div class="breadcrumbs" aria-label="Breadcrumb">
+            <a href="marketplace.html">Marketplace</a>
+            <span>›</span>
+            <span>Project VCS-1392</span>
+          </div>
+          <div class="page-hero__layout">
+            <div>
+              <h1 class="page-hero__title">Amazon Reforestation Project <span class="badge badge--success">Verified</span></h1>
+              <p class="page-hero__lead">Verified Carbon Standard (VCS) • Vintage 2023 • Pará, Brazil</p>
+            </div>
+            <div class="page-hero__actions">
+              <a class="btn btn--secondary" href="data-tables.html">Share</a>
+              <a class="btn btn--primary" href="login.html">Buy Credits</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--tight">
+        <div class="container detail-layout">
+          <section class="detail-side">
+            <article class="card">
+              <img src="assets/img/map-project.svg" alt="Peta area proyek Amazon Reforestation Project" />
+            </article>
+            <article class="card">
+              <h2 class="card__title">Project Specifications</h2>
+              <div class="info-list">
+                <div><span>Project ID</span><strong>VCS-1392</strong></div>
+                <div><span>Methodology</span><strong>VM0007 REDD+</strong></div>
+                <div><span>Verifier</span><strong>Verra</strong></div>
+                <div><span>Status</span><strong>Active Issuance</strong></div>
+              </div>
+              <div class="small-text" style="margin-top:1rem;">Available credits</div>
+              <div class="progress" aria-label="Available credits progress"><span style="width: 30%;"></span></div>
+              <p class="small-text">450,000 / 1,500,000 tCO₂e</p>
+            </article>
+          </section>
+
+          <section>
+            <article class="card">
+              <div class="table-card__header">
+                <div>
+                  <h2 class="card__title">Digital MRV Data</h2>
+                  <p class="card__text">Real-time IoT sensor & satellite monitoring</p>
+                </div>
+                <div class="badge-group">
+                  <span class="badge badge--dark">12M</span>
+                  <span class="badge badge--success">YTD</span>
+                  <span class="badge badge--secondary">All</span>
+                </div>
+              </div>
+              <div class="kpi-strip">
+                <article class="card card--soft">
+                  <div class="metric"><span class="metric__label">Carbon Sequestered</span><strong class="metric__value">1.2M</strong><span class="metric__delta">+12% vs last year</span></div>
+                </article>
+                <article class="card card--soft">
+                  <div class="metric"><span class="metric__label">Biomass Density</span><strong class="metric__value">245</strong><span class="metric__delta">+4.5% growth</span></div>
+                </article>
+                <article class="card card--soft">
+                  <div class="metric"><span class="metric__label">Forest Cover</span><strong class="metric__value">98.2%</strong><span class="metric__delta">Stable</span></div>
+                </article>
+              </div>
+              <div class="mini-chart" style="margin-top:1rem;">
+                <img src="assets/img/chart-mrv.svg" alt="Grafik MRV tahunan yang menunjukkan pertumbuhan penyerapan karbon" />
+              </div>
+            </article>
+          </section>
+        </div>
+      </section>
+
+      <section class="section section--tight">
+        <div class="container">
+          <article class="card table-card">
+            <div class="table-card__header">
+              <div>
+                <h2 class="card__title">Blockchain Transaction History</h2>
+                <p class="card__text">Riwayat issuance, purchase, dan retirement pada ledger.</p>
+              </div>
+              <a class="btn btn--ghost" href="data-tables.html">View Contract</a>
+            </div>
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Transaction Hash</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Action</th>
+                    <th scope="col">Quantity (tCO₂e)</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Explorer</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0x71c...92a1</td>
+                    <td>Oct 24, 2025 14:30</td>
+                    <td><span class="badge badge--info">Retirement</span></td>
+                    <td>2,500</td>
+                    <td><span class="badge badge--success">Confirmed</span></td>
+                    <td><a href="#">Open</a></td>
+                  </tr>
+                  <tr>
+                    <td>0x3b2...11f8</td>
+                    <td>Oct 22, 2025 09:15</td>
+                    <td><span class="badge badge--success">Purchase</span></td>
+                    <td>10,000</td>
+                    <td><span class="badge badge--success">Confirmed</span></td>
+                    <td><a href="#">Open</a></td>
+                  </tr>
+                  <tr>
+                    <td>0xa94...6d21</td>
+                    <td>Oct 20, 2025 16:45</td>
+                    <td><span class="badge badge--warning">Issuance</span></td>
+                    <td>50,000</td>
+                    <td><span class="badge badge--success">Confirmed</span></td>
+                    <td><a href="#">Open</a></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <section>
+        <a class="brand" href="index.html">
+          <img src="assets/img/logo.svg" alt="Logo NusaCarbon" />
+          <span>NusaCarbon</span>
+        </a>
+        <p class="small-text">Platform marketplace kredit karbon berbasis blockchain untuk MRV digital, tokenisasi, retirement, dan sertifikat offset digital.</p>
+      </section>
+      <section>
+        <h4>Platform</h4>
+        <ul class="footer-links">
+          <li><a href="marketplace.html">Marketplace</a></li>
+          <li><a href="form-project.html">Project Registry</a></li>
+          <li><a href="data-tables.html">Data Tables</a></li>
+        </ul>
+      </section>
+      <section>
+        <h4>Solutions</h4>
+        <ul class="footer-links">
+          <li><a href="project-detail.html">Digital MRV</a></li>
+          <li><a href="buyer-dashboard.html">Buyer Portfolio</a></li>
+          <li><a href="owner-dashboard.html">Project Owner Tools</a></li>
+        </ul>
+      </section>
+      <section>
+        <h4>Compliance</h4>
+        <ul class="footer-links">
+          <li><a href="form-upload.html">Upload Verification Docs</a></li>
+          <li><a href="data-tables.html">Blockchain History</a></li>
+          <li><a href="login.html">Access Portal</a></li>
+        </ul>
+      </section>
+    </div>
+    <div class="footer-bottom">© 2026 NusaCarbon. All rights reserved. Built for HTML & CSS learning stage.</div>
+  </div>
+</footer>
+  </div>
+</body>
+</html>

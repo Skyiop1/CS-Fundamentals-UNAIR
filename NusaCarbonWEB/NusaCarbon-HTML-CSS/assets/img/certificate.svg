@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500" fill="none">
+<rect width="800" height="500" rx="28" fill="#0C1E13"/>
+<rect x="32" y="32" width="736" height="436" rx="22" stroke="#17C964" stroke-width="2"/>
+<text x="60" y="114" fill="#DFF7E7" font-size="24" font-family="Arial">NusaCarbon Digital Offset Certificate</text>
+<text x="60" y="208" fill="#FFFFFF" font-size="52" font-family="Arial" font-weight="700">Certified Retirement</text>
+<text x="60" y="264" fill="#BFD0C5" font-size="30" font-family="Arial">Annual Offset 2025 • 2,500 tCO₂e retired</text>
+<text x="60" y="336" fill="#17C964" font-size="24" font-family="Arial">Hash: 0x71c...92a1</text>
+<circle cx="668" cy="122" r="58" fill="#17C964" fill-opacity="0.2" stroke="#17C964" stroke-width="2"/>
+<path d="M640 122L660 142L698 102" stroke="#17C964" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="60" y="416" fill="#BFD0C5" font-size="24" font-family="Arial">Blockchain-backed proof • Non-transferable certificate</text>
+</svg>

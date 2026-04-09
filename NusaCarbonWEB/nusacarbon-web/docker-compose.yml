@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  web:
+    image: php:8.2-apache
+    container_name: nusacarbon_web
+    volumes:
+      - .:/var/www/html
+    ports:
+      - "8000:80"
+    command: >
+      bash -c "docker-php-ext-install pdo pdo_mysql mysqli && apache2-foreground"
+    depends_on:
+      - db
+
+  db:
+    image: mysql:8.0
+    container_name: nusacarbon_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: nusacarbon
+      MYSQL_USER: nusa_user
+      MYSQL_PASSWORD: nusa_password
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./sql:/docker-entrypoint-initdb.d
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:
