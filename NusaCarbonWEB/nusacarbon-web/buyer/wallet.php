@@ -34,34 +34,59 @@ require_once '../includes/header.php';
         <h2 class="dashboard-title">Digital Wallet</h2>
     </div>
 
-    <!-- Wallet Card -->
-    <div class="card" style="background: var(--color-dark); color: white; margin-bottom: var(--space-xl); position: relative; overflow: hidden; border: none;">
-        <!-- decorative background -->
-        <div style="position: absolute; top: -50px; right: -50px; width: 200px; height: 200px; background: var(--gradient-primary); filter: blur(60px); opacity: 0.5;"></div>
+    <!-- Premium Web3 Wallet Card -->
+    <div class="card" style="background: linear-gradient(145deg, #0f172a 0%, #064e3b 100%); color: white; margin-bottom: var(--space-xl); position: relative; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.1); padding: 40px; border-radius: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.2);">
         
-        <div style="position: relative; z-index: 1;">
-            <p class="text-sm" style="color: var(--color-text-muted); margin-bottom: var(--space-xs);">Alamat Wallet Web3</p>
-            <div style="display: flex; align-items: center; gap: var(--space-md); margin-bottom: var(--space-xl);">
-                <span class="hash-display" style="background: rgba(255,255,255,0.1); color: white; padding: 6px 12px; font-size: var(--text-sm);">
-                    <?= truncateHash($wallet['wallet_address']) ?>
-                </span>
-                <button class="btn-icon" style="color: white; background: rgba(255,255,255,0.1);" onclick="copyToClipboard('<?= $wallet['wallet_address'] ?>')">
-                    <i data-lucide="copy" width="16"></i>
+        <!-- Glowing Ambient Orbs -->
+        <div style="position: absolute; top: -80px; left: -80px; width: 250px; height: 250px; background: #10b981; filter: blur(100px); opacity: 0.25; border-radius: 50%; pointer-events: none;"></div>
+        <div style="position: absolute; bottom: -80px; right: -80px; width: 300px; height: 300px; background: #0ea5e9; filter: blur(120px); opacity: 0.2; border-radius: 50%; pointer-events: none;"></div>
+        
+        <!-- Abstract Grid Overlay -->
+        <div style="position: absolute; inset: 0; background-image: radial-gradient(rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 20px 20px; opacity: 0.2; pointer-events: none;"></div>
+        
+        <div style="position: relative; z-index: 10; display: flex; flex-direction: column; height: 100%;">
+            
+            <!-- Top Section: Address -->
+            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <div>
+                    <p style="color: #94a3b8; font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px;">Alamat Dompet Blockchain</p>
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <span class="hash-display" style="background: rgba(255,255,255,0.08); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.12); color: #cbd5e1; padding: 8px 16px; font-size: 14px; font-family: monospace; border-radius: 8px;">
+                            <?= truncateHash($wallet['wallet_address']) ?>
+                        </span>
+                        <button class="btn-icon" style="color: #a7f3d0; background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.2); border-radius: 8px; width: 36px; height: 36px;" onclick="copyToClipboard('<?= $wallet['wallet_address'] ?>')">
+                            <i data-lucide="copy" width="16"></i>
+                        </button>
+                    </div>
+                </div>
+                <!-- Optional Web3 Badge right here -->
+                <div style="background: rgba(255,255,255,0.1); padding: 4px 12px; border-radius: 20px; font-size: 12px; color: #6ee7b7; border: 1px solid rgba(110, 231, 183, 0.3); display: flex; align-items: center; gap: 6px;">
+                    <div style="width: 6px; height: 6px; background: #34d399; border-radius: 50%; box-shadow: 0 0 8px #34d399;"></div> Mainnet Aktif
+                </div>
+            </div>
+
+            <!-- Middle Section: Massive Balance -->
+            <div style="text-align: center; margin: 48px 0;">
+                <p style="color: #94a3b8; font-size: 14px; margin-bottom: 12px; font-weight: 500;">Total Saldo Aktif</p>
+                <div style="display: flex; align-items: baseline; justify-content: center; gap: 12px;">
+                    <!-- The value uses CSS Background Clip text to create a metallic/gradient text effect -->
+                    <h1 style="font-size: 4.5rem; font-weight: 800; line-height: 1; letter-spacing: -0.04em; margin: 0; background: linear-gradient(to right, #6ee7b7, #38bdf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                        <?= number_format($wallet['saldo_token'], 0, ',', '.') ?> 
+                    </h1>
+                    <span style="font-size: 1.5rem; font-weight: 700; color: #a7f3d0; text-transform: uppercase;">tCO₂e</span>
+                </div>
+            </div>
+
+            <!-- Bottom Section: Actions -->
+            <div style="display: flex; justify-content: center; gap: 16px; margin-top: auto;">
+                <button class="btn-primary" style="background: #10b981; color: white; border: none; padding: 12px 32px; border-radius: 50px; font-weight: 600; box-shadow: 0 4px 20px rgba(16, 185, 129, 0.4); display: flex; align-items: center; gap: 8px;" onclick="openModal('modalReceive')">
+                    <i data-lucide="arrow-down-to-line" width="18"></i> Terima
+                </button>
+                <button class="btn-outline" style="background: rgba(255,255,255,0.05); color: white; border: 1px solid rgba(255,255,255,0.2); padding: 12px 32px; border-radius: 50px; font-weight: 600; backdrop-filter: blur(10px); display: flex; align-items: center; gap: 8px;" onclick="openModal('modalSend')">
+                    <i data-lucide="send" width="18"></i> Kirim
                 </button>
             </div>
-
-            <div style="text-align: center; margin: var(--space-xl) 0;">
-                <p class="text-sm" style="color: var(--color-text-muted); margin-bottom: var(--space-xs);">Total Saldo Aktif</p>
-                <h1 style="font-size: var(--text-4xl); margin: 0; display: flex; align-items: center; justify-content: center; gap: 8px;">
-                    <?= number_format($wallet['saldo_token'], 0, ',', '.') ?> 
-                    <span style="font-size: var(--text-lg); font-weight: 500; opacity: 0.8;">tCO₂e</span>
-                </h1>
-            </div>
-
-            <div style="display: flex; justify-content: center; gap: var(--space-md);">
-                <button class="btn-primary" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.2);" onclick="openModal('modalReceive')"><i data-lucide="arrow-down-to-line" width="16"></i> Terima</button>
-                <button class="btn-primary" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.2);" onclick="openModal('modalSend')"><i data-lucide="send" width="16"></i> Kirim</button>
-            </div>
+            
         </div>
     </div>
 
