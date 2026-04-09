@@ -76,12 +76,13 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['role'])) {
         
         /* Typography overrides for dark background */
         .hero-title {
-            font-size: var(--text-5xl); 
+            font-size: 3.5rem; /* Fixed: forced absolute size */
             letter-spacing: -0.03em;
             color: #ffffff;
             font-weight: 800;
             text-shadow: 0 4px 20px rgba(0,0,0,0.15);
-            margin-bottom: var(--space-xs);
+            margin-bottom: 12px;
+            margin-top: 0;
         }
         .hero-subtitle {
             color: #6ee7b7; /* Bright mint for contrast */
@@ -138,8 +139,8 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['role'])) {
             </a>
         </div>
         
-        <div class="fade-up" style="animation-delay: 200ms; margin-top: var(--space-2xl);">
-            <a href="/buyer/marketplace.php" class="btn-primary" style="background: white; color: var(--color-primary); border: none; padding: 14px 28px; font-weight: 600; font-size: var(--text-md); box-shadow: 0 4px 14px rgba(0,0,0,0.15);">Explore Marketplace &rarr;</a>
+        <div class="fade-up" style="animation-delay: 200ms; margin-top: 40px; margin-bottom: 20px;">
+            <a href="/buyer/marketplace.php" class="btn-primary" style="background: white !important; color: #059669 !important; border: none; padding: 14px 32px; font-weight: bold; font-size: 16px; border-radius: 50px; box-shadow: 0 4px 20px rgba(0,255,150,0.2);">Explore Marketplace &rarr;</a>
         </div>
     </main>
 
