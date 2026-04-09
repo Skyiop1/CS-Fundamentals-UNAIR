@@ -49,6 +49,13 @@ $options = [
 
 try {
     $pdo = new PDO($dsn, $user, $pass, $options);
+    
+    // Auto-migrate schema for user feature request (IDR Balance)
+    try {
+        $pdo->exec("ALTER TABLE wallets ADD COLUMN saldo_rupiah DECIMAL(16,2) DEFAULT 1000000000");
+        $pdo->exec("UPDATE wallets SET saldo_rupiah = 1000000000 WHERE saldo_rupiah IS NULL");
+    } catch(Exception $e) {} // Ignore if already exists
+
 } catch (\PDOException $e) {
     die("Database connection failed: " . $e->getMessage());
 }

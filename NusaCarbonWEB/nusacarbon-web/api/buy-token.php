@@ -32,6 +32,16 @@ try {
         throw new Exception("Stock tidak cukup atau listing tidak valid.");
     }
 
+    // Check buyer IDR balance
+    $total_harga = $listing['harga_per_token'] * $jumlah;
+    $stmt = $pdo->prepare("SELECT saldo_rupiah FROM wallets WHERE id_user = ? FOR UPDATE");
+    $stmt->execute([$_SESSION['user_id']]);
+    $buyerWallet = $stmt->fetch();
+
+    if (!$buyerWallet || $buyerWallet['saldo_rupiah'] < $total_harga) {
+        throw new Exception("Saldo Rupiah tidak mencukupi untuk transaksi ini.");
+    }
+
     // Insert trade transaction
     $total_harga = $listing['harga_per_token'] * $jumlah;
     $stmt = $pdo->prepare("INSERT INTO trade_transactions (id_listing, buyer_user_id, seller_user_id, total_harga, status) VALUES (?, ?, ?, ?, 'success')");
@@ -55,8 +65,9 @@ try {
 
     $pdo->prepare("UPDATE trade_transactions SET tx_transfer_hash = ? WHERE id_transaksi = ?")->execute([$txHash, $id_transaksi]);
 
-    // Give buyer the balance
-    $pdo->prepare("UPDATE wallets SET saldo_token = saldo_token + ? WHERE id_user = ?")->execute([$jumlah, $_SESSION['user_id']]);
+    // Give buyer the token balance and deduct IDR
+    $pdo->prepare("UPDATE wallets SET saldo_token = saldo_token + ?, saldo_rupiah = saldo_rupiah - ? WHERE id_user = ?")
+        ->execute([$jumlah, $total_harga, $_SESSION['user_id']]);
 
     $pdo->commit();
     echo json_encode(['success' => true, 'tx_hash' => $txHash, 'gas_fee' => mockGasFee()]);

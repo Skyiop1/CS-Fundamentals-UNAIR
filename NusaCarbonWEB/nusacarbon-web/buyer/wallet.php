@@ -66,14 +66,21 @@ require_once '../includes/header.php';
             </div>
 
             <!-- Middle Section: Massive Balance -->
-            <div style="text-align: center; margin: 48px 0;">
-                <p style="color: #94a3b8; font-size: 14px; margin-bottom: 12px; font-weight: 500;">Total Saldo Aktif</p>
-                <div style="display: flex; align-items: baseline; justify-content: center; gap: 12px;">
-                    <!-- The value uses CSS Background Clip text to create a metallic/gradient text effect -->
-                    <h1 style="font-size: 4.5rem; font-weight: 800; line-height: 1; letter-spacing: -0.04em; margin: 0; background: linear-gradient(to right, #6ee7b7, #38bdf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+            <div style="text-align: center; margin: 40px 0;">
+                <p style="color: #94a3b8; font-size: 14px; margin-bottom: 8px; font-weight: 500;">Saldo Karbon Aktif</p>
+                <div style="display: flex; align-items: baseline; justify-content: center; gap: 12px; margin-bottom: 24px;">
+                    <h1 style="font-size: 4rem; font-weight: 800; line-height: 1; letter-spacing: -0.04em; margin: 0; background: linear-gradient(to right, #6ee7b7, #38bdf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
                         <?= number_format($wallet['saldo_token'], 0, ',', '.') ?> 
                     </h1>
-                    <span style="font-size: 1.5rem; font-weight: 700; color: #a7f3d0; text-transform: uppercase;">tCO₂e</span>
+                    <span style="font-size: 1.25rem; font-weight: 700; color: #a7f3d0; text-transform: uppercase;">tCO₂e</span>
+                </div>
+
+                <p style="color: #94a3b8; font-size: 14px; margin-bottom: 8px; font-weight: 500;">Saldo Rupiah (Fiat)</p>
+                <div style="display: flex; align-items: baseline; justify-content: center; gap: 8px;">
+                    <span style="font-size: 1.25rem; font-weight: 600; color: #ffffff; opacity: 0.8;">Rp</span>
+                    <h2 style="font-size: 2.5rem; font-weight: 700; line-height: 1; letter-spacing: -0.02em; margin: 0; color: #ffffff;">
+                        <?= number_format($wallet['saldo_rupiah'] ?? 0, 0, ',', '.') ?>
+                    </h2>
                 </div>
             </div>
 
