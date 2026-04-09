@@ -20,9 +20,9 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['role'])) {
         .role-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: var(--space-lg);
+            gap: var(--space-xl);
             margin-top: var(--space-2xl);
-            max-width: 800px;
+            max-width: 900px;
             margin-left: auto;
             margin-right: auto;
         }
@@ -31,40 +31,88 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['role'])) {
         }
         .role-card {
             text-align: center;
-            padding: var(--space-xl);
+            padding: var(--space-2xl) var(--space-xl);
             cursor: pointer;
             text-decoration: none;
-            color: var(--color-text-primary);
+            /* Premium Glassmorphism */
+            background: rgba(255, 255, 255, 0.05) !important;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2) !important;
+            color: #ffffff !important;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .role-card:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.1) !important;
+            border-color: rgba(255, 255, 255, 0.2) !important;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3) !important;
+        }
+        .role-card h3 {
+            color: #ffffff !important;
+            font-size: var(--text-xl);
+            margin-bottom: var(--space-xs);
+            font-weight: 600;
+        }
+        .role-card p {
+            color: rgba(255, 255, 255, 0.7) !important;
         }
         .role-card .icon-wrapper {
-            width: 64px;
-            height: 64px;
-            border-radius: 16px;
+            width: 72px;
+            height: 72px;
+            border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto var(--space-md);
+            margin: 0 auto var(--space-lg);
             color: white;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
         }
-        .role-card.buyer .icon-wrapper { background: var(--color-primary); }
-        .role-card.owner .icon-wrapper { background: var(--color-secondary); }
-        .role-card.verifier .icon-wrapper { background: transparent; border: 2px solid var(--color-primary); color: var(--color-primary); }
-        .role-card.admin .icon-wrapper { background: transparent; border: 2px solid var(--color-text-muted); color: var(--color-text-secondary); }
+        .role-card.buyer .icon-wrapper { background: linear-gradient(135deg, #10b981 0%, #059669 100%); }
+        .role-card.owner .icon-wrapper { background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%); }
+        .role-card.verifier .icon-wrapper { background: rgba(255, 255, 255, 0.1); border: 2px solid rgba(255,255,255,0.3); color: #a7f3d0; }
+        .role-card.admin .icon-wrapper { background: rgba(255, 255, 255, 0.1); border: 2px solid rgba(255,255,255,0.3); color: #cbd5e1; }
+        
+        /* Typography overrides for dark background */
+        .hero-title {
+            font-size: var(--text-5xl); 
+            letter-spacing: -0.03em;
+            color: #ffffff;
+            font-weight: 800;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            margin-bottom: var(--space-xs);
+        }
+        .hero-subtitle {
+            color: #6ee7b7; /* Bright mint for contrast */
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            font-size: var(--text-sm);
+            margin-bottom: var(--space-lg);
+        }
+        .hero-desc {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: var(--text-lg);
+            line-height: 1.6;
+            max-width: 650px;
+            margin: 0 auto;
+        }
     </style>
 </head>
 <body style="background: var(--gradient-hero); min-height: 100vh; display: flex; flex-direction: column;">
     
-    <main class="container" style="flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: var(--space-2xl) var(--space-md);">
+    <main class="container" style="flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 60px var(--space-md);">
         <div class="fade-up">
-            <div class="logo-icon" style="width: 56px; height: 56px; margin: 0 auto var(--space-md);">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-leaf" width="32" height="32">
+            <div class="logo-icon" style="width: 64px; height: 64px; margin: 0 auto var(--space-lg); background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius: 20px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,0.2);">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#6ee7b7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-leaf" width="36" height="36">
                     <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
                     <path d="M2 22 12 12"/>
                 </svg>
             </div>
-            <h1 style="font-size: var(--text-4xl); letter-spacing: -0.02em;">NusaCarbon</h1>
-            <p class="text-lg text-muted" style="max-width: 600px; margin: 0 auto var(--space-xl);">Transparent. Verified. Tokenized Carbon Credits.</p>
-            <p style="max-width: 600px; margin: 0 auto;">NusaCarbon adalah platform marketplace token kredit karbon berbasis blockchain untuk Indonesia, mengintegrasikan dMRV (digital Monitoring, Reporting & Verification) untuk memastikan setiap kredit yang ditokenisasi nyata, terukur, dan tercatat secara permanen.</p>
+            <h1 class="hero-title">NusaCarbon</h1>
+            <p class="hero-subtitle">Transparent. Verified. Tokenized Carbon Credits.</p>
+            <p class="hero-desc">Platform marketplace token kredit karbon berbasis blockchain untuk Indonesia. Mengintegrasikan dMRV (digital Monitoring, Reporting & Verification) demi memastikan setiap kredit offset Anda nyata, terukur, dan permanen.</p>
         </div>
 
         <div class="role-grid fade-up" style="animation-delay: 100ms; width: 100%;">
@@ -91,11 +139,11 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['role'])) {
         </div>
         
         <div class="fade-up" style="animation-delay: 200ms; margin-top: var(--space-2xl);">
-            <a href="/buyer/marketplace.php" class="btn-outline">Explore Marketplace &rarr;</a>
+            <a href="/buyer/marketplace.php" class="btn-primary" style="background: white; color: var(--color-primary); border: none; padding: 14px 28px; font-weight: 600; font-size: var(--text-md); box-shadow: 0 4px 14px rgba(0,0,0,0.15);">Explore Marketplace &rarr;</a>
         </div>
     </main>
 
-    <footer style="text-align: center; padding: var(--space-xl) var(--space-md); color: var(--color-text-muted); font-size: var(--text-sm);">
+    <footer style="text-align: center; padding: var(--space-xl) var(--space-md); color: rgba(255,255,255,0.5); font-size: var(--text-sm);">
         <p>&copy; 2026 NusaCarbon. All rights reserved.</p>
     </footer>
 
