@@ -20,11 +20,17 @@ if (!$wallet) {
     ];
 }
 
-// Transaction History Mock
-$tx_history = [
-    ['type' => 'Transfer (Beli)', 'project' => 'Mangrove Restoration Borneo', 'amount' => '+5.000 tCO₂e', 'hash' => generateTxHash(GENESIS_HASH, 'transfer', 5000, 1, '2025-01-01'), 'date' => '2025-01-15'],
-    ['type' => 'Retire (Burn)', 'project' => 'Solar Farm Bali', 'amount' => '-1.000 tCO₂e', 'hash' => generateTxHash('prev', 'retire', 1000, 2, '2025-01-01'), 'date' => '2025-02-10'],
-];
+// Fetch real transaction history
+$stmt = $pdo->prepare("
+    SELECT t.*, p.nama_project, l.harga_per_token
+    FROM trade_transactions t
+    JOIN listings l ON t.id_listing = l.id_listing
+    JOIN projects p ON l.id_project = p.id_project
+    WHERE t.buyer_user_id = ?
+    ORDER BY t.tanggal_transaksi DESC
+");
+$stmt->execute([$_SESSION['user_id']]);
+$tx_history = $stmt->fetchAll();
 
 require_once '../includes/header.php';
 ?>
@@ -105,30 +111,35 @@ require_once '../includes/header.php';
                 <tr>
                     <th>Tipe</th>
                     <th>Proyek</th>
-                    <th>Jumlah</th>
+                    <th>Jumlah (Tokens)</th>
+                    <th>Total Bayar (Rp)</th>
                     <th>Tx Hash</th>
                     <th>Tanggal</th>
                 </tr>
             </thead>
             <tbody>
+                <?php if (empty($tx_history)): ?>
+                <tr>
+                    <td colspan="6" style="text-align: center; padding: 40px; color: #94a3b8;">Belum ada riwayat transaksi.</td>
+                </tr>
+                <?php endif; ?>
                 <?php foreach($tx_history as $tx): ?>
                 <tr>
                     <td>
-                        <?php if(strpos($tx['type'], 'Transfer') !== false): ?>
-                            <span class="badge badge--transfer"><?= $tx['type'] ?></span>
-                        <?php else: ?>
-                            <span class="badge badge--rejected"><?= $tx['type'] ?></span>
-                        <?php endif; ?>
+                        <span class="badge badge--transfer">Beli</span>
                     </td>
-                    <td><?= $tx['project'] ?></td>
-                    <td style="font-weight: 600;"><?= $tx['amount'] ?></td>
+                    <td style="font-weight: 500;"><?= htmlspecialchars($tx['nama_project']) ?></td>
+                    <td style="font-weight: 600; color: #10b981;">+<?= number_format($tx['jumlah_token'] ?? 0, 0, ',', '.') ?> tCO₂e</td>
+                    <td style="font-weight: 600;">Rp <?= number_format($tx['total_harga'], 0, ',', '.') ?></td>
                     <td>
                         <span class="hash-display">
-                            <?= truncateHash($tx['hash']) ?>
-                            <button class="hash-btn" onclick="copyToClipboard('<?= $tx['hash'] ?>')"><i data-lucide="copy" width="12"></i></button>
+                            <?= truncateHash($tx['tx_transfer_hash'] ?? '0xPending...') ?>
+                            <?php if ($tx['tx_transfer_hash']): ?>
+                            <button class="hash-btn" onclick="copyToClipboard('<?= $tx['tx_transfer_hash'] ?>')"><i data-lucide="copy" width="12"></i></button>
+                            <?php endif; ?>
                         </span>
                     </td>
-                    <td class="text-muted text-sm"><?= formatDate($tx['date']) ?></td>
+                    <td class="text-muted text-sm"><?= formatDate($tx['tanggal_transaksi']) ?></td>
                 </tr>
                 <?php endforeach; ?>
             </tbody>

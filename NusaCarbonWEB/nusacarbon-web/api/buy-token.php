@@ -44,8 +44,8 @@ try {
 
     // Insert trade transaction
     $total_harga = $listing['harga_per_token'] * $jumlah;
-    $stmt = $pdo->prepare("INSERT INTO trade_transactions (id_listing, buyer_user_id, seller_user_id, total_harga, status) VALUES (?, ?, ?, ?, 'success')");
-    $stmt->execute([$listing['id_listing'], $_SESSION['user_id'], $listing['id_user'], $total_harga]);
+    $stmt = $pdo->prepare("INSERT INTO trade_transactions (id_listing, buyer_user_id, seller_user_id, total_harga, jumlah_token, status) VALUES (?, ?, ?, ?, ?, 'success')");
+    $stmt->execute([$listing['id_listing'], $_SESSION['user_id'], $listing['id_user'], $total_harga, $jumlah]);
     $id_transaksi = $pdo->lastInsertId();
 
     // Update Token Owners (Assume available tokens)
