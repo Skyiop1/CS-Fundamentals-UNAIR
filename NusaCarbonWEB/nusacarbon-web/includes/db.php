@@ -1,18 +1,24 @@
 <?php
 // includes/db.php
 
-$host = 'db'; // Docker service name
+$host = 'db'; 
 $db   = 'nusacarbon';
 $user = 'nusa_user';
 $pass = 'nusa_password';
 $port = '3306';
 $charset = 'utf8mb4';
 
-// 1. Cek Variabel Lengkap dari Railway untuk menghindari typo manual
+// HARDCODE URL PUBLIK RAILWAY (Anti Gagal)
+// Jika di server live, paksa pakai ini!
+$railwayPublicUrl = 'mysql://root:BGfxDBOxTobfmWYFgdotVlliwcPAZEYM@mainline.proxy.rlwy.net:22385/railway';
+
 $dbUrl = getenv('MYSQL_URL') ?: getenv('MYSQL_PUBLIC_URL') ?: getenv('DATABASE_URL');
 if (!$dbUrl) {
-    if (isset($_SERVER['MYSQL_URL'])) $dbUrl = $_SERVER['MYSQL_URL'];
-    elseif (isset($_SERVER['MYSQL_PUBLIC_URL'])) $dbUrl = $_SERVER['MYSQL_PUBLIC_URL'];
+    // Jika tidak terbaca variabel environment, paksa gunakan hardcode!
+    $dbUrl = $railwayPublicUrl;
+} else if (strpos($dbUrl, 'railway.internal') !== false) {
+    // Jika Railway mencoba memaksa jalur internal yang error, timpuk pakai jalur publik!
+    $dbUrl = $railwayPublicUrl;
 }
 
 // 2. Parsing URL agar PHP tidak akan mungkin meleset membaca password
