@@ -122,7 +122,7 @@ $roles_list = $pdo->query("SELECT * FROM roles")->fetchAll();
             color: #ffffff;
         }
         .auth-form-container { width: 100%; max-width: 360px; margin: 0 auto; }
-        .right-pane h2 { font-size: 1.75rem; font-weight: 700; margin-bottom: 8px; }
+        .right-pane h2 { font-size: 1.75rem; font-weight: 700; margin-bottom: 8px; color: #ffffff !important; }
         .right-pane p.subtitle { color: #a1a1aa; font-size: 0.95rem; margin-bottom: 32px; }
         
         .right-pane .form-control {
