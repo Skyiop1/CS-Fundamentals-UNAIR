@@ -1,13 +1,14 @@
 <?php
 // includes/db.php
 
-$host = 'db'; // Docker service name
-$db   = 'nusacarbon';
-$user = 'nusa_user';
-$pass = 'nusa_password';
+$host = getenv('MYSQLHOST') ?: 'db';
+$db   = getenv('MYSQLDATABASE') ?: 'nusacarbon';
+$user = getenv('MYSQLUSER') ?: 'nusa_user';
+$pass = getenv('MYSQLPASSWORD') ?: 'nusa_password';
+$port = getenv('MYSQLPORT') ?: '3306';
 $charset = 'utf8mb4';
 
-$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+$dsn = "mysql:host=$host;port=$port;dbname=$db;charset=$charset";
 $options = [
     PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
