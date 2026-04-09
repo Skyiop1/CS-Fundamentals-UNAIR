@@ -27,18 +27,18 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['role'])) {
             --card-bg: #ffffff; 
             --card-border: rgba(0,0,0,0.08); 
             --card-hover-border: rgba(16,185,129,0.3);
-            --wave-1: rgba(15, 23, 42, 0.04); 
-            --wave-2: rgba(16, 185, 129, 0.05);
+            --wave-1: rgba(15, 23, 42, 0.2); 
+            --wave-2: rgba(16, 185, 129, 0.3);
         }
         [data-theme="dark"] { 
-            --bg-main: #050505; 
+            --bg-main: #02120b; /* Deep dark teal/forest gradient hint */
             --text-main: #ffffff; 
-            --text-muted: #a1a1aa; 
-            --card-bg: rgba(255,255,255,0.02); 
+            --text-muted: #94a3b8; 
+            --card-bg: rgba(255,255,255,0.03); 
             --card-border: rgba(255,255,255,0.08); 
             --card-hover-border: rgba(16,185,129,0.4);
-            --wave-1: rgba(255, 255, 255, 0.04); 
-            --wave-2: rgba(16, 185, 129, 0.05);
+            --wave-1: rgba(255, 255, 255, 0.15); 
+            --wave-2: rgba(16, 185, 129, 0.25);
         }
 
         body, html {
@@ -54,7 +54,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['role'])) {
         /* Ambient Corporate Video/Canvas Background */
         #waveCanvas {
             position: fixed; inset: 0; width: 100%; height: 100%; 
-            z-index: 0; mix-blend-mode: multiply; opacity: 0.9;
+            z-index: 0; mix-blend-mode: multiply; opacity: 1;
             pointer-events: none;
         }
         [data-theme="dark"] #waveCanvas { mix-blend-mode: screen; }
@@ -209,6 +209,11 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['role'])) {
                 
                 <h1 class="hero-title">Pasar emisi<br>untuk bumi kita.</h1>
                 <p class="hero-desc">Sistem jaringan mutakhir untuk melacak dan memverifikasi siklus kredit iklim dunia secara mutlak, transparan, dan tidak dapat dimanipulasi.</p>
+
+                <div style="margin-top: 40px; display: flex; gap: 16px; justify-content: center;">
+                    <a href="/login.php" class="btn-primary" style="background: var(--text-main) !important; color: var(--bg-main) !important; border: none; padding: 14px 32px; font-weight: bold; font-size: 16px; border-radius: 50px; text-decoration: none; display: flex; align-items: center; gap: 8px;">Masuk <i data-lucide="arrow-right" width="18"></i></a>
+                    <a href="/login.php" class="btn-outline" style="background: var(--card-bg); border: 1px solid var(--card-border); color: var(--text-main); padding: 14px 32px; font-weight: 600; font-size: 16px; border-radius: 50px; text-decoration: none; backdrop-filter: blur(10px);">Daftar Sekarang</a>
+                </div>
             </div>
 
             <!-- Role Grid -->

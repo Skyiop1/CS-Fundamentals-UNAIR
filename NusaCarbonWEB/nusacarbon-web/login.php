@@ -79,7 +79,7 @@ $roles_list = $pdo->query("SELECT * FROM roles")->fetchAll();
             margin: 0; padding: 0; box-sizing: border-box; 
             width: 100%; height: 100vh; overflow: hidden;
             font-family: 'Inter', sans-serif;
-            background: #000;
+            background: #02120b; /* Match index.php dark mode teal hint */
         }
         .split-layout {
             display: flex; height: 100%; width: 100%;
@@ -90,7 +90,7 @@ $roles_list = $pdo->query("SELECT * FROM roles")->fetchAll();
             flex: 1; position: relative; 
             display: flex; flex-direction: column; justify-content: center; 
             padding: 8%; color: white;
-            background: radial-gradient(circle at 30% 70%, #1e1b4b 0%, #000 70%);
+            background: radial-gradient(circle at 30% 70%, #064e3b 0%, #02120b 70%); /* Deep emerald glow */
             overflow: hidden;
         }
         #waveCanvas {
@@ -114,25 +114,25 @@ $roles_list = $pdo->query("SELECT * FROM roles")->fetchAll();
             font-size: 1.25rem; color: #a1a1aa; line-height: 1.6; max-width: 500px;
         }
 
-        /* RIGHT PANE: Login Form (Dark Green Theme) */
+        /* RIGHT PANE: Login Form */
         .right-pane {
-            width: 480px; background: #022c22; /* Deep dark green tint */
+            width: 480px; background: #09090b; 
             display: flex; flex-direction: column; justify-content: center; 
-            padding: 60px; border-left: 1px solid rgba(16,185,129,0.2);
+            padding: 60px; border-left: 1px solid rgba(255,255,255,0.05);
             color: #ffffff;
         }
         .auth-form-container { width: 100%; max-width: 360px; margin: 0 auto; }
         .right-pane h2 { font-size: 1.75rem; font-weight: 700; margin-bottom: 8px; color: #ffffff !important; }
-        .right-pane p.subtitle { color: #a7f3d0; font-size: 0.95rem; margin-bottom: 32px; } /* Pale green text */
+        .right-pane p.subtitle { color: #a1a1aa; font-size: 0.95rem; margin-bottom: 32px; } 
         
         .right-pane .form-control {
-            background: rgba(0,0,0,0.2); border: 1px solid rgba(16,185,129,0.3); color: white;
+            background: #18181b; border: 1px solid #27272a; color: white;
             padding: 14px 16px; border-radius: 12px; transition: 0.3s;
         }
         .right-pane .form-control:focus {
-            border-color: #34d399; box-shadow: 0 0 0 2px rgba(52, 211, 153, 0.2);
+            border-color: #10b981; box-shadow: 0 0 0 2px rgba(16,185,129,0.2);
         }
-        .right-pane label { color: #d1fae5; font-size: 0.85rem; font-weight: 500; margin-bottom: 6px; display: block; }
+        .right-pane label { color: #d4d4d8; font-size: 0.85rem; font-weight: 500; margin-bottom: 6px; display: block; }
         .right-pane .form-group { margin-bottom: 20px; }
         
         .btn-submit {
