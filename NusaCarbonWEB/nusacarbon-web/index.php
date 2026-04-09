@@ -548,7 +548,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['role'])) {
                         <div class="stat-icon"><i data-lucide="activity" width="32" height="32"></i></div>
                         <div>
                             <div id="liveTotalTx" class="stat-value">503,272,567,466</div>
-                            <div class="stat-label">Total instruksi yang telah diproses buku besar</div>
+                            <div class="stat-label">Total transaksi yang telah diproses di jaringan blokchain</div>
                         </div>
                     </div>
                     <div class="stat-item" style="border-top: 1px solid var(--card-border); padding-top: 40px;">
