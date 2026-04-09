@@ -42,7 +42,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['role'])) {
         }
 
         body, html {
-            margin: 0; padding: 0; 
+            margin: 0; padding: 0; box-sizing: border-box; 
             width: 100%; min-height: 100vh;
             font-family: 'Inter', sans-serif;
             background: var(--bg-main);
@@ -50,6 +50,11 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['role'])) {
             transition: background-color 0.4s ease, color 0.4s ease;
             overflow-x: hidden;
         }
+
+        /* Override main.css strict colors */
+        h1, h2, h3, h4, h5, h6 { color: var(--text-main) !important; line-height: 1.2; }
+        p { color: inherit; line-height: 1.6; }
+        .text-muted { color: var(--text-muted) !important; }
 
         /* Ambient Corporate Video/Canvas Background */
         #waveCanvas {
