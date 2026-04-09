@@ -204,7 +204,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['role'])) {
                 <button id="themeToggleBtn" style="background: transparent; border: none; cursor: pointer; color: var(--text-main); display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--card-border);">
                     <i data-lucide="moon" width="18" id="themeIcon"></i>
                 </button>
-                <a href="/login.php" class="btn-primary" style="background: var(--text-main); color: var(--bg-main); padding: 10px 24px; border-radius: 50px; text-decoration: none; font-size: 14px; font-weight: 600;">Log In</a>
+                <a href="/login.php" style="background: var(--text-main) !important; color: var(--bg-main) !important; padding: 10px 24px; border-radius: 50px; text-decoration: none; font-size: 14px; font-weight: 600; display: inline-block;">Log In</a>
             </div>
         </header>
 
@@ -217,7 +217,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['role'])) {
 
                 <div style="margin-top: 40px; display: flex; gap: 16px; justify-content: center;">
                     <a href="/login.php" class="btn-primary" style="background: var(--text-main) !important; color: var(--bg-main) !important; border: none; padding: 14px 32px; font-weight: bold; font-size: 16px; border-radius: 50px; text-decoration: none; display: flex; align-items: center; gap: 8px;">Masuk <i data-lucide="arrow-right" width="18"></i></a>
-                    <a href="/login.php" class="btn-outline" style="background: var(--card-bg); border: 1px solid var(--card-border); color: var(--text-main); padding: 14px 32px; font-weight: 600; font-size: 16px; border-radius: 50px; text-decoration: none; backdrop-filter: blur(10px);">Daftar Sekarang</a>
+                    <a href="/register.php" class="btn-outline" style="background: var(--card-bg); border: 1px solid var(--card-border); color: var(--text-main) !important; padding: 14px 32px; font-weight: 600; font-size: 16px; border-radius: 50px; text-decoration: none; backdrop-filter: blur(10px);">Daftar Sekarang</a>
                 </div>
             </div>
 
