@@ -1,8 +1,8 @@
 <?php
 // includes/db.php
 
-$host = 'db'; 
-$db   = 'nusacarbon';
+$host = 'db';
+$db = 'nusacarbon';
 $user = 'nusa_user';
 $pass = 'nusa_password';
 $port = '3306';
@@ -29,12 +29,12 @@ if ($dbUrl) {
         $port = $parsed['port'] ?? $port;
         $user = $parsed['user'] ?? $user;
         $pass = $parsed['pass'] ?? $pass;
-        $db   = ltrim($parsed['path'], '/') ?: $db;
+        $db = ltrim($parsed['path'], '/') ?: $db;
     }
 } else {
     // 3. Cadangan jika tidak pakai URL, ambil dari individual variable
     $host = getenv('MYSQLHOST') ?: (isset($_SERVER['MYSQLHOST']) ? $_SERVER['MYSQLHOST'] : $host);
-    $db   = getenv('MYSQLDATABASE') ?: (isset($_SERVER['MYSQLDATABASE']) ? $_SERVER['MYSQLDATABASE'] : $db);
+    $db = getenv('MYSQLDATABASE') ?: (isset($_SERVER['MYSQLDATABASE']) ? $_SERVER['MYSQLDATABASE'] : $db);
     $user = getenv('MYSQLUSER') ?: (isset($_SERVER['MYSQLUSER']) ? $_SERVER['MYSQLUSER'] : $user);
     $pass = getenv('MYSQLPASSWORD') ?: (isset($_SERVER['MYSQLPASSWORD']) ? $_SERVER['MYSQLPASSWORD'] : $pass);
     $port = getenv('MYSQLPORT') ?: (isset($_SERVER['MYSQLPORT']) ? $_SERVER['MYSQLPORT'] : $port);
@@ -42,9 +42,9 @@ if ($dbUrl) {
 
 $dsn = "mysql:host=$host;port=$port;dbname=$db;charset=$charset";
 $options = [
-    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-    PDO::ATTR_EMULATE_PREPARES   => false,
+    PDO::ATTR_EMULATE_PREPARES => false,
 ];
 
 try {
