@@ -16,7 +16,8 @@ if (!$wallet) {
     // Scaffold dummy wallet for test purposes if it doesn't exist
     $wallet = [
         'wallet_address' => generateMockWalletAddress(),
-        'saldo_token' => 0
+        'saldo_token' => 0,
+        'saldo_rupiah' => 0
     ];
 }
 

@@ -6,9 +6,17 @@ requireRole('buyer');
 require_once '../includes/db.php';
 require_once '../includes/helpers.php';
 
-// Mock calculations for buyer portfolio
-$saldo_token = 23150;
-$portfolio_value = $saldo_token * 53940; // Simulated avg price
+// ─── Dynamic portfolio from database ───
+$stmt = $pdo->prepare("SELECT saldo_token, saldo_rupiah FROM wallets WHERE id_user = ?");
+$stmt->execute([$_SESSION['user_id']]);
+$walletData = $stmt->fetch();
+
+$saldo_token = $walletData ? (float)$walletData['saldo_token'] : 0;
+$saldo_rupiah = $walletData ? (float)$walletData['saldo_rupiah'] : 0;
+
+// Portfolio value = saldo_token * harga base Rp 5.000 per tCO₂e
+$harga_base = 5000;
+$portfolio_value = $saldo_token * $harga_base;
 
 require_once '../includes/header.php';
 ?>
@@ -38,7 +46,7 @@ require_once '../includes/header.php';
             <?= formatIDR($portfolio_value) ?>
         </h1>
         <div style="display: inline-block; padding: 6px 12px; background: var(--color-verified-bg); color: var(--color-verified); border-radius: var(--radius-full); font-size: var(--text-sm); font-weight: 500; margin-bottom: var(--space-lg);">
-            <i data-lucide="trending-up" width="14"></i> +12,5% performa bulan ini
+            <i data-lucide="trending-up" width="14"></i> Saldo Rupiah: <?= formatIDR($saldo_rupiah) ?>
         </div>
         
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md); border-top: 1px solid var(--color-border); padding-top: var(--space-md);">
@@ -47,8 +55,8 @@ require_once '../includes/header.php';
                 <p style="font-size: var(--text-xl); font-weight: 600; margin:0;"><?= formatCO2e($saldo_token) ?></p>
             </div>
             <div style="border-left: 1px solid var(--color-border);">
-                <p class="text-xs text-muted" style="margin:0;">Estimasi Netralitas</p>
-                <p style="font-size: var(--text-xl); font-weight: 600; margin:0; color: var(--color-primary);">100% Tersertifikasi</p>
+                <p class="text-xs text-muted" style="margin:0;">Harga Base per Token</p>
+                <p style="font-size: var(--text-xl); font-weight: 600; margin:0; color: var(--color-primary);"><?= formatIDR($harga_base) ?></p>
             </div>
         </div>
     </div>

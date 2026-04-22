@@ -52,8 +52,8 @@ try {
     
     // Auto-migrate schema for user feature request (IDR Balance & Token Tracking)
     try {
-        $pdo->exec("ALTER TABLE wallets ADD COLUMN saldo_rupiah DECIMAL(16,2) DEFAULT 1000000");
-        $pdo->exec("UPDATE wallets SET saldo_rupiah = 1000000 WHERE saldo_rupiah IS NULL");
+        $pdo->exec("ALTER TABLE wallets ADD COLUMN saldo_rupiah DECIMAL(16,2) DEFAULT 1000000000.00");
+        $pdo->exec("UPDATE wallets SET saldo_rupiah = 1000000000.00 WHERE saldo_rupiah IS NULL");
         $pdo->exec("ALTER TABLE trade_transactions ADD COLUMN jumlah_token INT AFTER total_harga");
     } catch(Exception $e) {} // Ignore if already exists
 

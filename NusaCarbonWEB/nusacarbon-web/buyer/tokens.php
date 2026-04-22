@@ -24,7 +24,7 @@ $count_active  = 0;
 $count_retired = 0;
 $count_pending = 0;
 foreach ($tokens as $t) {
-    if ($t['status_token'] === 'available' || $t['status_token'] === 'sold') $count_active++;
+    if ($t['status_token'] === 'sold') $count_active++;
     elseif ($t['status_token'] === 'retired') $count_retired++;
     elseif ($t['status_token'] === 'listed') $count_pending++;
 }
@@ -83,7 +83,7 @@ require_once '../includes/header.php';
         <!-- Tab: Aktif -->
         <div class="tab-panel hidden" id="tab-aktif">
             <?php
-            $active = array_filter($tokens, fn($t) => in_array($t['status_token'], ['available', 'sold']));
+            $active = array_filter($tokens, fn($t) => $t['status_token'] === 'sold');
             if (empty($active)): ?>
                 <div class="card" style="text-align: center; padding: var(--space-xl);"><p class="text-muted">Tidak ada token aktif.</p></div>
             <?php else: echo renderTokenTable($active, 'active'); endif; ?>
@@ -128,7 +128,7 @@ function renderTokenTable(array $tokens, string $context): string {
     
     foreach ($tokens as $t) {
         $badge = match($t['status_token']) {
-            'available', 'sold' => '<span class="badge badge--verified">✓ Aktif</span>',
+            'sold' => '<span class="badge badge--verified">✓ Aktif</span>',
             'retired' => '<span class="badge badge--rejected">🔥 Retired</span>',
             'listed'  => '<span class="badge badge--pending">⏳ Pending</span>',
             default   => '<span class="badge badge--dark">' . $t['status_token'] . '</span>',
@@ -136,7 +136,7 @@ function renderTokenTable(array $tokens, string $context): string {
 
         $serial = '<span class="hash-display">' . htmlspecialchars($t['token_serial']) . '</span>';
         $actions = '<a href="token-detail.php?id=' . $t['id_token'] . '" class="btn-outline btn-sm">Detail</a>';
-        if (in_array($t['status_token'], ['available', 'sold'])) {
+        if ($t['status_token'] === 'sold') {
             $actions .= ' <a href="retire.php?id=' . $t['id_token'] . '" class="btn-outline btn-sm" style="color: var(--color-rejected); border-color: var(--color-rejected);">Retire</a>';
         }
 
