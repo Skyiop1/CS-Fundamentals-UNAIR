@@ -137,7 +137,7 @@ require_once '../includes/header.php';
         const qty = parseInt(qtyInput.value) || 0;
         const subtotal = qty * price;
         subtotalEl.textContent = formatIDRLocale(subtotal);
-        totalEl.textContent = formatIDRLocale(subtotal); // Ignored gas fee for IDR total simulation
+        totalEl.textContent = formatIDRLocale(subtotal);
         document.getElementById('gasFee').textContent = mockGasFee();
     }
 
@@ -149,16 +149,43 @@ require_once '../includes/header.php';
             showToast('Silakan masukkan jumlah token yang valid.', 'error');
             return;
         }
-        
-        // Mock success demonstration bypass:
-        // In real app, submit form to /api/buy-token.php
+
+        // Disable button while processing
+        const buyBtn = document.querySelector('#buyForm button[type="button"]');
+        buyBtn.disabled = true;
+        buyBtn.textContent = 'Memproses...';
+
         showToast('Transaksi diproses dengan Smart Contract...', 'info');
-        setTimeout(() => {
-            showToast('Pembelian berhasil! Lihat di Wallet.', 'success');
-            // reset form
-            qtyInput.value = '';
-            updateCalc();
-        }, 1500);
+
+        // Actually POST to the API
+        const formData = new FormData(document.getElementById('buyForm'));
+
+        fetch('/api/buy-token.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.success) {
+                showToast('Pembelian berhasil! Tx: ' + (data.tx_hash ? data.tx_hash.substring(0, 10) + '...' : ''), 'success');
+                // Reset form and update display
+                qtyInput.value = '';
+                updateCalc();
+                // Redirect to wallet after short delay
+                setTimeout(() => {
+                    window.location.href = 'wallet.php';
+                }, 2000);
+            } else {
+                showToast('Gagal: ' + (data.error || 'Unknown error'), 'error');
+            }
+        })
+        .catch(err => {
+            showToast('Network error: ' + err.message, 'error');
+        })
+        .finally(() => {
+            buyBtn.disabled = false;
+            buyBtn.textContent = 'Beli Token Sekarang';
+        });
     }
 </script>
 
