@@ -1,6 +1,7 @@
 <?php
 // includes/db.php
 
+// Default: Docker lokal (sesuai docker-compose.yml)
 $host = 'db';
 $db = 'nusacarbon';
 $user = 'nusa_user';
@@ -8,20 +9,28 @@ $pass = 'nusa_password';
 $port = '3306';
 $charset = 'utf8mb4';
 
-// HARDCODE URL PUBLIK RAILWAY (Anti Gagal)
-// Jika di server live, paksa pakai ini!
+// URL PUBLIK RAILWAY — hanya dipakai jika benar-benar di Railway
 $railwayPublicUrl = 'mysql://root:BGfDBOxTobfmWYFgdotV]liwPAZEYM@mainline.proxy.rlwy.net:22385/railway';
 
+// Cek apakah berjalan di Railway
+$isRailway = getenv('RAILWAY_ENVIRONMENT') || getenv('RAILWAY_PROJECT_ID');
+
 $dbUrl = getenv('MYSQL_URL') ?: getenv('MYSQL_PUBLIC_URL') ?: getenv('DATABASE_URL');
-if (!$dbUrl) {
-    // Jika tidak terbaca variabel environment, paksa gunakan hardcode!
-    $dbUrl = $railwayPublicUrl;
-} else if (strpos($dbUrl, 'railway.internal') !== false) {
-    // Jika Railway mencoba memaksa jalur internal yang error, timpuk pakai jalur publik!
-    $dbUrl = $railwayPublicUrl;
+
+if ($isRailway) {
+    // Di Railway: gunakan env var atau fallback ke hardcode Railway URL
+    if (!$dbUrl || strpos($dbUrl, 'railway.internal') !== false) {
+        $dbUrl = $railwayPublicUrl;
+    }
+} else {
+    // Di Docker lokal: JANGAN gunakan Railway URL, pakai default lokal
+    // Hanya override jika ada env var eksplisit
+    if (!$dbUrl) {
+        $dbUrl = null; // Gunakan default Docker lokal di atas
+    }
 }
 
-// 2. Parsing URL agar PHP tidak akan mungkin meleset membaca password
+// Parsing URL jika ada
 if ($dbUrl) {
     $parsed = parse_url($dbUrl);
     if ($parsed) {
@@ -32,7 +41,7 @@ if ($dbUrl) {
         $db = ltrim($parsed['path'], '/') ?: $db;
     }
 } else {
-    // 3. Cadangan jika tidak pakai URL, ambil dari individual variable
+    // Cadangan: ambil dari individual variable jika ada
     $host = getenv('MYSQLHOST') ?: (isset($_SERVER['MYSQLHOST']) ? $_SERVER['MYSQLHOST'] : $host);
     $db = getenv('MYSQLDATABASE') ?: (isset($_SERVER['MYSQLDATABASE']) ? $_SERVER['MYSQLDATABASE'] : $db);
     $user = getenv('MYSQLUSER') ?: (isset($_SERVER['MYSQLUSER']) ? $_SERVER['MYSQLUSER'] : $user);
