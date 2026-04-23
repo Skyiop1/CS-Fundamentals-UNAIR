@@ -1,0 +1,28 @@
+# macOS
+.DS_Store
+
+# IDE Settings
+.idea/
+.vscode/
+*.iml
+*.iws
+
+# Java / Spring Boot (NusaCarbon 2)
+target/
+*.log
+spring-boot.log
+
+# Flutter / Dart (nusacarbon_app)
+.dart_tool/
+build/
+.pub-cache/
+.packages
+*.mode1v3
+*.mode2v3
+*.pbxuser
+*.perspectivev3
+
+# Environment Variables & Secrets
+.env
+application-prod.properties
+application-dev.properties
