@@ -48,12 +48,24 @@ class _WalletScreenState extends State<WalletScreen> {
                 ]),
               ),
               const SizedBox(height: 20),
-              // Balance
+              // Carbon Balance
               Center(child: Column(children: [
-                const Text('Total Balance', style: TextStyle(fontSize: 14, color: AppColors.textMuted)),
+                const Text('Carbon Token Balance', style: TextStyle(fontSize: 14, color: AppColors.textMuted)),
                 const SizedBox(height: 4),
                 Text(fmt.format(wallet.totalBalance.toInt()), style: const TextStyle(fontSize: 36, fontWeight: FontWeight.bold, color: AppColors.textPrimary)),
                 const Text('tCO₂e Carbon Tokens', style: TextStyle(fontSize: 14, color: AppColors.textMuted)),
+                const SizedBox(height: 8),
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
+                  decoration: BoxDecoration(
+                    color: AppColors.verifiedBg,
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Text(
+                    '≈ ${NumberFormat.currency(locale: 'id_ID', symbol: 'Rp ', decimalDigits: 0).format(wallet.totalBalance * 5000)}',
+                    style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: AppColors.primary),
+                  ),
+                ),
               ])),
               const SizedBox(height: 20),
               // Action buttons

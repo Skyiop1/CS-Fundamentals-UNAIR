@@ -36,25 +36,21 @@ class CarbonProject {
 
   factory CarbonProject.fromJson(Map<String, dynamic> json) {
     return CarbonProject(
-      idProject: (json['id_project'] as num).toInt(),
-      idUser: (json['id_user'] as num).toInt(),
-      // id_kategori is NOT included in ProjectResponse — default to 0.
+      idProject: (json['id_project'] as num?)?.toInt() ?? 0,
+      idUser: (json['id_user'] as num?)?.toInt() ?? 0,
       idKategori: (json['id_kategori'] as num?)?.toInt() ?? 0,
-      namaProject: json['nama_project'] as String,
-      lokasi: json['lokasi'] as String,
+      namaProject: json['nama_project']?.toString() ?? '',
+      lokasi: json['lokasi']?.toString() ?? '',
       koordinatLat: (json['koordinat_lat'] as num?)?.toDouble(),
       koordinatLng: (json['koordinat_lng'] as num?)?.toDouble(),
-      luasLahan: (json['luas_lahan'] as num).toDouble(),
-      deskripsi: json['deskripsi'] as String?,
-      statusProject: json['status_project'] as String,
-      createdAt: DateTime.parse(json['created_at'] as String),
-      updatedAt:
-          json['updated_at'] != null
-              ? DateTime.parse(json['updated_at'] as String)
-              : null,
-      namaKategori: json['nama_kategori'] as String? ?? '',
-      ownerName: json['owner_name'] as String?,
-      imageUrl: json['image_url'] as String?,
+      luasLahan: (json['luas_lahan'] as num?)?.toDouble() ?? 0.0,
+      deskripsi: json['deskripsi']?.toString(),
+      statusProject: json['status_project']?.toString() ?? 'draft',
+      createdAt: DateTime.tryParse(json['created_at']?.toString() ?? '') ?? DateTime.now(),
+      updatedAt: json['updated_at'] != null ? DateTime.tryParse(json['updated_at'].toString()) : null,
+      namaKategori: json['nama_kategori']?.toString() ?? '',
+      ownerName: json['owner_name']?.toString(),
+      imageUrl: json['image_url']?.toString(),
     );
   }
 

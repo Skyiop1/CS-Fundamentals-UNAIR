@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-import '../models/listing.dart';
+import '../models/carbon_project.dart';
 import '../services/api_service.dart';
 
-/// Manages marketplace listings with server-side category filtering.
+/// Manages marketplace projects — shows active/verified projects with
+/// descriptions, categories, and details.
 ///
-/// Category filter → passed as ?kategori= query param to GET /api/listings
+/// Category filter → passed as ?kategori= query param to GET /api/projects
 /// Search & sort   → applied client-side on the already-filtered result set
 class MarketplaceProvider extends ChangeNotifier {
-  List<Listing> _listings = [];
+  List<CarbonProject> _projects = [];
   String _searchQuery = '';
   String? _categoryFilter;
   String _sortBy = 'newest';
@@ -22,30 +23,42 @@ class MarketplaceProvider extends ChangeNotifier {
   String? get error => _error;
 
   /// Returns the server-filtered list with search and sort applied on top.
-  List<Listing> get filteredListings {
-    var list = List<Listing>.from(_listings);
+  List<CarbonProject> get filteredProjects {
+    var list = List<CarbonProject>.from(_projects);
 
-    // Client-side search (server has no full-text search endpoint)
+    // Client-side search
     if (_searchQuery.isNotEmpty) {
       final q = _searchQuery.toLowerCase();
       list =
           list
               .where(
-                (l) =>
-                    l.namaProject.toLowerCase().contains(q) ||
-                    (l.lokasi?.toLowerCase().contains(q) ?? false) ||
-                    (l.namaKategori?.toLowerCase().contains(q) ?? false),
+                (p) =>
+                    p.namaProject.toLowerCase().contains(q) ||
+                    p.lokasi.toLowerCase().contains(q) ||
+                    p.namaKategori.toLowerCase().contains(q) ||
+                    (p.deskripsi?.toLowerCase().contains(q) ?? false) ||
+                    (p.ownerName?.toLowerCase().contains(q) ?? false),
               )
               .toList();
     }
 
     // Client-side sort
     switch (_sortBy) {
-      case 'price_low':
-        list.sort((a, b) => a.hargaPerToken.compareTo(b.hargaPerToken));
+      case 'name_az':
+        list.sort(
+          (a, b) => a.namaProject.compareTo(b.namaProject),
+        );
         break;
-      case 'price_high':
-        list.sort((a, b) => b.hargaPerToken.compareTo(a.hargaPerToken));
+      case 'name_za':
+        list.sort(
+          (a, b) => b.namaProject.compareTo(a.namaProject),
+        );
+        break;
+      case 'area_large':
+        list.sort((a, b) => b.luasLahan.compareTo(a.luasLahan));
+        break;
+      case 'area_small':
+        list.sort((a, b) => a.luasLahan.compareTo(b.luasLahan));
         break;
       case 'newest':
       default:
@@ -58,26 +71,28 @@ class MarketplaceProvider extends ChangeNotifier {
 
   // ─── Load ────────────────────────────────────────────────────────────────
 
-  /// Fetches listings from the API.
-  ///
-  /// When [_categoryFilter] is set it is sent as a ?kategori= query param so
-  /// the server returns only matching listings — no client-side category
-  /// filtering needed afterwards.
-  Future<void> loadListings(int userId) async {
+  /// Fetches active/verified projects from the API.
+  Future<void> loadProjects() async {
     _isLoading = true;
     _error = null;
     notifyListeners();
 
     try {
       final api = ApiService();
-      final res = await api.getListings(kategori: _categoryFilter);
+      final res = await api.getProjects(
+        status: 'verified',
+        kategori: _categoryFilter,
+      );
 
       if (res.statusCode == 200) {
         final raw = res.data['data'] as List?;
         if (raw != null) {
-          _listings =
+          _projects =
               raw
-                  .map((l) => Listing.fromJson(l as Map<String, dynamic>))
+                  .map(
+                    (p) =>
+                        CarbonProject.fromJson(p as Map<String, dynamic>),
+                  )
                   .toList();
         }
       } else {
@@ -85,7 +100,7 @@ class MarketplaceProvider extends ChangeNotifier {
       }
     } catch (e) {
       _error = e.toString();
-      debugPrint('MarketplaceProvider.loadListings error: $e');
+      debugPrint('MarketplaceProvider.loadProjects error: $e');
     } finally {
       _isLoading = false;
       notifyListeners();
@@ -94,12 +109,11 @@ class MarketplaceProvider extends ChangeNotifier {
 
   // ─── Filter / Sort controls ──────────────────────────────────────────────
 
-  /// Sets the category filter and immediately reloads from the API so the
-  /// result set is filtered server-side (not just in memory).
-  void setCategory(String? cat, int userId) {
-    if (_categoryFilter == cat) return; // no-op if unchanged
+  /// Sets the category filter and immediately reloads from the API.
+  void setCategory(String? cat) {
+    if (_categoryFilter == cat) return;
     _categoryFilter = cat;
-    loadListings(userId); // triggers _isLoading + notifyListeners inside
+    loadProjects();
   }
 
   void setSortBy(String sort) {
@@ -112,10 +126,10 @@ class MarketplaceProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void clearFilters(int userId) {
+  void clearFilters() {
     _categoryFilter = null;
     _searchQuery = '';
     _sortBy = 'newest';
-    loadListings(userId);
+    loadProjects();
   }
 }

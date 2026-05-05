@@ -3,6 +3,8 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import '../constants/app_colors.dart';
 import '../providers/wallet_provider.dart';
+import '../providers/tokens_provider.dart';
+import '../providers/home_provider.dart';
 import '../services/api_service.dart';
 import '../services/blockchain_service.dart';
 
@@ -79,8 +81,10 @@ class _BuyTokenWidgetState extends State<BuyTokenWidget> {
       if (res.statusCode == 201 || res.statusCode == 200) {
         final data = res.data['data'] as Map<String, dynamic>?;
 
-        // Refresh wallet balance + history in the background
+        // Refresh wallet balance + history AND tokens portfolio
         context.read<WalletProvider>().refresh(widget.buyerUserId);
+        context.read<TokensProvider>().loadTokens(widget.buyerUserId);
+        context.read<HomeProvider>().loadData(widget.buyerUserId);
 
         widget.onPurchaseComplete?.call();
         _showSuccessSheet(context, data);

@@ -5,8 +5,7 @@ import 'package:intl/intl.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../constants/app_colors.dart';
 import '../providers/marketplace_provider.dart';
-import '../providers/account_provider.dart';
-import '../models/listing.dart';
+import '../models/carbon_project.dart';
 
 class MarketplaceScreen extends StatefulWidget {
   const MarketplaceScreen({super.key});
@@ -22,6 +21,7 @@ class _MarketplaceScreenState extends State<MarketplaceScreen> {
     'Mangrove',
     'Energi Terbarukan',
     'Blue Carbon',
+    'Lahan Gambut',
   ];
   bool _showSearch = false;
 
@@ -29,8 +29,7 @@ class _MarketplaceScreenState extends State<MarketplaceScreen> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      final userId = context.read<AccountProvider>().currentUserId;
-      context.read<MarketplaceProvider>().loadListings(userId);
+      context.read<MarketplaceProvider>().loadProjects();
     });
   }
 
@@ -40,12 +39,19 @@ class _MarketplaceScreenState extends State<MarketplaceScreen> {
 
     return Scaffold(
       appBar: AppBar(
+        leading:
+            Navigator.canPop(context)
+                ? IconButton(
+                  icon: const Icon(Icons.arrow_back),
+                  onPressed: () => Navigator.of(context).pop(),
+                )
+                : null,
         title:
             _showSearch
                 ? TextField(
                   autofocus: true,
                   decoration: const InputDecoration(
-                    hintText: 'Search marketplace...',
+                    hintText: 'Search projects...',
                     border: InputBorder.none,
                   ),
                   onChanged: provider.setSearch,
@@ -86,8 +92,6 @@ class _MarketplaceScreenState extends State<MarketplaceScreen> {
                             (provider.categoryFilter == null &&
                                 category == 'All') ||
                             (provider.categoryFilter == category);
-                        final userId =
-                            context.read<AccountProvider>().currentUserId;
                         return Padding(
                           padding: const EdgeInsets.only(right: 8),
                           child: ChoiceChip(
@@ -96,7 +100,6 @@ class _MarketplaceScreenState extends State<MarketplaceScreen> {
                             onSelected: (selected) {
                               provider.setCategory(
                                 category == 'All' ? null : category,
-                                userId,
                               );
                             },
                             selectedColor: AppColors.primary,
@@ -116,12 +119,10 @@ class _MarketplaceScreenState extends State<MarketplaceScreen> {
                     ),
                   ),
 
-                  // ─── Listings Grid ────────────────────────────────────
+                  // ─── Projects List ────────────────────────────────────
                   Expanded(
                     child:
-                        provider.isLoading
-                            ? const Center(child: CircularProgressIndicator())
-                            : provider.filteredListings.isEmpty
+                        provider.filteredProjects.isEmpty
                             ? Center(
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -134,8 +135,8 @@ class _MarketplaceScreenState extends State<MarketplaceScreen> {
                                   const SizedBox(height: 12),
                                   Text(
                                     provider.error != null
-                                        ? 'Could not load listings.\nCheck your connection.'
-                                        : 'No listings found.',
+                                        ? 'Could not load projects.\nCheck your connection.'
+                                        : 'No projects found.',
                                     textAlign: TextAlign.center,
                                     style: const TextStyle(
                                       color: AppColors.textMuted,
@@ -144,37 +145,24 @@ class _MarketplaceScreenState extends State<MarketplaceScreen> {
                                   if (provider.error != null) ...[
                                     const SizedBox(height: 12),
                                     TextButton(
-                                      onPressed: () {
-                                        final userId =
-                                            context
-                                                .read<AccountProvider>()
-                                                .currentUserId;
-                                        provider.loadListings(userId);
-                                      },
+                                      onPressed: () => provider.loadProjects(),
                                       child: const Text('Retry'),
                                     ),
                                   ],
                                 ],
                               ),
                             )
-                            : GridView.builder(
+                            : ListView.builder(
                               padding: const EdgeInsets.all(16),
-                              gridDelegate:
-                                  const SliverGridDelegateWithFixedCrossAxisCount(
-                                    crossAxisCount: 2,
-                                    childAspectRatio: 0.7,
-                                    crossAxisSpacing: 16,
-                                    mainAxisSpacing: 16,
-                                  ),
-                              itemCount: provider.filteredListings.length,
+                              itemCount: provider.filteredProjects.length,
                               itemBuilder: (context, index) {
-                                final listing =
-                                    provider.filteredListings[index];
-                                return _ListingCard(
-                                  listing: listing,
+                                final project =
+                                    provider.filteredProjects[index];
+                                return _ProjectMarketCard(
+                                  project: project,
                                   onTap:
-                                      () => context.go(
-                                        '/project/${listing.idProject}',
+                                      () => context.push(
+                                        '/project/${project.idProject}',
                                       ),
                                 );
                               },
@@ -200,36 +188,48 @@ class _MarketplaceScreenState extends State<MarketplaceScreen> {
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                 ),
-                ListTile(
-                  title: const Text('Newest'),
-                  trailing:
-                      provider.sortBy == 'newest'
-                          ? const Icon(Icons.check, color: AppColors.primary)
-                          : null,
+                _SortTile(
+                  title: 'Newest',
+                  value: 'newest',
+                  current: provider.sortBy,
                   onTap: () {
                     provider.setSortBy('newest');
                     Navigator.pop(context);
                   },
                 ),
-                ListTile(
-                  title: const Text('Price (Low to High)'),
-                  trailing:
-                      provider.sortBy == 'price_low'
-                          ? const Icon(Icons.check, color: AppColors.primary)
-                          : null,
+                _SortTile(
+                  title: 'Name (A–Z)',
+                  value: 'name_az',
+                  current: provider.sortBy,
                   onTap: () {
-                    provider.setSortBy('price_low');
+                    provider.setSortBy('name_az');
                     Navigator.pop(context);
                   },
                 ),
-                ListTile(
-                  title: const Text('Price (High to Low)'),
-                  trailing:
-                      provider.sortBy == 'price_high'
-                          ? const Icon(Icons.check, color: AppColors.primary)
-                          : null,
+                _SortTile(
+                  title: 'Name (Z–A)',
+                  value: 'name_za',
+                  current: provider.sortBy,
                   onTap: () {
-                    provider.setSortBy('price_high');
+                    provider.setSortBy('name_za');
+                    Navigator.pop(context);
+                  },
+                ),
+                _SortTile(
+                  title: 'Area (Largest)',
+                  value: 'area_large',
+                  current: provider.sortBy,
+                  onTap: () {
+                    provider.setSortBy('area_large');
+                    Navigator.pop(context);
+                  },
+                ),
+                _SortTile(
+                  title: 'Area (Smallest)',
+                  value: 'area_small',
+                  current: provider.sortBy,
+                  onTap: () {
+                    provider.setSortBy('area_small');
                     Navigator.pop(context);
                   },
                 ),
@@ -240,31 +240,58 @@ class _MarketplaceScreenState extends State<MarketplaceScreen> {
   }
 }
 
-class _ListingCard extends StatelessWidget {
-  final Listing listing;
+// ─── Sort Tile helper ───────────────────────────────────────────────────────
+
+class _SortTile extends StatelessWidget {
+  final String title;
+  final String value;
+  final String current;
   final VoidCallback onTap;
 
-  const _ListingCard({required this.listing, required this.onTap});
+  const _SortTile({
+    required this.title,
+    required this.value,
+    required this.current,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
-    final idr = NumberFormat.currency(
-      locale: 'id_ID',
-      symbol: 'Rp ',
-      decimalDigits: 0,
+    return ListTile(
+      title: Text(title),
+      trailing:
+          current == value
+              ? const Icon(Icons.check, color: AppColors.primary)
+              : null,
+      onTap: onTap,
     );
+  }
+}
+
+// ─── Project Market Card ────────────────────────────────────────────────────
+
+class _ProjectMarketCard extends StatelessWidget {
+  final CarbonProject project;
+  final VoidCallback onTap;
+
+  const _ProjectMarketCard({required this.project, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
     final fmt = NumberFormat('#,###');
+    final colors = AppColors.projectTypeColors(project.namaKategori);
 
     return GestureDetector(
       onTap: onTap,
       child: Container(
+        margin: const EdgeInsets.only(bottom: 16),
         decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(16),
           boxShadow: [
             BoxShadow(
               color: Colors.black.withValues(alpha: 0.06),
-              blurRadius: 10,
+              blurRadius: 12,
               offset: const Offset(0, 4),
             ),
           ],
@@ -273,116 +300,252 @@ class _ListingCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Image
+            // ─── Image header ────────────────────────────────────────
             Stack(
               children: [
                 CachedNetworkImage(
-                  imageUrl: listing.imageUrl ?? '',
-                  height: 100,
+                  imageUrl: project.imageUrl ?? '',
+                  height: 150,
                   width: double.infinity,
                   fit: BoxFit.cover,
                   placeholder:
                       (_, __) => Container(
-                        height: 100,
-                        decoration: const BoxDecoration(
+                        height: 150,
+                        decoration: BoxDecoration(
                           gradient: LinearGradient(
-                            colors: [Color(0xFFD1FAE5), Color(0xFFCCFBF1)],
+                            colors: [
+                              colors.bg,
+                              colors.bg.withValues(alpha: 0.5),
+                            ],
                             begin: Alignment.topLeft,
                             end: Alignment.bottomRight,
                           ),
                         ),
-                        child: const Center(
-                          child: Icon(Icons.eco, color: AppColors.primary),
+                        child: Center(
+                          child: Icon(
+                            _categoryIcon(project.namaKategori),
+                            color: colors.text,
+                            size: 48,
+                          ),
                         ),
                       ),
                   errorWidget:
                       (_, __, ___) => Container(
-                        height: 100,
-                        color: const Color(0xFFECFDF5),
-                        child: const Center(
-                          child: Icon(Icons.eco, color: AppColors.primary),
+                        height: 150,
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            colors: [
+                              colors.bg,
+                              colors.bg.withValues(alpha: 0.5),
+                            ],
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                          ),
+                        ),
+                        child: Center(
+                          child: Icon(
+                            _categoryIcon(project.namaKategori),
+                            color: colors.text,
+                            size: 48,
+                          ),
                         ),
                       ),
                 ),
-                if (listing.namaKategori != null)
-                  Positioned(
-                    top: 8,
-                    left: 8,
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 6,
-                        vertical: 3,
-                      ),
-                      decoration: BoxDecoration(
-                        color: Colors.white.withValues(alpha: 0.9),
-                        borderRadius: BorderRadius.circular(4),
-                      ),
-                      child: Text(
-                        listing.namaKategori!,
-                        style: const TextStyle(
-                          fontSize: 9,
-                          fontWeight: FontWeight.bold,
-                          color: AppColors.primary,
+                // Category badge
+                Positioned(
+                  top: 12,
+                  left: 12,
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 10,
+                      vertical: 5,
+                    ),
+                    decoration: BoxDecoration(
+                      color: colors.bg,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(
+                          _categoryIcon(project.namaKategori),
+                          size: 14,
+                          color: colors.text,
                         ),
-                      ),
+                        const SizedBox(width: 4),
+                        Text(
+                          project.namaKategori,
+                          style: TextStyle(
+                            fontSize: 11,
+                            fontWeight: FontWeight.w600,
+                            color: colors.text,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
+                ),
+                // Status badge
+                Positioned(
+                  top: 12,
+                  right: 12,
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 10,
+                      vertical: 5,
+                    ),
+                    decoration: BoxDecoration(
+                      color: AppColors.verifiedBg,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: const Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(
+                          Icons.verified,
+                          size: 14,
+                          color: AppColors.verified,
+                        ),
+                        SizedBox(width: 4),
+                        Text(
+                          'Verified',
+                          style: TextStyle(
+                            fontSize: 11,
+                            fontWeight: FontWeight.w600,
+                            color: AppColors.verified,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
               ],
             ),
 
-            // Content
+            // ─── Content ─────────────────────────────────────────────
             Padding(
-              padding: const EdgeInsets.all(10),
+              padding: const EdgeInsets.all(16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  // Title
                   Text(
-                    listing.namaProject,
+                    project.namaProject,
                     style: const TextStyle(
-                      fontSize: 13,
-                      fontWeight: FontWeight.w600,
+                      fontSize: 17,
+                      fontWeight: FontWeight.w700,
                       color: AppColors.textPrimary,
                     ),
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                   ),
-                  const SizedBox(height: 4),
+                  const SizedBox(height: 8),
+
+                  // Location & Owner row
                   Row(
                     children: [
                       const Icon(
                         Icons.location_on,
-                        size: 12,
+                        size: 14,
                         color: AppColors.textMuted,
                       ),
-                      const SizedBox(width: 2),
+                      const SizedBox(width: 4),
                       Expanded(
                         child: Text(
-                          listing.lokasi ?? 'Indonesia',
+                          project.lokasi,
                           style: const TextStyle(
-                            fontSize: 10,
+                            fontSize: 12,
                             color: AppColors.textMuted,
                           ),
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                         ),
                       ),
+                      if (project.ownerName != null) ...[
+                        const SizedBox(width: 12),
+                        const Icon(
+                          Icons.business,
+                          size: 14,
+                          color: AppColors.textMuted,
+                        ),
+                        const SizedBox(width: 4),
+                        Flexible(
+                          child: Text(
+                            project.ownerName!,
+                            style: const TextStyle(
+                              fontSize: 12,
+                              color: AppColors.textMuted,
+                            ),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                      ],
                     ],
                   ),
-                  const Spacer(),
-                  Text(
-                    idr.format(listing.hargaPerToken),
-                    style: const TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold,
-                      color: AppColors.primary,
+                  const SizedBox(height: 12),
+
+                  // Description
+                  if (project.deskripsi != null &&
+                      project.deskripsi!.isNotEmpty) ...[
+                    Text(
+                      project.deskripsi!,
+                      style: const TextStyle(
+                        fontSize: 13,
+                        color: AppColors.textSecondary,
+                        height: 1.5,
+                      ),
+                      maxLines: 3,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    const SizedBox(height: 12),
+                  ],
+
+                  // Metrics row
+                  Container(
+                    padding: const EdgeInsets.all(12),
+                    decoration: BoxDecoration(
+                      color: AppColors.background,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Row(
+                      children: [
+                        _MetricItem(
+                          icon: Icons.terrain,
+                          label: 'Luas Lahan',
+                          value: '${fmt.format(project.luasLahan)} ha',
+                        ),
+                        Container(
+                          width: 1,
+                          height: 30,
+                          color: AppColors.border,
+                          margin: const EdgeInsets.symmetric(horizontal: 12),
+                        ),
+                        _MetricItem(
+                          icon: _categoryIcon(project.namaKategori),
+                          label: 'Kategori',
+                          value: project.namaKategori,
+                        ),
+                      ],
                     ),
                   ),
-                  const SizedBox(height: 2),
-                  Text(
-                    'Available: ${fmt.format(listing.jumlahToken)} tCO₂e',
-                    style: const TextStyle(
-                      fontSize: 10,
-                      color: AppColors.textSecondary,
+                  const SizedBox(height: 12),
+
+                  // View Details button
+                  SizedBox(
+                    width: double.infinity,
+                    child: OutlinedButton.icon(
+                      onPressed: onTap,
+                      icon: const Icon(Icons.arrow_forward, size: 18),
+                      label: const Text('Lihat Detail'),
+                      style: OutlinedButton.styleFrom(
+                        foregroundColor: AppColors.primary,
+                        side: const BorderSide(color: AppColors.primary),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        padding: const EdgeInsets.symmetric(vertical: 12),
+                      ),
                     ),
                   ),
                 ],
@@ -390,6 +553,77 @@ class _ListingCard extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  IconData _categoryIcon(String category) {
+    switch (category.toLowerCase()) {
+      case 'hutan':
+      case 'forest':
+        return Icons.park;
+      case 'mangrove':
+        return Icons.eco;
+      case 'energi terbarukan':
+      case 'renewable energy':
+        return Icons.solar_power;
+      case 'blue carbon':
+        return Icons.water;
+      case 'lahan gambut':
+      case 'peatland':
+        return Icons.grass;
+      default:
+        return Icons.eco;
+    }
+  }
+}
+
+// ─── Metric Item ────────────────────────────────────────────────────────────
+
+class _MetricItem extends StatelessWidget {
+  final IconData icon;
+  final String label;
+  final String value;
+
+  const _MetricItem({
+    required this.icon,
+    required this.label,
+    required this.value,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Row(
+        children: [
+          Icon(icon, size: 18, color: AppColors.primary),
+          const SizedBox(width: 8),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  label,
+                  style: const TextStyle(
+                    fontSize: 10,
+                    color: AppColors.textMuted,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                Text(
+                  value,
+                  style: const TextStyle(
+                    fontSize: 13,
+                    fontWeight: FontWeight.w600,
+                    color: AppColors.textPrimary,
+                  ),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

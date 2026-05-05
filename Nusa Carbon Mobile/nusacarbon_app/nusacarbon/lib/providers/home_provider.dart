@@ -46,7 +46,7 @@ class HomeProvider extends ChangeNotifier {
           final wData = walletRes.data['data'];
           if (wData != null) {
             _totalTokens = (wData['total_tokens'] ?? wData['totalTokens'] ?? 0.0).toDouble();
-            _portfolioValue = _totalTokens * MockData.tokenPriceIdr;
+            _portfolioValue = (wData['idr_balance'] ?? 0.0).toDouble();
           }
         }
         

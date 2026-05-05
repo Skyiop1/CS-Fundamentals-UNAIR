@@ -27,20 +27,18 @@ class BlockchainTx {
   });
 
   factory BlockchainTx.fromJson(Map<String, dynamic> json) {
-    // Supports both BlockchainTxResponse format (tx_hash, prev_hash, tx_type,
-    // amount_co2e, created_at) and legacy field names for forward-compatibility.
     return BlockchainTx(
-      hash: (json['tx_hash'] ?? json['hash'] ?? '') as String,
-      previousHash: (json['prev_hash'] ?? json['previous_hash'] ?? '') as String,
-      timestamp: (json['created_at'] ?? json['timestamp'] ?? '') as String,
-      type: (json['tx_type'] ?? json['type'] ?? 'transfer') as String,
+      hash: (json['tx_hash'] ?? json['hash'] ?? '').toString(),
+      previousHash: (json['prev_hash'] ?? json['previous_hash'] ?? '').toString(),
+      timestamp: (json['created_at'] ?? json['timestamp'] ?? '').toString(),
+      type: (json['tx_type'] ?? json['type'] ?? 'transfer').toString(),
       amount: ((json['amount_co2e'] ?? json['amount'] ?? 0) as num).toDouble(),
-      fromAddress: json['from_address'] as String?,
-      toAddress: json['to_address'] as String?,
+      fromAddress: json['from_address']?.toString(),
+      toAddress: json['to_address']?.toString(),
       blockNumber: (json['block_number'] as num?)?.toInt() ?? 0,
-      gasFeeMock: ((json['gas_fee_mock']) as num?)?.toDouble() ?? 0.004,
-      projectName: json['project_name'] as String?,
-      status: json['status'] as String? ?? 'confirmed',
+      gasFeeMock: (json['gas_fee_mock'] as num?)?.toDouble() ?? 0.004,
+      projectName: json['project_name']?.toString(),
+      status: json['status']?.toString() ?? 'confirmed',
     );
   }
 

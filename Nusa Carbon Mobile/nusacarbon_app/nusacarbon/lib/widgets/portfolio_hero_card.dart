@@ -27,7 +27,6 @@ class PortfolioHeroCard extends StatelessWidget {
       symbol: 'Rp ',
       decimalDigits: 0,
     );
-    final tokenFormatter = NumberFormat('#,###');
 
     return Container(
       width: double.infinity,
@@ -48,7 +47,7 @@ class PortfolioHeroCard extends StatelessWidget {
         children: [
           // Label
           Text(
-            'Total Portfolio Value',
+            'Saldo Rupiah',
             style: TextStyle(
               fontSize: 14,
               color: Colors.white.withValues(alpha: 0.85),
@@ -61,41 +60,10 @@ class PortfolioHeroCard extends StatelessWidget {
           Text(
             idrFormatter.format(portfolioValue),
             style: const TextStyle(
-              fontSize: 28,
+              fontSize: 32,
               fontWeight: FontWeight.bold,
               color: Colors.white,
               letterSpacing: -0.5,
-            ),
-          ),
-          const SizedBox(height: 6),
-
-          // Monthly change chip
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-            decoration: BoxDecoration(
-              color: Colors.white.withValues(alpha: 0.2),
-              borderRadius: BorderRadius.circular(20),
-            ),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Icon(
-                  monthlyChange >= 0
-                      ? Icons.trending_up
-                      : Icons.trending_down,
-                  color: Colors.white,
-                  size: 14,
-                ),
-                const SizedBox(width: 4),
-                Text(
-                  '${monthlyChange >= 0 ? '+' : ''}${monthlyChange.toStringAsFixed(1)}% this month',
-                  style: const TextStyle(
-                    fontSize: 12,
-                    color: Colors.white,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              ],
             ),
           ),
           const SizedBox(height: 16),
@@ -107,48 +75,70 @@ class PortfolioHeroCard extends StatelessWidget {
           ),
           const SizedBox(height: 16),
 
-          // Token count + portfolio button
+          // Quick actions (Deposit/Withdraw) inside the card
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Carbon Tokens Held',
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: Colors.white.withValues(alpha: 0.75),
-                    ),
-                  ),
-                  const SizedBox(height: 2),
-                  Text(
-                    '${tokenFormatter.format(totalTokens.toInt())} tCO₂e',
-                    style: const TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.white,
-                    ),
-                  ),
-                ],
+              _HeroAction(
+                icon: Icons.add_circle,
+                label: 'Top Up',
+                onTap: onPortfolioTap,
               ),
-              if (onPortfolioTap != null)
-                GestureDetector(
-                  onTap: onPortfolioTap,
-                  child: Container(
-                    padding: const EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      color: Colors.white.withValues(alpha: 0.2),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: const Icon(
-                      Icons.account_balance_wallet,
-                      color: Colors.white,
-                      size: 22,
-                    ),
-                  ),
-                ),
+              Container(
+                width: 1,
+                height: 30,
+                color: Colors.white.withValues(alpha: 0.2),
+              ),
+              _HeroAction(
+                icon: Icons.arrow_circle_up,
+                label: 'Withdraw',
+                onTap: onPortfolioTap,
+              ),
+              Container(
+                width: 1,
+                height: 30,
+                color: Colors.white.withValues(alpha: 0.2),
+              ),
+              _HeroAction(
+                icon: Icons.history,
+                label: 'History',
+                onTap: onPortfolioTap,
+              ),
             ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _HeroAction extends StatelessWidget {
+  final IconData icon;
+  final String label;
+  final VoidCallback? onTap;
+
+  const _HeroAction({
+    required this.icon,
+    required this.label,
+    this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(icon, color: Colors.white, size: 20),
+          const SizedBox(width: 6),
+          Text(
+            label,
+            style: const TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.w600,
+              fontSize: 13,
+            ),
           ),
         ],
       ),

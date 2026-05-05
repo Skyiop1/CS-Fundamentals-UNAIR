@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import '../constants/app_colors.dart';
 import '../providers/auth_provider.dart';
 import '../providers/account_provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -70,8 +71,17 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
                   _RoleButton(label: 'Admin', color: Colors.transparent, textColor: AppColors.dark, borderColor: AppColors.dark, onTap: () => _selectRole('admin')),
                   const SizedBox(height: 16),
                   TextButton(
-                    onPressed: () { _selectRole('buyer'); context.go('/marketplace'); },
-                    child: const Text('Explore as Guest', style: TextStyle(color: AppColors.textMuted, fontSize: 14)),
+                    onPressed: () async {
+                      final url = Uri.parse('https://nusacarbon.up.railway.app/');
+                      if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
+                        if (context.mounted) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(content: Text('Could not open register page')),
+                          );
+                        }
+                      }
+                    },
+                    child: const Text('Register', style: TextStyle(color: AppColors.textMuted, fontSize: 14)),
                   ),
                   const SizedBox(height: 12),
                   const Text('© 2026 NusaCarbon. All rights reserved.', style: TextStyle(fontSize: 11, color: AppColors.textMuted)),

@@ -30,18 +30,18 @@ class Listing {
 
   factory Listing.fromJson(Map<String, dynamic> json) {
     return Listing(
-      idListing: json['id_listing'] as int,
-      idUser: (json['seller_user_id'] ?? json['id_user']) as int,
-      idProject: json['id_project'] as int,
-      hargaPerToken: (json['harga_per_token'] as num).toDouble(),
-      jumlahToken: json['jumlah_token'] as int,
-      statusListing: json['status_listing'] as String,
-      createdAt: DateTime.parse(json['created_at'] as String),
-      namaProject: json['nama_project'] as String? ?? '',
-      sellerName: json['seller_name'] as String? ?? '',
-      namaKategori: json['nama_kategori'] as String?,
-      lokasi: json['lokasi'] as String?,
-      imageUrl: json['image_url'] as String?,
+      idListing: (json['id_listing'] as num?)?.toInt() ?? 0,
+      idUser: ((json['seller_user_id'] ?? json['id_user']) as num?)?.toInt() ?? 0,
+      idProject: (json['id_project'] as num?)?.toInt() ?? 0,
+      hargaPerToken: (json['harga_per_token'] as num?)?.toDouble() ?? 0.0,
+      jumlahToken: (json['jumlah_token'] as num?)?.toInt() ?? 0,
+      statusListing: json['status_listing']?.toString() ?? 'active',
+      createdAt: DateTime.tryParse(json['created_at']?.toString() ?? '') ?? DateTime.now(),
+      namaProject: json['nama_project']?.toString() ?? '',
+      sellerName: json['seller_name']?.toString() ?? '',
+      namaKategori: json['nama_kategori']?.toString(),
+      lokasi: json['lokasi']?.toString(),
+      imageUrl: json['image_url']?.toString(),
     );
   }
 

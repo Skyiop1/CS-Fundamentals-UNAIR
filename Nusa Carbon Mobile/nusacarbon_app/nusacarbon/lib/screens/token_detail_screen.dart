@@ -73,7 +73,22 @@ class _TokenDetailScreenState extends State<TokenDetailScreen> {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
-        appBar: AppBar(title: Text(token.namaProject, overflow: TextOverflow.ellipsis), actions: [IconButton(icon: const Icon(Icons.share), onPressed: () {})]),
+        appBar: AppBar(
+          leading:
+              Navigator.canPop(context)
+                  ? IconButton(
+                    icon: const Icon(Icons.arrow_back),
+                    onPressed: () => Navigator.of(context).pop(),
+                  )
+                  : null,
+          title: Text(token.namaProject, overflow: TextOverflow.ellipsis),
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.share),
+              onPressed: () {},
+            ),
+          ],
+        ),
         body: NestedScrollView(
           headerSliverBuilder: (_, __) => [
             SliverToBoxAdapter(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [

@@ -178,6 +178,13 @@ class ProjectDetailScreen extends StatelessWidget {
           length: 3,
           child: Scaffold(
             appBar: AppBar(
+              leading:
+                  Navigator.canPop(context)
+                      ? IconButton(
+                        icon: const Icon(Icons.arrow_back),
+                        onPressed: () => Navigator.of(context).pop(),
+                      )
+                      : null,
               title: Text(project.namaProject, overflow: TextOverflow.ellipsis),
               actions: [
                 IconButton(icon: const Icon(Icons.share), onPressed: () {}),

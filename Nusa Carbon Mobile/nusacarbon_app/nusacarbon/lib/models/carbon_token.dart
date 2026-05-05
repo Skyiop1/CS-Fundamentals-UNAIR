@@ -36,21 +36,21 @@ class CarbonToken {
 
   factory CarbonToken.fromJson(Map<String, dynamic> json) {
     return CarbonToken(
-      idToken: json['id_token'] as int,
-      idProject: json['id_project'] as int,
-      idVerifikasi: json['id_verifikasi'] as int,
-      ownerUserId: json['owner_user_id'] as int,
-      tokenSerial: json['token_serial'] as String,
-      vintageYear: json['vintage_year'] as int,
-      statusToken: json['status_token'] as String,
-      txMintHash: json['tx_mint_hash'] as String?,
-      metadataHash: json['metadata_hash'] as String?,
-      createdAt: DateTime.parse(json['created_at'] as String),
-      namaProject: json['nama_project'] as String? ?? '',
-      lokasi: json['lokasi'] as String? ?? '',
-      namaKategori: json['nama_kategori'] as String? ?? '',
-      imageUrl: json['image_url'] as String?,
-      amount: (json['amount'] as num?)?.toDouble(),
+      idToken: (json['id_token'] as num?)?.toInt() ?? 0,
+      idProject: (json['id_project'] as num?)?.toInt() ?? 0,
+      idVerifikasi: (json['id_verifikasi'] as num?)?.toInt() ?? 0,
+      ownerUserId: (json['owner_user_id'] as num?)?.toInt() ?? 0,
+      tokenSerial: json['token_serial']?.toString() ?? '',
+      vintageYear: (json['vintage_year'] as num?)?.toInt() ?? 0,
+      statusToken: json['status_token']?.toString() ?? 'available',
+      txMintHash: json['tx_mint_hash']?.toString(),
+      metadataHash: json['metadata_hash']?.toString(),
+      createdAt: DateTime.tryParse(json['created_at']?.toString() ?? '') ?? DateTime.now(),
+      namaProject: json['nama_project']?.toString() ?? '',
+      lokasi: json['lokasi']?.toString() ?? '',
+      namaKategori: json['nama_kategori']?.toString() ?? '',
+      imageUrl: json['image_url']?.toString(),
+      amount: (json['amount'] as num?)?.toDouble() ?? 1.0, // Fallback to 1.0 tCO2e
     );
   }
 

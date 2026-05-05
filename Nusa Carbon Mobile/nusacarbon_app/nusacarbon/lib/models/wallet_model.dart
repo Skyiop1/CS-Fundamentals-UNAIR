@@ -8,6 +8,7 @@ class WalletModel {
   final int listedTokens;
   final int soldTokens;
   final int retiredTokens;
+  final double idrBalance;
   final DateTime createdAt;
 
   const WalletModel({
@@ -20,21 +21,23 @@ class WalletModel {
     this.listedTokens = 0,
     this.soldTokens = 0,
     this.retiredTokens = 0,
+    this.idrBalance = 0.0,
     required this.createdAt,
   });
 
   factory WalletModel.fromJson(Map<String, dynamic> json) {
     return WalletModel(
-      idWallet: json['id_wallet'] as int,
-      idUser: json['id_user'] as int,
-      walletAddress: json['wallet_address'] as String,
-      chainNetwork: json['chain_network'] as String? ?? 'ethereum',
+      idWallet: (json['id_wallet'] as num?)?.toInt() ?? 0,
+      idUser: (json['id_user'] as num?)?.toInt() ?? 0,
+      walletAddress: json['wallet_address']?.toString() ?? '',
+      chainNetwork: json['chain_network']?.toString() ?? 'ethereum',
       totalTokens: (json['total_tokens'] as num?)?.toInt() ?? 0,
       availableTokens: (json['available_tokens'] as num?)?.toInt() ?? 0,
       listedTokens: (json['listed_tokens'] as num?)?.toInt() ?? 0,
       soldTokens: (json['sold_tokens'] as num?)?.toInt() ?? 0,
       retiredTokens: (json['retired_tokens'] as num?)?.toInt() ?? 0,
-      createdAt: DateTime.parse(json['created_at'] as String),
+      idrBalance: (json['idr_balance'] as num?)?.toDouble() ?? 0.0,
+      createdAt: DateTime.tryParse(json['created_at']?.toString() ?? '') ?? DateTime.now(),
     );
   }
 
@@ -49,6 +52,7 @@ class WalletModel {
       'listed_tokens': listedTokens,
       'sold_tokens': soldTokens,
       'retired_tokens': retiredTokens,
+      'idrBalance': idrBalance,
       'created_at': createdAt.toIso8601String(),
     };
   }

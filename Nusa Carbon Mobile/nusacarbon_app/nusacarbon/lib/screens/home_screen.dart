@@ -90,7 +90,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   // Active Projects
                   Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                     const Text('Active Projects', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600, color: AppColors.textPrimary)),
-                    TextButton(onPressed: () => context.go('/marketplace'), child: const Text('View All')),
+                    TextButton(onPressed: () => context.push('/marketplace'), child: const Text('View All')),
                   ]),
                   const SizedBox(height: 8),
                   SizedBox(
@@ -101,7 +101,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       itemBuilder: (_, i) {
                         final p = home.activeProjects[i];
                         final tokens = i == 0 ? '12,500' : '7,500';
-                        return ProjectCard(project: p, tokensHeld: tokens, onTap: () => context.go('/project/${p.idProject}'));
+                        return ProjectCard(project: p, tokensHeld: tokens, onTap: () => context.push('/project/${p.idProject}'));
                       },
                     ),
                   ),
@@ -121,7 +121,7 @@ class _HomeScreenState extends State<HomeScreen> {
       const SizedBox(width: 12),
       Expanded(child: _ActionBtn(icon: Icons.swap_horiz, label: 'Transfer', color: AppColors.transfer, onTap: () => context.go('/wallet'))),
       const SizedBox(width: 12),
-      Expanded(child: _ActionBtn(icon: Icons.store, label: 'Market', color: AppColors.secondary, onTap: () => context.go('/marketplace'))),
+      Expanded(child: _ActionBtn(icon: Icons.store, label: 'Market', color: AppColors.secondary, onTap: () => context.push('/marketplace'))),
     ]);
   }
 }
