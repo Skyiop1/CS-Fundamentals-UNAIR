@@ -25,18 +25,31 @@ public class ProjectService {
     private final UserRepository userRepository;
     private final ProjectCategoryRepository categoryRepository;
 
-    public List<ProjectResponse> getAllProjects(String status, Integer kategoriId) {
+    /**
+     * Retrieves projects with optional filters.
+     *
+     * @param status   project status string (e.g. "verified", "submitted")
+     * @param kategori category name string (e.g. "Hutan", "Mangrove")
+     */
+    public List<ProjectResponse> getAllProjects(String status, String kategori) {
         List<Project> projects;
-        if (status != null && kategoriId != null) {
-            projects = projectRepository.findByStatusProjectAndKategoriIdKategori(
-                    ProjectStatus.valueOf(status), kategoriId);
-        } else if (status != null) {
-            projects = projectRepository.findByStatusProject(ProjectStatus.valueOf(status));
-        } else if (kategoriId != null) {
-            projects = projectRepository.findByKategoriIdKategori(kategoriId);
+
+        ProjectStatus projectStatus = null;
+        if (status != null && !status.isBlank()) {
+            projectStatus = ProjectStatus.valueOf(status);
+        }
+
+        if (projectStatus != null && kategori != null && !kategori.isBlank()) {
+            projects = projectRepository.findByStatusProjectAndKategoriNamaKategori(
+                    projectStatus, kategori);
+        } else if (projectStatus != null) {
+            projects = projectRepository.findByStatusProject(projectStatus);
+        } else if (kategori != null && !kategori.isBlank()) {
+            projects = projectRepository.findByKategoriNamaKategori(kategori);
         } else {
             projects = projectRepository.findAll();
         }
+
         return projects.stream().map(this::toResponse).collect(Collectors.toList());
     }
 
@@ -80,6 +93,7 @@ public class ProjectService {
                 p.getKoordinatLat(),
                 p.getKoordinatLng(),
                 p.getDeskripsi(),
+                p.getImageUrl(),
                 p.getUser().getIdUser(),
                 p.getUser().getNamaUser(),
                 p.getCreatedAt(),

@@ -13,6 +13,7 @@ public record ProjectResponse(
         BigDecimal koordinatLat,
         BigDecimal koordinatLng,
         String deskripsi,
+        String imageUrl,
         int idUser,
         String ownerName,
         LocalDateTime createdAt,

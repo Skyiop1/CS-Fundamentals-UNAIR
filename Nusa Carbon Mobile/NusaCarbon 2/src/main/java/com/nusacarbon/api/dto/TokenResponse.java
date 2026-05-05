@@ -13,6 +13,7 @@ public record TokenResponse(
         String namaProject,
         String lokasi,
         String namaKategori,
+        String imageUrl,
         int ownerUserId,
         String ownerName,
         LocalDateTime createdAt

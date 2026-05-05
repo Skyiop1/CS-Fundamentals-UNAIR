@@ -29,6 +29,10 @@ public class Wallet {
     @Builder.Default
     private String chainNetwork = "ethereum";
 
+    @Column(precision = 20, scale = 2)
+    @Builder.Default
+    private java.math.BigDecimal idrBalance = java.math.BigDecimal.ZERO;
+
     @CreationTimestamp
     @Column(updatable = false)
     private LocalDateTime createdAt;

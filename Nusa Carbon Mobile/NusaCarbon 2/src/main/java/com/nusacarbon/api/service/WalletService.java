@@ -36,6 +36,7 @@ public class WalletService {
                 listed,
                 sold,
                 retired,
+                wallet.getIdrBalance(),
                 wallet.getCreatedAt()
         );
     }

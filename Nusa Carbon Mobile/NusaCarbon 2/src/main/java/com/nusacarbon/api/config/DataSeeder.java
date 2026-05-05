@@ -83,7 +83,7 @@ public class DataSeeder implements CommandLineRunner {
         log.info("✓ 6 users created");
 
         // --- WALLETS ---
-        walletRepository.save(Wallet.builder().user(buyer).walletAddress("0x742d355Cc6634C853925a3b944fc9ef13a").chainNetwork("ethereum").build());
+        walletRepository.save(Wallet.builder().user(buyer).walletAddress("0x742d355Cc6634C853925a3b944fc9ef13a").chainNetwork("ethereum").idrBalance(new BigDecimal("3000000.00")).build());
         walletRepository.save(Wallet.builder().user(owner).walletAddress("0xA1b2C3d4E5f6789012345678901234567890").chainNetwork("ethereum").build());
         walletRepository.save(Wallet.builder().user(verifier).walletAddress("0xB2c3D4e5F6a7890123456789012345678901").chainNetwork("ethereum").build());
         walletRepository.save(Wallet.builder().user(admin).walletAddress("0xC3d4E5f6A7b8901234567890123456789012").chainNetwork("ethereum").build());
@@ -97,6 +97,7 @@ public class DataSeeder implements CommandLineRunner {
                 .koordinatLat(new BigDecimal("-1.2427800")).koordinatLng(new BigDecimal("116.8528700"))
                 .luasLahan(new BigDecimal("2500.00"))
                 .deskripsi("Restorasi 2.500 hektar ekosistem mangrove di pesisir Kalimantan Selatan untuk sekuestrasi karbon.")
+                .imageUrl("https://images.unsplash.com/photo-1573126617899-41f1dffb196c?w=800&q=80")
                 .statusProject(ProjectStatus.verified).build());
 
         Project p2 = projectRepository.save(Project.builder()
@@ -105,6 +106,7 @@ public class DataSeeder implements CommandLineRunner {
                 .koordinatLat(new BigDecimal("-8.3405200")).koordinatLng(new BigDecimal("115.0920000"))
                 .luasLahan(new BigDecimal("150.00"))
                 .deskripsi("Pembangkit listrik tenaga surya 50MW di Karangasem, Bali untuk menggantikan pembangkit batu bara.")
+                .imageUrl("https://images.unsplash.com/photo-1509391366360-2e959784a276?w=800&q=80")
                 .statusProject(ProjectStatus.verified).build());
 
         Project p3 = projectRepository.save(Project.builder()
@@ -113,6 +115,7 @@ public class DataSeeder implements CommandLineRunner {
                 .koordinatLat(new BigDecimal("0.5897000")).koordinatLng(new BigDecimal("101.3431000"))
                 .luasLahan(new BigDecimal("10000.00"))
                 .deskripsi("Konservasi 10.000 hektar hutan hujan tropis di Riau, Sumatra untuk mencegah deforestasi.")
+                .imageUrl("https://images.unsplash.com/photo-1448375240586-882707db888b?w=800&q=80")
                 .statusProject(ProjectStatus.verified).build());
 
         Project p4 = projectRepository.save(Project.builder()
@@ -121,6 +124,7 @@ public class DataSeeder implements CommandLineRunner {
                 .koordinatLat(new BigDecimal("-7.7956000")).koordinatLng(new BigDecimal("110.3695000"))
                 .luasLahan(new BigDecimal("800.00"))
                 .deskripsi("Pembangkit listrik tenaga angin 30MW di pesisir utara Jawa.")
+                .imageUrl("https://images.unsplash.com/photo-1532601224476-15c79f2f7a51?w=800&q=80")
                 .statusProject(ProjectStatus.verified).build());
 
         Project p5 = projectRepository.save(Project.builder()
@@ -129,8 +133,27 @@ public class DataSeeder implements CommandLineRunner {
                 .koordinatLat(new BigDecimal("3.7000000")).koordinatLng(new BigDecimal("97.5000000"))
                 .luasLahan(new BigDecimal("25000.00"))
                 .deskripsi("Perlindungan ekosistem Leuser yang merupakan habitat orangutan, harimau dan gajah Sumatra.")
+                .imageUrl("https://images.unsplash.com/photo-1511497584788-876760111969?w=800&q=80")
                 .statusProject(ProjectStatus.submitted).build());
-        log.info("✓ 5 projects created");
+
+        Project p6 = projectRepository.save(Project.builder()
+                .user(owner).kategori(catHutan).namaProject("Hutan Pinus Sumatera")
+                .lokasi("Sumatera, Indonesia")
+                .koordinatLat(new BigDecimal("1.5000000")).koordinatLng(new BigDecimal("99.5000000"))
+                .luasLahan(new BigDecimal("5000.00"))
+                .deskripsi("Perlindungan dan pengelolaan hutan pinus lestari di pegunungan Sumatera.")
+                .imageUrl("https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?w=800&q=80")
+                .statusProject(ProjectStatus.verified).build());
+
+        Project p7 = projectRepository.save(Project.builder()
+                .user(owner2).kategori(catGambut).namaProject("Perkebunan Sawit Berkelanjutan")
+                .lokasi("Sumatera, Indonesia")
+                .koordinatLat(new BigDecimal("0.5000000")).koordinatLng(new BigDecimal("101.5000000"))
+                .luasLahan(new BigDecimal("8000.00"))
+                .deskripsi("Praktik penanaman sawit ramah lingkungan dengan perlindungan karbon.")
+                .imageUrl("https://images.unsplash.com/photo-1590682680695-43b964a3ae17?w=800&q=80")
+                .statusProject(ProjectStatus.verified).build());
+        log.info("✓ 7 projects created");
 
         // --- MRV REPORTS ---
         var mrv1 = mrvReportRepository.save(MrvReport.builder()
@@ -175,89 +198,212 @@ public class DataSeeder implements CommandLineRunner {
         log.info("✓ 3 verifications created (all approved)");
 
         // --- CARBON TOKENS ---
-        String ownerAddress = "0xA1b2C3d4E5f6789012345678901234567890";
+
+        String buyerAddress = "0x742d355Cc6634C853925a3b944fc9ef13a";
         String genesisAddr = "0x0000000000000000000000000000000000000000";
 
-        // Mint tokens for project 1 (10 tokens)
         String prevHash = BlockchainHashUtil.GENESIS_HASH;
         int blockNum = 0;
+        int totalTokensMinted = 0;
 
-        for (int i = 1; i <= 10; i++) {
+        
+        // ─── Owner tokens (project owners keep some tokens for listings) ───────────────
+        
+        // P1: owner listed 5 tokens
+        for (int i = 1; i <= 5; i++) {
             String serial = String.format("NC-2024-%03d-%06d", p1.getIdProject(), i);
             blockNum++;
-            String timestamp = LocalDateTime.now().toString();
-            String txHash = BlockchainHashUtil.generateTxHash(prevHash, "mint", 1.0, blockNum, timestamp);
-
+            String txHash = BlockchainHashUtil.generateTxHash(prevHash, "mint", 1.0, blockNum, LocalDateTime.now().toString());
             CarbonToken token = tokenRepository.save(CarbonToken.builder()
                     .project(p1).verification(v1).owner(owner)
                     .tokenSerial(serial).vintageYear(2024)
-                    .statusToken(i <= 5 ? TokenStatus.available : TokenStatus.listed)
+                    .statusToken(TokenStatus.listed)
                     .txMintHash(txHash).build());
-
-            ledgerRepository.save(BlockchainLedger.builder()
-                    .blockNumber(blockNum).txHash(txHash).prevHash(prevHash)
-                    .txType(BlockchainTxType.mint)
-                    .refId(token.getIdToken()).refTable("carbon_tokens")
-                    .amountCo2e(BigDecimal.ONE)
-                    .fromAddress(genesisAddr).toAddress(ownerAddress)
-                    .gasFeeMock(BigDecimal.valueOf(BlockchainHashUtil.mockGasFee())).build());
-
             prevHash = txHash;
         }
 
-        // Mint tokens for project 2 (5 tokens)
-        String owner2Address = "0xD4e5F6a7B8c9012345678901234567890123";
+        // P2: owner2 listed 5 tokens
         for (int i = 1; i <= 5; i++) {
             String serial = String.format("NC-2024-%03d-%06d", p2.getIdProject(), i);
             blockNum++;
-            String timestamp = LocalDateTime.now().toString();
-            String txHash = BlockchainHashUtil.generateTxHash(prevHash, "mint", 1.0, blockNum, timestamp);
-
+            String txHash = BlockchainHashUtil.generateTxHash(prevHash, "mint", 1.0, blockNum, LocalDateTime.now().toString());
             CarbonToken token = tokenRepository.save(CarbonToken.builder()
                     .project(p2).verification(v2).owner(owner2)
                     .tokenSerial(serial).vintageYear(2024)
-                    .statusToken(TokenStatus.available)
+                    .statusToken(TokenStatus.listed)
                     .txMintHash(txHash).build());
-
-            ledgerRepository.save(BlockchainLedger.builder()
-                    .blockNumber(blockNum).txHash(txHash).prevHash(prevHash)
-                    .txType(BlockchainTxType.mint)
-                    .refId(token.getIdToken()).refTable("carbon_tokens")
-                    .amountCo2e(BigDecimal.ONE)
-                    .fromAddress(genesisAddr).toAddress(owner2Address)
-                    .gasFeeMock(BigDecimal.valueOf(BlockchainHashUtil.mockGasFee())).build());
-
             prevHash = txHash;
         }
 
-        // Mint tokens for project 3 (8 tokens, 3 owned by buyer — simulating past trades)
-        for (int i = 1; i <= 8; i++) {
+        // P3: owner listed 5 tokens
+        for (int i = 1; i <= 5; i++) {
             String serial = String.format("NC-2024-%03d-%06d", p3.getIdProject(), i);
             blockNum++;
-            String timestamp = LocalDateTime.now().toString();
-            String txHash = BlockchainHashUtil.generateTxHash(prevHash, "mint", 1.0, blockNum, timestamp);
-
-            User tokenOwner = i <= 3 ? buyer : owner;
-            TokenStatus status = i <= 3 ? TokenStatus.sold : TokenStatus.available;
-
+            String txHash = BlockchainHashUtil.generateTxHash(prevHash, "mint", 1.0, blockNum, LocalDateTime.now().toString());
             CarbonToken token = tokenRepository.save(CarbonToken.builder()
-                    .project(p3).verification(v3).owner(tokenOwner)
+                    .project(p3).verification(v3).owner(owner)
                     .tokenSerial(serial).vintageYear(2024)
-                    .statusToken(status)
+                    .statusToken(TokenStatus.listed)
                     .txMintHash(txHash).build());
-
-            ledgerRepository.save(BlockchainLedger.builder()
-                    .blockNumber(blockNum).txHash(txHash).prevHash(prevHash)
-                    .txType(BlockchainTxType.mint)
-                    .refId(token.getIdToken()).refTable("carbon_tokens")
-                    .amountCo2e(BigDecimal.ONE)
-                    .fromAddress(genesisAddr).toAddress(ownerAddress)
-                    .gasFeeMock(BigDecimal.valueOf(BlockchainHashUtil.mockGasFee())).build());
-
             prevHash = txHash;
         }
 
-        log.info("✓ 23 carbon tokens minted + {} blockchain ledger entries created", blockNum);
+        // P6: owner listed 150 tokens
+        for (int i = 1; i <= 150; i++) {
+            String serial = String.format("NC-2024-%03d-%06d", p6.getIdProject(), i);
+            blockNum++;
+            String txHash = BlockchainHashUtil.generateTxHash(prevHash, "mint", 1.0, blockNum, LocalDateTime.now().toString());
+            CarbonToken token = tokenRepository.save(CarbonToken.builder()
+                    .project(p6).verification(v1).owner(owner)
+                    .tokenSerial(serial).vintageYear(2024)
+                    .statusToken(TokenStatus.listed)
+                    .txMintHash(txHash).build());
+            prevHash = txHash;
+        }
+
+        // P7: owner2 listed 500 tokens
+        for (int i = 1; i <= 500; i++) {
+            String serial = String.format("NC-2024-%03d-%06d", p7.getIdProject(), i);
+            blockNum++;
+            String txHash = BlockchainHashUtil.generateTxHash(prevHash, "mint", 1.0, blockNum, LocalDateTime.now().toString());
+            CarbonToken token = tokenRepository.save(CarbonToken.builder()
+                    .project(p7).verification(v1).owner(owner2)
+                    .tokenSerial(serial).vintageYear(2024)
+                    .statusToken(TokenStatus.listed)
+                    .txMintHash(txHash).build());
+            prevHash = txHash;
+        }
+
+        // ─── BUYER tokens (user 1 buys from ALL active projects) ──────────
+        // Buyer owns tokens from every verified project to show interconnection
+
+        // Buyer: 50 tokens from p1 (Mangrove Restoration Borneo) - sold
+        for (int i = 1; i <= 50; i++) {
+            String serial = String.format("NC-2024-%03d-B%05d", p1.getIdProject(), i);
+            blockNum++;
+            String txHash = BlockchainHashUtil.generateTxHash(prevHash, "mint", 1.0, blockNum, LocalDateTime.now().toString());
+            tokenRepository.save(CarbonToken.builder()
+                    .project(p1).verification(v1).owner(buyer)
+                    .tokenSerial(serial).vintageYear(2024)
+                    .statusToken(TokenStatus.listed) // Let's make this one listed
+                    .txMintHash(txHash).build());
+            ledgerRepository.save(BlockchainLedger.builder()
+                    .blockNumber(blockNum).txHash(txHash).prevHash(prevHash)
+                    .txType(BlockchainTxType.mint)
+                    .refId(blockNum).refTable("carbon_tokens")
+                    .amountCo2e(BigDecimal.ONE)
+                    .fromAddress(genesisAddr).toAddress(buyerAddress)
+                    .gasFeeMock(BigDecimal.valueOf(BlockchainHashUtil.mockGasFee())).build());
+            prevHash = txHash;
+            totalTokensMinted++;
+        }
+
+        // Buyer: 30 tokens from p2 (Solar Farm Bali) - sold
+        for (int i = 1; i <= 30; i++) {
+            String serial = String.format("NC-2024-%03d-B%05d", p2.getIdProject(), i);
+            blockNum++;
+            String txHash = BlockchainHashUtil.generateTxHash(prevHash, "mint", 1.0, blockNum, LocalDateTime.now().toString());
+            tokenRepository.save(CarbonToken.builder()
+                    .project(p2).verification(v2).owner(buyer)
+                    .tokenSerial(serial).vintageYear(2024)
+                    .statusToken(TokenStatus.available)
+                    .txMintHash(txHash).build());
+            ledgerRepository.save(BlockchainLedger.builder()
+                    .blockNumber(blockNum).txHash(txHash).prevHash(prevHash)
+                    .txType(BlockchainTxType.mint)
+                    .refId(blockNum).refTable("carbon_tokens")
+                    .amountCo2e(BigDecimal.ONE)
+                    .fromAddress(genesisAddr).toAddress(buyerAddress)
+                    .gasFeeMock(BigDecimal.valueOf(BlockchainHashUtil.mockGasFee())).build());
+            prevHash = txHash;
+            totalTokensMinted++;
+        }
+
+        // Buyer: 25 tokens from p3 (Rainforest Conservation) - sold
+        for (int i = 1; i <= 25; i++) {
+            String serial = String.format("NC-2024-%03d-B%05d", p3.getIdProject(), i);
+            blockNum++;
+            String txHash = BlockchainHashUtil.generateTxHash(prevHash, "mint", 1.0, blockNum, LocalDateTime.now().toString());
+            tokenRepository.save(CarbonToken.builder()
+                    .project(p3).verification(v3).owner(buyer)
+                    .tokenSerial(serial).vintageYear(2024)
+                    .statusToken(TokenStatus.available)
+                    .txMintHash(txHash).build());
+            ledgerRepository.save(BlockchainLedger.builder()
+                    .blockNumber(blockNum).txHash(txHash).prevHash(prevHash)
+                    .txType(BlockchainTxType.mint)
+                    .refId(blockNum).refTable("carbon_tokens")
+                    .amountCo2e(BigDecimal.ONE)
+                    .fromAddress(genesisAddr).toAddress(buyerAddress)
+                    .gasFeeMock(BigDecimal.valueOf(BlockchainHashUtil.mockGasFee())).build());
+            prevHash = txHash;
+            totalTokensMinted++;
+        }
+
+        // Buyer: 15 tokens from p4 (Wind Farm Java) - sold
+        for (int i = 1; i <= 15; i++) {
+            String serial = String.format("NC-2024-%03d-B%05d", p4.getIdProject(), i);
+            blockNum++;
+            String txHash = BlockchainHashUtil.generateTxHash(prevHash, "mint", 1.0, blockNum, LocalDateTime.now().toString());
+            tokenRepository.save(CarbonToken.builder()
+                    .project(p4).verification(v2).owner(buyer)
+                    .tokenSerial(serial).vintageYear(2024)
+                    .statusToken(TokenStatus.retired) // Make these retired
+                    .txMintHash(txHash).build());
+            ledgerRepository.save(BlockchainLedger.builder()
+                    .blockNumber(blockNum).txHash(txHash).prevHash(prevHash)
+                    .txType(BlockchainTxType.mint)
+                    .refId(blockNum).refTable("carbon_tokens")
+                    .amountCo2e(BigDecimal.ONE)
+                    .fromAddress(genesisAddr).toAddress(buyerAddress)
+                    .gasFeeMock(BigDecimal.valueOf(BlockchainHashUtil.mockGasFee())).build());
+            prevHash = txHash;
+            totalTokensMinted++;
+        }
+
+        // Buyer: 60 tokens from p6 (Hutan Pinus Sumatera) - sold
+        for (int i = 1; i <= 60; i++) {
+            String serial = String.format("NC-2024-%03d-B%05d", p6.getIdProject(), i);
+            blockNum++;
+            String txHash = BlockchainHashUtil.generateTxHash(prevHash, "mint", 1.0, blockNum, LocalDateTime.now().toString());
+            tokenRepository.save(CarbonToken.builder()
+                    .project(p6).verification(v1).owner(buyer)
+                    .tokenSerial(serial).vintageYear(2024)
+                    .statusToken(TokenStatus.available)
+                    .txMintHash(txHash).build());
+            ledgerRepository.save(BlockchainLedger.builder()
+                    .blockNumber(blockNum).txHash(txHash).prevHash(prevHash)
+                    .txType(BlockchainTxType.mint)
+                    .refId(blockNum).refTable("carbon_tokens")
+                    .amountCo2e(BigDecimal.ONE)
+                    .fromAddress(genesisAddr).toAddress(buyerAddress)
+                    .gasFeeMock(BigDecimal.valueOf(BlockchainHashUtil.mockGasFee())).build());
+            prevHash = txHash;
+            totalTokensMinted++;
+        }
+
+        // Buyer: 23 tokens from p7 (Perkebunan Sawit Berkelanjutan) - sold
+        for (int i = 1; i <= 23; i++) {
+            String serial = String.format("NC-2024-%03d-B%05d", p7.getIdProject(), i);
+            blockNum++;
+            String txHash = BlockchainHashUtil.generateTxHash(prevHash, "mint", 1.0, blockNum, LocalDateTime.now().toString());
+            tokenRepository.save(CarbonToken.builder()
+                    .project(p7).verification(v1).owner(buyer)
+                    .tokenSerial(serial).vintageYear(2024)
+                    .statusToken(TokenStatus.available)
+                    .txMintHash(txHash).build());
+            ledgerRepository.save(BlockchainLedger.builder()
+                    .blockNumber(blockNum).txHash(txHash).prevHash(prevHash)
+                    .txType(BlockchainTxType.mint)
+                    .refId(blockNum).refTable("carbon_tokens")
+                    .amountCo2e(BigDecimal.ONE)
+                    .fromAddress(genesisAddr).toAddress(buyerAddress)
+                    .gasFeeMock(BigDecimal.valueOf(BlockchainHashUtil.mockGasFee())).build());
+            prevHash = txHash;
+            totalTokensMinted++;
+        }
+
+        log.info("✓ {} carbon tokens minted + {} blockchain ledger entries created", totalTokensMinted, blockNum);
 
         // --- LISTINGS ---
         listingRepository.save(Listing.builder()
@@ -267,14 +413,24 @@ public class DataSeeder implements CommandLineRunner {
 
         listingRepository.save(Listing.builder()
                 .seller(owner2).project(p2)
-                .hargaPerToken(new BigDecimal("7500.00")).jumlahToken(5)
+                .hargaPerToken(new BigDecimal("5000.00")).jumlahToken(5)
                 .statusListing(ListingStatus.active).build());
 
         listingRepository.save(Listing.builder()
                 .seller(owner).project(p3)
-                .hargaPerToken(new BigDecimal("6000.00")).jumlahToken(5)
+                .hargaPerToken(new BigDecimal("5000.00")).jumlahToken(5)
                 .statusListing(ListingStatus.active).build());
-        log.info("✓ 3 marketplace listings created");
+
+        listingRepository.save(Listing.builder()
+                .seller(owner).project(p6)
+                .hargaPerToken(new BigDecimal("5000.00")).jumlahToken(150)
+                .statusListing(ListingStatus.active).build());
+
+        listingRepository.save(Listing.builder()
+                .seller(owner2).project(p7)
+                .hargaPerToken(new BigDecimal("5000.00")).jumlahToken(500)
+                .statusListing(ListingStatus.active).build());
+        log.info("✓ 5 marketplace listings created");
 
         log.info("=== NusaCarbon database seeding completed ===");
     }

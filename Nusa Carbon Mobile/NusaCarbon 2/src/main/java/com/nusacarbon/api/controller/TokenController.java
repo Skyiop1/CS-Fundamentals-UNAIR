@@ -21,10 +21,10 @@ public class TokenController {
 
     @GetMapping
     public ResponseEntity<ApiResponse<List<TokenResponse>>> getTokens(
-            @RequestParam(required = false) Integer userId,
+            @RequestParam(required = false) Integer ownerId,
             @RequestParam(required = false) String status,
             @RequestParam(required = false) Integer vintage) {
-        List<TokenResponse> tokens = tokenService.getTokens(userId, status, vintage);
+        List<TokenResponse> tokens = tokenService.getTokens(ownerId, status, vintage);
         return ResponseEntity.ok(ApiResponse.ok(tokens));
     }
 

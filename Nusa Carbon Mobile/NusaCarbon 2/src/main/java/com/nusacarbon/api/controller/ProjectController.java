@@ -22,7 +22,7 @@ public class ProjectController {
     @GetMapping
     public ResponseEntity<ApiResponse<List<ProjectResponse>>> getAllProjects(
             @RequestParam(required = false) String status,
-            @RequestParam(required = false) Integer kategori) {
+            @RequestParam(required = false) String kategori) {
         List<ProjectResponse> projects = projectService.getAllProjects(status, kategori);
         return ResponseEntity.ok(ApiResponse.ok(projects));
     }

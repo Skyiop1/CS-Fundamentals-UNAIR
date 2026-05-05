@@ -12,5 +12,6 @@ public record WalletResponse(
         long listedTokens,
         long soldTokens,
         long retiredTokens,
+        java.math.BigDecimal idrBalance,
         LocalDateTime createdAt
 ) {}

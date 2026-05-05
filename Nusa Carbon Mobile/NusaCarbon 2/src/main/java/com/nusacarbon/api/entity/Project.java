@@ -47,6 +47,9 @@ public class Project {
     @Column(columnDefinition = "TEXT")
     private String deskripsi;
 
+    @Column(length = 500)
+    private String imageUrl;
+
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     @Builder.Default

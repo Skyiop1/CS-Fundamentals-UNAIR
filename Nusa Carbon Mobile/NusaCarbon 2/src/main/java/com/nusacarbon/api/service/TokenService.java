@@ -124,6 +124,7 @@ public class TokenService {
                 t.getProject().getNamaProject(),
                 t.getProject().getLokasi(),
                 t.getProject().getKategori().getNamaKategori(),
+                t.getProject().getImageUrl(),
                 t.getOwner().getIdUser(),
                 t.getOwner().getNamaUser(),
                 t.getCreatedAt()

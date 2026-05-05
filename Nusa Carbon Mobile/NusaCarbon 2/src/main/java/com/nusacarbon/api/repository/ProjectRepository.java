@@ -11,4 +11,8 @@ public interface ProjectRepository extends JpaRepository<Project, Integer> {
     List<Project> findByKategoriIdKategori(Integer kategoriId);
     List<Project> findByStatusProjectAndKategoriIdKategori(ProjectStatus status, Integer kategoriId);
     List<Project> findByUserIdUser(Integer userId);
+
+    // Filter by category name (for Flutter marketplace filter)
+    List<Project> findByKategoriNamaKategori(String namaKategori);
+    List<Project> findByStatusProjectAndKategoriNamaKategori(ProjectStatus status, String namaKategori);
 }

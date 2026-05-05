@@ -125,18 +125,31 @@ public class TradeService {
                 .limit(request.jumlah())
                 .collect(Collectors.toList());
 
-        // Get wallet addresses
-        String sellerAddress = walletRepository.findByUserIdUser(seller.getIdUser())
-                .map(Wallet::getWalletAddress).orElse("0x0000");
-        String buyerAddress = walletRepository.findByUserIdUser(buyer.getIdUser())
-                .map(Wallet::getWalletAddress).orElse("0x0000");
+        // Get wallets
+        Wallet sellerWallet = walletRepository.findByUserIdUser(seller.getIdUser())
+                .orElseThrow(() -> new EntityNotFoundException("Seller wallet not found"));
+        Wallet buyerWallet = walletRepository.findByUserIdUser(buyer.getIdUser())
+                .orElseThrow(() -> new EntityNotFoundException("Buyer wallet not found"));
+
+        if (buyerWallet.getIdrBalance().compareTo(totalPrice) < 0) {
+            throw new IllegalStateException("Insufficient IDR balance");
+        }
+
+        // Deduct/Add balances
+        buyerWallet.setIdrBalance(buyerWallet.getIdrBalance().subtract(totalPrice));
+        sellerWallet.setIdrBalance(sellerWallet.getIdrBalance().add(totalPrice));
+        walletRepository.save(buyerWallet);
+        walletRepository.save(sellerWallet);
+
+        String sellerAddress = sellerWallet.getWalletAddress();
+        String buyerAddress = buyerWallet.getWalletAddress();
 
         // Create trade details and transfer tokens
         List<TradeDetail> details = new ArrayList<>();
         for (CarbonToken token : listedTokens) {
             // Transfer ownership
-            token.setStatusToken(TokenStatus.sold);
             token.setOwner(buyer);
+            token.setStatusToken(TokenStatus.available); // Buyer now holds it available
             tokenRepository.save(token);
 
             // Create trade detail
