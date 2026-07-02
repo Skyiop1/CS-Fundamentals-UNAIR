@@ -1,0 +1,2 @@
+latest_date,latest_close,probability_uptrend,probability_not_uptrend,baseline_rf_probability_uptrend,svm_probability_uptrend,signal,confidence,confidence_category
+2026-06-26,6175.0,0.3700895291070029,0.6299104708929971,0.3487048142799823,0.31327612622707607,NOT-UPTREND,0.25982094178599424,Sedang

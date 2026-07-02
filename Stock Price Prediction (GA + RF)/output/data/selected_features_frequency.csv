@@ -1,0 +1,97 @@
+feature,selected_count,selected_percentage,feature_group
+BBCA_MA_10_return,5,1.0,technical features
+BBCA_MA_5_return,5,1.0,technical features
+BBNI_lag_9,5,1.0,peer banking
+BBRI_lag_10,5,1.0,peer banking
+BMRI_lag_8,5,1.0,peer banking
+IHSG_lag_7,5,1.0,IHSG/local market
+SP500_lag_2,5,1.0,global indices
+BBCA_MA_20_return,4,0.8,technical features
+BBRI_lag_3,4,0.8,peer banking
+BBRI_lag_5,4,0.8,peer banking
+BBRI_lag_9,4,0.8,peer banking
+BMRI_lag_7,4,0.8,peer banking
+IHSG_lag_5,4,0.8,IHSG/local market
+NASDAQ_lag_1,4,0.8,global indices
+NASDAQ_lag_5,4,0.8,global indices
+BBCA_lag_10,3,0.6,BBCA own lag
+BBCA_lag_6,3,0.6,BBCA own lag
+BBCA_lag_7,3,0.6,BBCA own lag
+BBCA_volatility_10,3,0.6,technical features
+BBCA_volatility_20,3,0.6,technical features
+BBCA_volatility_5,3,0.6,technical features
+BBNI_lag_2,3,0.6,peer banking
+BBNI_lag_4,3,0.6,peer banking
+BBNI_lag_7,3,0.6,peer banking
+BBNI_lag_8,3,0.6,peer banking
+BBRI_lag_6,3,0.6,peer banking
+BMRI_lag_10,3,0.6,peer banking
+BMRI_lag_4,3,0.6,peer banking
+BMRI_lag_5,3,0.6,peer banking
+IHSG_lag_9,3,0.6,IHSG/local market
+NASDAQ_lag_6,3,0.6,global indices
+NASDAQ_lag_8,3,0.6,global indices
+NIKKEI225_lag_10,3,0.6,global indices
+NIKKEI225_lag_2,3,0.6,global indices
+NIKKEI225_lag_3,3,0.6,global indices
+NIKKEI225_lag_6,3,0.6,global indices
+SP500_lag_10,3,0.6,global indices
+SP500_lag_6,3,0.6,global indices
+USD_IDR_lag_3,3,0.6,USD/IDR
+USD_IDR_lag_4,3,0.6,USD/IDR
+BBCA_lag_1,2,0.4,BBCA own lag
+BBCA_lag_3,2,0.4,BBCA own lag
+BBCA_lag_5,2,0.4,BBCA own lag
+BBCA_lag_8,2,0.4,BBCA own lag
+BBCA_lag_9,2,0.4,BBCA own lag
+BBNI_lag_1,2,0.4,peer banking
+BBNI_lag_10,2,0.4,peer banking
+BBNI_lag_5,2,0.4,peer banking
+BBRI_lag_2,2,0.4,peer banking
+BBRI_lag_4,2,0.4,peer banking
+BBRI_lag_8,2,0.4,peer banking
+BMRI_lag_2,2,0.4,peer banking
+BMRI_lag_6,2,0.4,peer banking
+IHSG_lag_10,2,0.4,IHSG/local market
+IHSG_lag_6,2,0.4,IHSG/local market
+IHSG_lag_8,2,0.4,IHSG/local market
+NASDAQ_lag_10,2,0.4,global indices
+NASDAQ_lag_2,2,0.4,global indices
+NASDAQ_lag_3,2,0.4,global indices
+NASDAQ_lag_4,2,0.4,global indices
+NASDAQ_lag_7,2,0.4,global indices
+NIKKEI225_lag_5,2,0.4,global indices
+NIKKEI225_lag_7,2,0.4,global indices
+NIKKEI225_lag_8,2,0.4,global indices
+SP500_lag_1,2,0.4,global indices
+SP500_lag_3,2,0.4,global indices
+SP500_lag_5,2,0.4,global indices
+SP500_lag_7,2,0.4,global indices
+SP500_lag_8,2,0.4,global indices
+SP500_lag_9,2,0.4,global indices
+USD_IDR_lag_6,2,0.4,USD/IDR
+USD_IDR_lag_7,2,0.4,USD/IDR
+USD_IDR_lag_9,2,0.4,USD/IDR
+BBCA_lag_2,1,0.2,BBCA own lag
+BBCA_lag_4,1,0.2,BBCA own lag
+BBNI_lag_3,1,0.2,peer banking
+BBNI_lag_6,1,0.2,peer banking
+BBRI_lag_7,1,0.2,peer banking
+BMRI_lag_1,1,0.2,peer banking
+BMRI_lag_3,1,0.2,peer banking
+BMRI_lag_9,1,0.2,peer banking
+IHSG_lag_1,1,0.2,IHSG/local market
+IHSG_lag_4,1,0.2,IHSG/local market
+NASDAQ_lag_9,1,0.2,global indices
+NIKKEI225_lag_9,1,0.2,global indices
+SP500_lag_4,1,0.2,global indices
+USD_IDR_lag_1,1,0.2,USD/IDR
+USD_IDR_lag_2,1,0.2,USD/IDR
+USD_IDR_lag_8,1,0.2,USD/IDR
+BBRI_lag_1,0,0.0,peer banking
+IHSG_lag_2,0,0.0,IHSG/local market
+IHSG_lag_3,0,0.0,IHSG/local market
+NIKKEI225_lag_1,0,0.0,global indices
+NIKKEI225_lag_4,0,0.0,global indices
+USD_IDR_lag_10,0,0.0,USD/IDR
+USD_IDR_lag_5,0,0.0,USD/IDR
