@@ -15,40 +15,29 @@ Repositori ini berfungsi sebagai portofolio akademik untuk mata kuliah pemrogram
 
 ```mermaid
 flowchart TD
-    Root[CS-Fundamentals-UNAIR] --> ClassTasks[Tugas Terstruktur / Coursework]
-    Root --> PrimaryProjects[Proyek Utama / Primary Projects]
+    Root[CS-Fundamentals-UNAIR] --> ClassTasks[Coursework]
+    Root --> PrimaryProjects[Primary Projects]
 
-    ClassTasks --> T1[Data Preprocessing & Scaling]
-    T1 --> D1["`**Data Normalization**`
-    *Min-Max, Standard, & Robust Scaling*"]
+    ClassTasks --> T1[Data Preprocessing]
+    T1 --> D1[Data Normalization]
     
     ClassTasks --> T2[Dimensionality & Selection]
-    T2 --> D2["`**Feature Extraction & Selection**`
-    *PCA & ANOVA-based statistical selection*"]
+    T2 --> D2[Feature Extraction & Selection]
     
-    ClassTasks --> T3[Resampling & Imbalance]
-    T3 --> D3["`**Imbalanced Data Handling**`
-    *ROS (Oversampling) & RUS (Undersampling)*"]
+    ClassTasks --> T3[Resampling]
+    T3 --> D3[Imbalanced Data Handling]
     
     ClassTasks --> T4[Machine Learning Models]
-    T4 --> D4["`**Decision Tree Classification**`
-    *Tree pruning, evaluation & high-res plotting*"]
-    T4 --> D5["`**Wine Quality Classification**`
-    *Streamlit-based prediction dashboard*"]
-    T4 --> D6["`**Car Price Prediction**`
-    *Streamlit dashboard + XGBoost & LightGBM*"]
-    T4 --> D7["`**Clustering & Customer Segmentation**`
-    *K-Means & K-Modes profiling analysis*"]
+    T4 --> D4[Decision Tree Classification]
+    T4 --> D5[Wine Quality Classification]
+    T4 --> D6[Car Price Prediction]
+    T4 --> D7[Clustering & Customer Segmentation]
 
-    PrimaryProjects --> P1["`**Stock Price Prediction (GA + RF)**`
-    *Evolusioner GA feature selection & Random Forest*"]
-    PrimaryProjects --> P2["`**NusaCarbon Ecosystem**`
-    *Aplikasi mobile & web penyeimbang karbon*"]
+    PrimaryProjects --> P1[Stock Price Prediction]
+    PrimaryProjects --> P2[NusaCarbon Ecosystem]
 
-    P2 --> P2a["`**Nusa Carbon Mobile**`
-    *Flutter mobile client + Spring Boot API*"]
-    P2 --> P2b["`**NusaCarbonWEB**`
-    *PHP Web portal, Buyer & Verifier dashboard*"]
+    P2 --> P2a[Nusa Carbon Mobile]
+    P2 --> P2b[NusaCarbonWEB]
 ```
 
 ---
@@ -104,5 +93,5 @@ Daftar teknologi utama yang digunakan di seluruh proyek di repositori ini:
 
 **Muhammad Naufal Zaki**  
 NIM: 187241115  
-Program Studi Sistem Informasi  
-Fakultas Teknologi Terpadu, Universitas Airlangga (UNAIR)
+Information Systems  
+Faculty of Science and Technology, Universitas Airlangga
