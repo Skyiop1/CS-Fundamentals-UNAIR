@@ -1,0 +1,28 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.env
+venv/
+.venv/
+
+# Temp files
+~$*
+*.tmp
+*.swp
+
+# Model files (too large for git)
+*.pkl
+
+# Logs
+*.log
+
