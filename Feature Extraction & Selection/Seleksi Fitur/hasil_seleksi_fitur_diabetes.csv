@@ -1,0 +1,18 @@
+Fitur,F_Value,P_Value,Signifikan
+Pregnancies,38.794313,8e-10,Ya
+Glucose,212.915018,0.0,Ya
+BloodPressure,3.325761,0.0685914725,Tidak
+SkinThickness,4.03022,0.0450424197,Ya
+Insulin,13.007644,0.0003303102,Ya
+BMI,72.093636,0.0,Ya
+DiabetesPedigreeFunction,22.836966,2.1135e-06,Ya
+Age,47.218346,0.0,Ya
+Unnamed: 9,,,Tidak
+Unnamed: 10,,,Tidak
+Unnamed: 11,,,Tidak
+Unnamed: 12,,,Tidak
+Unnamed: 13,,,Tidak
+Unnamed: 14,,,Tidak
+Unnamed: 15,,,Tidak
+Unnamed: 16,,,Tidak
+Unnamed: 17,,,Tidak
