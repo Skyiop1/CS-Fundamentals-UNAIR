@@ -1,27 +1,27 @@
 # Decision Tree Classification
 
-Implementasi algoritma Decision Tree untuk klasifikasi data medis dengan visualisasi pohon keputusan.
+Implementation of the Decision Tree algorithm for medical data classification, complete with split tree visualizations.
 
-## 📋 Deskripsi
+## 📋 Description
 
-Tugas ini mengimplementasikan Decision Tree Classifier dari scikit-learn untuk:
-- Klasifikasi data pasien (Positive/Negative)
-- Evaluasi model dengan accuracy, confusion matrix, dan classification report
-- Visualisasi Decision Tree (top 3 levels) resolusi tinggi
-- Input interaktif untuk prediksi kasus baru
+This coursework implements a Decision Tree Classifier from scikit-learn to achieve:
+- Diagnostic patient classification (Positive/Negative).
+- Model evaluation metrics: Accuracy, Confusion Matrix, and Classification Report.
+- High-resolution plotting of the top 3 levels of the Decision Tree model.
+- Interactive CLI-based user input to predict new cases.
 
-## 🚀 Cara Menjalankan
+## 🚀 Getting Started
 
 ```bash
 pip install pandas numpy scikit-learn matplotlib seaborn
 python decision_tree.py
 ```
 
-## 📂 Struktur File
+## 📂 Directory Structure
 
 ```
 Decision Tree Classification/
-├── decision_tree.py                    # Script utama Decision Tree
-├── decision_tree_visualization.png     # Visualisasi pohon keputusan
-└── report-decision-tree.pdf            # Laporan tugas
+├── decision_tree.py                    # Main classifier script
+├── decision_tree_visualization.png     # High-res visual plot
+└── report-decision-tree.pdf            # Coursework report
 ```

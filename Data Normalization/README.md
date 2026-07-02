@@ -1,33 +1,33 @@
 # Data Normalization
 
-Implementasi teknik normalisasi data menggunakan tiga metode berbeda pada dua dataset.
+Implementation of data normalization techniques using three different scaling methods on two datasets.
 
-## 📋 Deskripsi
+## 📋 Description
 
-Tugas ini mendemonstrasikan penerapan preprocessing data berupa normalisasi menggunakan:
-- **Min-Max Scaling** — mentransformasi data ke rentang [0, 1]
-- **Standard Scaling (Z-Score)** — mentransformasi data agar mean = 0 dan std = 1
-- **Robust Scaling** — normalisasi berbasis median & IQR, tahan terhadap outlier
+This coursework demonstrates the application of preprocessing normalization techniques:
+- **Min-Max Scaling** — transforms data into the [0, 1] range.
+- **Standard Scaling (Z-Score)** — scales data so that mean = 0 and std = 1.
+- **Robust Scaling** — scales data based on median & IQR, making it robust to outliers.
 
-## 📁 Dataset
+## 📁 Datasets
 
-| Dataset | File | Deskripsi |
+| Dataset | File | Description |
 |---------|------|-----------|
-| Lung Cancer Prediction | `Lung Cancer Prediction.csv` | Dataset prediksi kanker paru-paru |
-| Shopping Mall Customers | `Shopping.csv` | Data pelanggan mall untuk segmentasi |
+| Lung Cancer Prediction | `Lung Cancer Prediction.csv` | Dataset for lung cancer prediction. |
+| Shopping Mall Customers | `Shopping.csv` | Customer data from shopping malls. |
 
-## 🚀 Cara Menjalankan
+## 🚀 Getting Started
 
 ```bash
 pip install pandas scikit-learn
 python TugasTM2.py
 ```
 
-## 📂 Struktur File
+## 📂 Directory Structure
 
 ```
 Data Normalization/
-├── TugasTM2.py                  # Script utama normalisasi
-├── Lung Cancer Prediction.csv   # Dataset kanker paru
-└── Shopping.csv                 # Dataset pelanggan mall
+├── TugasTM2.py                  # Main scaling script
+├── Lung Cancer Prediction.csv   # Lung cancer dataset
+└── Shopping.csv                 # Customer dataset
 ```

@@ -1,22 +1,22 @@
 # Imbalanced Data Handling
 
-Implementasi teknik penanganan data tidak seimbang (imbalanced data) menggunakan metode resampling.
+Implementation of data resampling techniques to handle class imbalance issues in datasets.
 
-## 📋 Deskripsi
+## 📋 Description
 
-Tugas ini mendemonstrasikan dua pendekatan resampling untuk menangani class imbalance:
-- **Random Oversampling (ROS)** — menduplikasi sampel dari kelas minoritas
-- **Random Undersampling (RUS)** — mengurangi sampel dari kelas mayoritas
+This coursework demonstrates two primary resampling approaches to address class imbalance:
+- **Random Oversampling (ROS)** — duplicates samples from the minority class to balance distributions.
+- **Random Undersampling (RUS)** — reduces samples from the majority class to prevent model bias.
 
-Diterapkan pada dataset Wine Quality untuk klasifikasi kualitas wine.
+Evaluated on the Wine Quality dataset for binary classification tasks.
 
-## 📁 Dataset
+## 📁 Datasets
 
-| Dataset | File | Deskripsi |
+| Dataset | File | Description |
 |---------|------|-----------|
-| Wine Quality | `WineQT.csv` | Dataset kualitas wine merah |
+| Wine Quality | `WineQT.csv` | Red wine chemical composition and quality records. |
 
-## 🚀 Cara Menjalankan
+## 🚀 Getting Started
 
 ```bash
 pip install pandas scikit-learn imbalanced-learn
@@ -24,13 +24,13 @@ python random_oversampling.py
 python random_undersampling.py
 ```
 
-## 📂 Struktur File
+## 📂 Directory Structure
 
 ```
 Imbalanced Data Handling/
-├── random_oversampling.py          # Script Random Oversampling
-├── random_undersampling.py         # Script Random Undersampling
-├── DATASERWINE.ipynb               # Notebook eksplorasi data
-├── WineQT.csv                      # Dataset wine quality
-└── report-imbalanced-data.pdf      # Laporan tugas
+├── random_oversampling.py          # ROS implementation script
+├── random_undersampling.py         # RUS implementation script
+├── DATASERWINE.ipynb               # Data exploration notebook
+├── WineQT.csv                      # Wine quality dataset
+└── report-imbalanced-data.pdf      # Coursework report
 ```

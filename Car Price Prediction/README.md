@@ -1,48 +1,48 @@
 # Car Price Prediction
 
-Prediksi harga mobil bekas menggunakan ensemble machine learning models (XGBoost & LightGBM) dengan Streamlit dashboard.
+Predicting used car pricing using ensemble machine learning models (XGBoost & LightGBM) coupled with an interactive Streamlit dashboard.
 
-## 📋 Deskripsi
+## 📋 Description
 
-Project ini membangun model prediksi harga mobil bekas menggunakan:
-- **XGBoost Regressor** — gradient boosting untuk regresi
-- **LightGBM Regressor** — gradient boosting yang lebih efisien
-- **Streamlit Dashboard** — interface interaktif untuk eksplorasi dan prediksi
+This project implements used car price estimation algorithms employing:
+- **XGBoost Regressor** — extreme gradient boosting optimized for regression.
+- **LightGBM Regressor** — a highly efficient, tree-based gradient boosting framework.
+- **Streamlit Dashboard** — user interface for data exploration and prediction.
 
-Fitur utama:
-- Analisis distribusi harga dan fitur kategorik
-- Correlation heatmap
-- Perbandingan evaluasi model (MAE, RMSE, R²)
-- Feature importance analysis
-- Actual vs Predicted plot & Residual plot
+Key metrics and displays:
+- Price distribution and categorical features analysis.
+- Feature correlation heatmaps.
+- Model performance evaluations (MAE, RMSE, R²).
+- Feature importance ranking.
+- Actual vs. Predicted values plots and Residual diagnostics.
 
-## 📁 Dataset
+## 📁 Datasets
 
-| Dataset | File | Deskripsi |
+| Dataset | File | Description |
 |---------|------|-----------|
-| Car Details v3 | `Car details v3.csv` | Dataset mobil bekas (8128 sampel) |
+| Car Details v3 | `Car details v3.csv` | Dataset containing information on 8,128 used cars. |
 
-## 🚀 Cara Menjalankan
+## 🚀 Getting Started
 
 ```bash
 pip install streamlit pandas numpy matplotlib seaborn scikit-learn xgboost lightgbm
 streamlit run streamlit_app.py
 ```
 
-## 📂 Struktur File
+## 📂 Directory Structure
 
 ```
 Car Price Prediction/
-├── streamlit_app.py                # Streamlit web app
-├── car_price_prediction.ipynb      # Jupyter notebook analisis
-├── Car details v3.csv              # Dataset
-├── model_metadata.json             # Metadata model
-├── report-car-price-prediction.pdf # Laporan tugas
-├── actual_vs_predicted.png         # Visualisasi prediksi
-├── correlation_heatmap.png         # Heatmap korelasi
-├── distribusi_harga.png            # Distribusi harga
-├── distribusi_kategorik.png        # Distribusi fitur kategorik
-├── evaluasi_model.png              # Perbandingan model
-├── feature_importance.png          # Feature importance
-└── residual_plot.png               # Residual plot
+├── streamlit_app.py                # Streamlit app script
+├── car_price_prediction.ipynb      # Analytical notebook
+├── Car details v3.csv              # Car specifications dataset
+├── model_metadata.json             # JSON file containing hyperparameters
+├── report-car-price-prediction.pdf # Final project report
+├── actual_vs_predicted.png         # Regression plot
+├── correlation_heatmap.png         # Correlation plot
+├── distribusi_harga.png            # Distribution plot
+├── distribusi_kategorik.png        # Categorical plot
+├── evaluasi_model.png              # Comparison bar plot
+├── feature_importance.png          # Importance chart
+└── residual_plot.png               # Residual chart
 ```

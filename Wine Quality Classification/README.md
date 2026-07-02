@@ -1,43 +1,43 @@
 # Wine Quality Classification
 
-Aplikasi web interaktif untuk prediksi kualitas wine menggunakan Decision Tree Classifier dengan Streamlit.
+An interactive web application built with Streamlit for wine quality prediction using a Decision Tree Classifier.
 
-## 📋 Deskripsi
+## 📋 Description
 
-Aplikasi ini menyediakan:
-- **Eksplorasi Data** — overview dataset, distribusi kelas, dan correlation heatmap interaktif (Plotly)
-- **Evaluasi Model** — accuracy, confusion matrix, classification report, dan visualisasi Decision Tree
-- **Prediksi Real-time** — form interaktif untuk memprediksi kualitas wine berdasarkan komposisi kimiawi
+The application features:
+- **Data Exploration** — dataset overview, class distribution plots, and interactive Plotly correlation heatmaps.
+- **Model Evaluation** — performance metrics (accuracy, confusion matrix, classification reports) and decision tree splits visualization.
+- **Real-Time Prediction** — interactive sliders to input chemical components and evaluate wine quality tags on the fly.
 
-Kualitas wine diklasifikasikan menjadi:
-- **Bad** (quality score 3, 4, 5)
-- **Good** (quality score 6, 7, 8)
+Wine quality is classified into:
+- **Bad** (quality score of 3, 4, or 5).
+- **Good** (quality score of 6, 7, or 8).
 
-## 📁 Dataset
+## 📁 Datasets
 
-| Dataset | File | Deskripsi |
+| Dataset | File | Description |
 |---------|------|-----------|
-| Wine Quality | `WineQT.csv` | Dataset kualitas wine merah (1143 sampel, 11 fitur) |
+| Wine Quality | `WineQT.csv` | Red wine chemical composition and labels (1,143 samples, 11 features). |
 
-## 🚀 Cara Menjalankan
+## 🚀 Getting Started
 
 ```bash
 pip install streamlit pandas numpy matplotlib seaborn plotly scikit-learn
 streamlit run app.py
 ```
 
-## 📂 Struktur File
+## 📂 Directory Structure
 
 ```
 Wine Quality Classification/
-├── app.py                          # Streamlit web app
-├── WineQT.csv                      # Dataset wine quality
-└── report-wine-quality.pdf         # Laporan tugas
+├── app.py                          # Streamlit main app script
+├── WineQT.csv                      # Wine quality dataset
+└── report-wine-quality.pdf         # Coursework report
 ```
 
-## 🖥️ Screenshot
+## 🖥️ Screen Mockup
 
-Aplikasi menggunakan dark maroon theme dengan desain premium:
-- Metric cards dengan animasi hover
-- Plotly interactive charts
-- Custom styled prediction form
+The app utilizes a premium dark maroon theme with:
+- Hover-animated metric cards.
+- Interactive Plotly visualizations.
+- A custom-styled user inputs form.

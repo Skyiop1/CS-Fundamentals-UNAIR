@@ -1,27 +1,27 @@
 # Feature Extraction & Selection
 
-Implementasi teknik ekstraksi fitur (PCA) dan seleksi fitur (ANOVA) pada dataset Diabetes dan Performance.
+Implementation of feature extraction (PCA) and feature selection (ANOVA) techniques on Diabetes and Performance datasets.
 
-## 📋 Deskripsi
+## 📋 Description
 
-### Ekstraksi Fitur — PCA (Principal Component Analysis)
-- Reduksi dimensi menggunakan PCA dengan threshold 95% explained variance
-- Menghasilkan scree plot dan visualisasi PCA 2D
-- Diterapkan pada dataset Diabetes
+### Feature Extraction — PCA (Principal Component Analysis)
+- Dimensions reduction using PCA with a 95% explained variance threshold.
+- Generates scree plots and 2D PCA visualization projections.
+- Evaluated on the Diabetes dataset.
 
-### Seleksi Fitur — ANOVA (Analysis of Variance)
-- Seleksi fitur statistik untuk klasifikasi (target kategorikal)
-- Mengidentifikasi fitur signifikan berdasarkan p-value < 0.05
-- Diterapkan pada dataset Diabetes dan Performance
+### Feature Selection — ANOVA (Analysis of Variance)
+- Statistical feature selection for classification (categorical target).
+- Identifies statistically significant features based on a p-value < 0.05.
+- Evaluated on both Diabetes and Performance datasets.
 
-## 📁 Dataset
+## 📁 Datasets
 
-| Dataset | File | Deskripsi |
+| Dataset | File | Description |
 |---------|------|-----------|
-| Diabetes | `Diabetes.csv` | Dataset diabetes untuk klasifikasi |
-| Performance | `performance.csv` | Dataset performa akademik |
+| Diabetes | `Diabetes.csv` | Diabetes patient records for classification. |
+| Performance | `performance.csv` | Student academic performance records. |
 
-## 🚀 Cara Menjalankan
+## 🚀 Getting Started
 
 ```bash
 pip install pandas numpy matplotlib scikit-learn scipy
@@ -29,22 +29,22 @@ python "Ekstraksi Fitur/ekstraksi_fitur_diabetes.py"
 python "Seleksi Fitur/seleksi_fitur_diabetes.py"
 ```
 
-## 📂 Struktur File
+## 📂 Directory Structure
 
 ```
 Feature Extraction & Selection/
 ├── Diabetes.csv
 ├── performance.csv
 ├── Ekstraksi Fitur/
-│   ├── ekstraksi_fitur_diabetes.py
+│   ├── ekstraksi_fitur_diabetes.py     # PCA script
 │   ├── hasil_pca_diabetes.csv
 │   ├── pca_plot_diabetes.png
 │   ├── pca_plot_performance.png
 │   ├── scree_plot_diabetes.png
 │   └── scree_plot_performance.png
 └── Seleksi Fitur/
-    ├── seleksi_fitur_diabetes.py
-    ├── seleksi_fitur_performance.py
+    ├── seleksi_fitur_diabetes.py       # ANOVA script for Diabetes
+    ├── seleksi_fitur_performance.py    # ANOVA script for Performance
     ├── hasil_seleksi_fitur_diabetes.csv
     └── hasil_seleksi_fitur_performance.csv
 ```
