@@ -1,0 +1,57 @@
+{
+  "best_model": "XGBoost",
+  "features": [
+    "year",
+    "km_driven",
+    "fuel",
+    "seller_type",
+    "transmission",
+    "owner",
+    "mileage",
+    "engine",
+    "max_power",
+    "seats"
+  ],
+  "label_encoders_classes": {
+    "fuel": [
+      "CNG",
+      "Diesel",
+      "LPG",
+      "Petrol"
+    ],
+    "seller_type": [
+      "Dealer",
+      "Individual",
+      "Trustmark Dealer"
+    ],
+    "transmission": [
+      "Automatic",
+      "Manual"
+    ],
+    "owner": [
+      "First Owner",
+      "Fourth & Above Owner",
+      "Second Owner",
+      "Test Drive Car",
+      "Third Owner"
+    ]
+  },
+  "metrics": {
+    "XGBoost": {
+      "Model": "XGBoost",
+      "MAE": 64021.63,
+      "MSE": 11165399040.0,
+      "RMSE": 105666.45,
+      "MAPE (%)": 15.2846,
+      "R\u00b2": 0.983941
+    },
+    "LightGBM": {
+      "Model": "LightGBM",
+      "MAE": 73918.9,
+      "MSE": 15063134217.02,
+      "RMSE": 122731.96,
+      "MAPE (%)": 17.8148,
+      "R\u00b2": 0.978335
+    }
+  }
+}
