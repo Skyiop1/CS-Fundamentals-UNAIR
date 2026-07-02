@@ -10,7 +10,7 @@ $port = '3306';
 $charset = 'utf8mb4';
 
 // URL PUBLIK RAILWAY — hanya dipakai jika benar-benar di Railway
-$railwayPublicUrl = 'mysql://root:BGfDBOxTobfmWYFgdotV]liwPAZEYM@mainline.proxy.rlwy.net:22385/railway';
+$railwayPublicUrl = 'mysql://root:BzarJvfdhGnOQFPYnyoVGzKHfAXpCFOZ@hayabusa.proxy.rlwy.net:39923/railway';
 
 // Cek apakah berjalan di Railway
 $isRailway = getenv('RAILWAY_ENVIRONMENT') || getenv('RAILWAY_PROJECT_ID');
