@@ -64,6 +64,7 @@ class DatabaseSeeder extends Seeder
             'Manajemen' => 'Buku tentang organisasi, administrasi, dan pengelolaan.',
             'Pendidikan' => 'Buku tentang metode pembelajaran dan pengembangan akademik.',
             'Sastra' => 'Koleksi buku sastra Indonesia dan dunia.',
+            'Pengembangan Diri' => 'Buku tentang motivasi, kebiasaan baik, dan pengembangan potensi diri.',
         ];
 
         foreach ($categories as $name => $description) {
@@ -77,13 +78,13 @@ class DatabaseSeeder extends Seeder
             [
                 'category' => 'Teknologi Informasi',
                 'book_code' => 'BK-TI-001',
-                'title' => 'Dasar-Dasar Sistem Informasi',
-                'author' => 'Tata Sutabri',
-                'publisher' => 'Andi Publisher',
-                'publication_year' => 2020,
+                'title' => 'Pengantar Sistem Informasi',
+                'author' => 'George M. Marakas, James A. O\'Brien',
+                'publisher' => 'Penerbit Salemba Empat',
+                'publication_year' => 2017,
                 'stock' => 5,
-                'description' => 'Membahas konsep dasar sistem informasi dan penerapannya dalam organisasi.',
-                'cover_image' => 'https://images.tokopedia.net/img/cache/700/VqbcmM/2020/11/24/60a28f49-b003-49fa-8a6a-d2d46e0cfd17.jpg',
+                'description' => 'Buku Pengantar Sistem Informasi (Introduction to Information Systems) Edisi 16 Buku 1.',
+                'cover_image' => 'images/covers/pengantar_sistem_informasi.jpg',
             ],
             [
                 'category' => 'Teknologi Informasi',
@@ -127,7 +128,18 @@ class DatabaseSeeder extends Seeder
                 'publication_year' => 2005,
                 'stock' => 7,
                 'description' => 'Novel Indonesia tentang perjuangan pendidikan dan persahabatan.',
-                'cover_image' => 'https://images.tokopedia.net/img/cache/700/VqbcmM/2022/2/18/d8e1329c-a111-4034-8c81-420a3a2d2424.jpg',
+                'cover_image' => 'images/covers/laskar_pelangi.jpg',
+            ],
+            [
+                'category' => 'Pengembangan Diri',
+                'book_code' => 'BK-SD-001',
+                'title' => 'Atomic Habits',
+                'author' => 'James Clear',
+                'publisher' => 'Gramedia Pustaka Utama',
+                'publication_year' => 2019,
+                'stock' => 8,
+                'description' => 'Perubahan kecil yang memberikan hasil luar biasa. Cara mudah dan terbukti untuk membentuk kebiasaan baik dan menghilangkan kebiasaan buruk.',
+                'cover_image' => 'images/covers/atomic_habits.jpg',
             ],
         ];
 
