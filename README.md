@@ -33,9 +33,6 @@ flowchart TD
     T4 --> D6[Car Price Prediction]
     T4 --> D7[Clustering & Customer Segmentation]
 
-    ClassTasks --> T5[Web Application]
-    T5 --> D8[Sistem Informasi Perpustakaan]
-
     PrimaryProjects --> P1[Stock Price Prediction]
     PrimaryProjects --> P2[NusaCarbon Ecosystem]
 
@@ -58,7 +55,6 @@ The list below outlines data preprocessing tasks, statistical modeling, and inte
 | **Interactive Dashboard** | [`Wine Quality Classification`](./Wine%20Quality%20Classification) | Streamlit Web App, Plotly charts | Features an interactive Streamlit app to analyze chemical properties of wine and predict quality tags in real-time. |
 | **Regression & Ensemble** | [`Car Price Prediction`](./Car%20Price%20Prediction) | XGBoost, LightGBM Regressor | Evaluates and compares ensemble regression models to predict used car pricing with high accuracy. |
 | **Unsupervised Learning** | [`Clustering & Customer Segmentation`](./Clustering%20%26%20Customer%20Segmentation) | K-Means & K-Modes Clustering | Implements demographic customer grouping and credit card usage segmentation utilizing Elbow and Silhouette evaluation. |
-| **Web Application** | [`Sistem Informasi Perpustakaan`](./Sistem%20Informasi%20Perpustakaan) | Laravel 11, MVC, MySQL, Database Transaction | A library loan system supporting book/member management, automated fine calculation, and race condition prevention. |
 
 ---
 
@@ -88,7 +84,7 @@ The primary technologies utilized across all projects in this repository:
 *   **Machine Learning**: `scikit-learn`, `xgboost`, `lightgbm`, `imbalanced-learn`
 *   **Data Analysis & Vis**: `pandas`, `numpy`, `matplotlib`, `seaborn`, `plotly`
 *   **Mobile App Development**: `Flutter` (Dart)
-*   **Web Frameworks**: `Laravel 11`, `Streamlit`, Vanilla PHP (with modern CSS/Bootstrap UI elements)
+*   **Web Frameworks**: `Streamlit`, Vanilla PHP (with modern CSS/Bootstrap UI elements)
 *   **Infrastructure**: `Docker`, Local database configuration
 
 ---
