@@ -3,8 +3,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>@yield('title', 'Admin') - Sistem Informasi Perpustakaan</title>
+    <title>@yield('title', 'Admin') - Perpusku</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
@@ -14,7 +17,7 @@
                 <div class="d-flex align-items-center gap-2 mb-4">
                     <div class="brand-mark brand-mark-sm">P</div>
                     <div>
-                        <div class="fw-bold">Perpustakaan</div>
+                        <div class="fw-bold text-white fs-5">Perpus<span class="text-primary">ku</span></div>
                         <small class="text-white-50">Panel Admin</small>
                     </div>
                 </div>
