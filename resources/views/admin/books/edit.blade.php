@@ -92,7 +92,7 @@
                                     @if ($book->cover_image)
                                         <div>
                                             <div class="small text-secondary mb-1">Cover Saat Ini:</div>
-                                            <img src="{{ asset('storage/' . $book->cover_image) }}" alt="Cover {{ $book->title }}" class="rounded border shadow-sm" style="width: 80px; height: 110px; object-fit: cover;">
+                                            <img src="{{ filter_var($book->cover_image, FILTER_VALIDATE_URL) ? $book->cover_image : asset('storage/' . $book->cover_image) }}" alt="Cover {{ $book->title }}" class="rounded border shadow-sm" style="width: 80px; height: 110px; object-fit: cover;">
                                         </div>
                                     @endif
                                     <div class="flex-fill">

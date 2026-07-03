@@ -19,7 +19,7 @@
                         <!-- Sisi Kiri: Gambar Cover -->
                         <div class="col-12 col-md-4 text-center">
                             @if ($book->cover_image)
-                                <img src="{{ asset('storage/' . $book->cover_image) }}" alt="Cover {{ $book->title }}" class="img-fluid rounded border shadow-sm" style="max-height: 380px; object-fit: cover;">
+                                <img src="{{ filter_var($book->cover_image, FILTER_VALIDATE_URL) ? $book->cover_image : asset('storage/' . $book->cover_image) }}" alt="Cover {{ $book->title }}" class="img-fluid rounded border shadow-sm" style="max-height: 380px; object-fit: cover;">
                             @else
                                 <div class="bg-light rounded text-secondary d-flex flex-column align-items-center justify-content-center mx-auto shadow-sm border" style="width: 220px; height: 300px;">
                                     <i class="bi bi-book fs-1 mb-2"></i>

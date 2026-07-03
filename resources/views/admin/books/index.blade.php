@@ -57,7 +57,7 @@
                         <tr>
                             <td class="text-center">
                                 @if ($book->cover_image)
-                                    <img src="{{ asset('storage/' . $book->cover_image) }}" alt="Cover {{ $book->title }}" class="rounded shadow-sm" style="width: 48px; height: 64px; object-fit: cover;">
+                                    <img src="{{ filter_var($book->cover_image, FILTER_VALIDATE_URL) ? $book->cover_image : asset('storage/' . $book->cover_image) }}" alt="Cover {{ $book->title }}" class="rounded shadow-sm" style="width: 48px; height: 64px; object-fit: cover;">
                                 @else
                                     <div class="bg-light rounded text-secondary d-flex align-items-center justify-content-center mx-auto shadow-sm" style="width: 48px; height: 64px; font-size: 10px; font-weight: bold; border: 1px solid var(--app-border);">
                                         NO COV
