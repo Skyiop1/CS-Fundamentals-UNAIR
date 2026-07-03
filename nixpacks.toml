@@ -5,4 +5,4 @@ nixPkgs = ["php82", "php82Packages.composer"]
 cmds = ["composer install --no-dev --optimize-autoloader", "php artisan config:cache", "php artisan view:cache"]
 
 [start]
-cmd = "php artisan serve --host=0.0.0.0 --port=${PORT:-8000}"
+cmd = "php artisan migrate --force && php artisan db:seed --force && php artisan serve --host=0.0.0.0 --port=${PORT:-8000}"
