@@ -61,8 +61,6 @@ class DatabaseSeeder extends Seeder
 
         $categories = [
             'Teknologi Informasi' => 'Buku tentang komputer, pemrograman, dan sistem informasi.',
-            'Manajemen' => 'Buku tentang organisasi, administrasi, dan pengelolaan.',
-            'Pendidikan' => 'Buku tentang metode pembelajaran dan pengembangan akademik.',
             'Sastra' => 'Koleksi buku sastra Indonesia dan dunia.',
             'Pengembangan Diri' => 'Buku tentang motivasi, kebiasaan baik, dan pengembangan potensi diri.',
         ];
@@ -73,6 +71,9 @@ class DatabaseSeeder extends Seeder
                 ['description' => $description]
             );
         }
+
+        // Hapus buku yang tidak punya cover lokal
+        Book::whereIn('book_code', ['BK-TI-002', 'BK-MJ-001', 'BK-PD-001'])->delete();
 
         $books = [
             [
@@ -87,39 +88,6 @@ class DatabaseSeeder extends Seeder
                 'cover_image' => 'images/covers/pengantar_sistem_informasi.jpg',
             ],
             [
-                'category' => 'Teknologi Informasi',
-                'book_code' => 'BK-TI-002',
-                'title' => 'Pemrograman Web dengan Laravel',
-                'author' => 'Budi Raharjo',
-                'publisher' => 'Informatika',
-                'publication_year' => 2022,
-                'stock' => 4,
-                'description' => 'Panduan membangun aplikasi web menggunakan framework Laravel.',
-                'cover_image' => 'https://images.tokopedia.net/img/cache/700/VqbcmM/2022/9/27/b16e885b-e4a8-4bb3-a0e2-89596c342d76.jpg',
-            ],
-            [
-                'category' => 'Manajemen',
-                'book_code' => 'BK-MJ-001',
-                'title' => 'Pengantar Manajemen',
-                'author' => 'Malayu S.P. Hasibuan',
-                'publisher' => 'Bumi Aksara',
-                'publication_year' => 2019,
-                'stock' => 6,
-                'description' => 'Buku pengantar tentang fungsi dan proses manajemen.',
-                'cover_image' => 'https://images.tokopedia.net/img/cache/700/VqbcmM/2021/3/9/b1236183-b541-45a1-ae40-2bdf613d0779.jpg',
-            ],
-            [
-                'category' => 'Pendidikan',
-                'book_code' => 'BK-PD-001',
-                'title' => 'Strategi Pembelajaran',
-                'author' => 'Wina Sanjaya',
-                'publisher' => 'Kencana',
-                'publication_year' => 2021,
-                'stock' => 3,
-                'description' => 'Referensi strategi pembelajaran untuk lingkungan akademik.',
-                'cover_image' => 'https://images.tokopedia.net/img/cache/700/VqbcmM/2020/8/16/d2cb401e-de8c-4f7f-a9cb-bb3522a49f57.jpg',
-            ],
-            [
                 'category' => 'Sastra',
                 'book_code' => 'BK-ST-001',
                 'title' => 'Laskar Pelangi',
@@ -129,6 +97,17 @@ class DatabaseSeeder extends Seeder
                 'stock' => 7,
                 'description' => 'Novel Indonesia tentang perjuangan pendidikan dan persahabatan.',
                 'cover_image' => 'images/covers/laskar_pelangi.jpg',
+            ],
+            [
+                'category' => 'Sastra',
+                'book_code' => 'BK-ST-002',
+                'title' => 'Bumi',
+                'author' => 'Tere Liye',
+                'publisher' => 'Gramedia Pustaka Utama',
+                'publication_year' => 2014,
+                'stock' => 5,
+                'description' => 'Novel fantasi tentang petualangan Raib, gadis berusia 15 tahun yang memiliki kekuatan misterius. Buku pertama dari serial Bumi karya Tere Liye.',
+                'cover_image' => 'images/covers/bumi.jpg',
             ],
             [
                 'category' => 'Pengembangan Diri',
