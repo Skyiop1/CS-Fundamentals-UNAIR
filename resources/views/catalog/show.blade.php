@@ -10,17 +10,22 @@
                     <h5 class="card-title mb-0 fw-bold text-dark">Informasi Detail Buku</h5>
                     <a href="{{ route('catalog.index') }}" class="btn btn-sm btn-outline-secondary">Kembali ke Katalog</a>
                 </div>
-                <div class="card-body p-4">
-                    <div class="row g-4">
+                <div class="card-body p-4 p-lg-5">
+                    <div class="row g-4 g-lg-5 align-items-center">
                         <!-- Sisi Kiri: Cover Buku -->
                         <div class="col-12 col-md-4 text-center">
-                            @if ($book->cover_image)
-                                <img src="{{ asset('storage/' . $book->cover_image) }}" alt="Cover {{ $book->title }}" class="img-fluid rounded border shadow-sm mx-auto" style="max-height: 380px; object-fit: cover;">
-                            @else
-                                <div class="bg-light rounded text-secondary d-flex flex-column align-items-center justify-content-center mx-auto shadow-sm border" style="width: 220px; height: 300px;">
-                                    <span class="fw-bold">TIDAK ADA COVER</span>
-                                </div>
-                            @endif
+                            <div class="book-cover-wrapper" style="perspective: 1200px; display: inline-block;">
+                                @if ($book->cover_image)
+                                    <img src="{{ filter_var($book->cover_image, FILTER_VALIDATE_URL) ? $book->cover_image : asset('storage/' . $book->cover_image) }}" 
+                                         alt="Cover {{ $book->title }}" 
+                                         class="img-fluid book-3d-shadow mx-auto" 
+                                         style="max-height: 360px; width: 240px; object-fit: cover;">
+                                @else
+                                    <div class="bg-light rounded text-secondary d-flex flex-column align-items-center justify-content-center mx-auto shadow-sm border book-3d-shadow" style="width: 240px; height: 340px;">
+                                        <span class="fw-bold text-muted">No Cover Available</span>
+                                    </div>
+                                @endif
+                            </div>
                         </div>
 
                         <!-- Sisi Kanan: Spesifikasi Buku -->

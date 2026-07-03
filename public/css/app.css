@@ -265,3 +265,66 @@ body {
         min-height: auto;
     }
 }
+
+/* Modern Book Cover 3D Effect */
+.book-3d-shadow {
+    box-shadow: 0 12px 28px -5px rgba(0, 0, 0, 0.15), 0 5px 10px -5px rgba(0, 0, 0, 0.1);
+    border-radius: 4px 12px 12px 4px;
+    border-left: 3px solid rgba(255, 255, 255, 0.2);
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease;
+}
+
+.app-card:hover .book-3d-shadow {
+    transform: rotateY(-6deg) translate3d(2px, -4px, 15px) scale(1.05);
+    box-shadow: -15px 25px 35px -10px rgba(0, 0, 0, 0.25), 0 5px 15px -5px rgba(0, 0, 0, 0.15);
+}
+
+.book-cover-wrapper {
+    perspective: 800px;
+    display: inline-block;
+    padding: 10px;
+}
+
+/* Apple/Bubble style button tags */
+.btn-light.border {
+    border-color: #e2e8f0 !important;
+    background-color: #ffffff;
+    color: #475569;
+    font-weight: 500;
+}
+
+.btn-light.border:hover {
+    background-color: #f8fafc;
+    border-color: #cbd5e1 !important;
+    color: #0f172a;
+}
+
+.text-truncate-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
+}
+
+.btn-primary.rounded-pill {
+    background: var(--app-gradient);
+    border: none;
+    font-weight: 600;
+    box-shadow: 0 4px 14px 0 rgba(37, 99, 235, 0.2);
+}
+
+.btn-primary.rounded-pill:hover {
+    box-shadow: 0 6px 20px 0 rgba(37, 99, 235, 0.3);
+}
+
+/* Spotlights Search */
+.input-group-text svg {
+    color: #94a3b8;
+    transition: color 0.2s ease;
+}
+
+.form-control:focus + .input-group-text svg,
+.input-group-text:focus-within svg {
+    color: var(--app-primary);
+}
+

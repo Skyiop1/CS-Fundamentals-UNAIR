@@ -83,6 +83,7 @@ class DatabaseSeeder extends Seeder
                 'publication_year' => 2020,
                 'stock' => 5,
                 'description' => 'Membahas konsep dasar sistem informasi dan penerapannya dalam organisasi.',
+                'cover_image' => 'https://images.unsplash.com/photo-1516979187457-637abb4f9353?q=80&w=600&auto=format&fit=crop',
             ],
             [
                 'category' => 'Teknologi Informasi',
@@ -93,6 +94,7 @@ class DatabaseSeeder extends Seeder
                 'publication_year' => 2022,
                 'stock' => 4,
                 'description' => 'Panduan membangun aplikasi web menggunakan framework Laravel.',
+                'cover_image' => 'https://images.unsplash.com/photo-1627390496608-7d782f221477?q=80&w=600&auto=format&fit=crop',
             ],
             [
                 'category' => 'Manajemen',
@@ -103,6 +105,7 @@ class DatabaseSeeder extends Seeder
                 'publication_year' => 2019,
                 'stock' => 6,
                 'description' => 'Buku pengantar tentang fungsi dan proses manajemen.',
+                'cover_image' => 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=600&auto=format&fit=crop',
             ],
             [
                 'category' => 'Pendidikan',
@@ -113,6 +116,7 @@ class DatabaseSeeder extends Seeder
                 'publication_year' => 2021,
                 'stock' => 3,
                 'description' => 'Referensi strategi pembelajaran untuk lingkungan akademik.',
+                'cover_image' => 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=600&auto=format&fit=crop',
             ],
             [
                 'category' => 'Sastra',
@@ -123,6 +127,7 @@ class DatabaseSeeder extends Seeder
                 'publication_year' => 2005,
                 'stock' => 7,
                 'description' => 'Novel Indonesia tentang perjuangan pendidikan dan persahabatan.',
+                'cover_image' => 'https://covers.openlibrary.org/b/id/8228585-L.jpg',
             ],
         ];
 
@@ -139,7 +144,7 @@ class DatabaseSeeder extends Seeder
                     'publication_year' => $book['publication_year'],
                     'stock' => $book['stock'],
                     'description' => $book['description'],
-                    'cover_image' => null,
+                    'cover_image' => $book['cover_image'],
                 ]
             );
         }
