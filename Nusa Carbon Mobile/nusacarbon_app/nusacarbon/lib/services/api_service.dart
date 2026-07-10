@@ -9,6 +9,15 @@ class ApiService {
   /// Set to `false` when backend is ready (Week 6+).
   static const bool useMock = false;
 
+  /// Override this at run time with:
+  /// --dart-define=API_BASE_URL=http://HOST:8080/api
+  ///
+  /// The default targets localhost through the Android emulator.
+  static const String _baseUrl = String.fromEnvironment(
+    'API_BASE_URL',
+    defaultValue: 'http://192.168.11.132:8080/api',
+  );
+
   static final ApiService _instance = ApiService._internal();
   factory ApiService() => _instance;
 
@@ -17,7 +26,7 @@ class ApiService {
   ApiService._internal() {
     _dio = Dio(
       BaseOptions(
-        baseUrl: 'http://192.168.1.14:8080/api',
+        baseUrl: _baseUrl,
         connectTimeout: const Duration(seconds: 10),
         receiveTimeout: const Duration(seconds: 10),
         headers: {
