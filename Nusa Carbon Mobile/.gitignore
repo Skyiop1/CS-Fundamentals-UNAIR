@@ -15,6 +15,7 @@ spring-boot.log
 # Flutter / Dart (nusacarbon_app)
 .dart_tool/
 build/
+!*.apk
 .pub-cache/
 .packages
 *.mode1v3
