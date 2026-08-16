@@ -506,7 +506,7 @@ with tab3:
         st.markdown(f"""
         <div style='padding:1.5rem; background:#eff6ff; border-radius:14px;
                     border:1px solid #bfdbfe; margin-top:2rem;'>
-            <h4 style='color:#1e40af; margin-top:0;'> Interpretasi MAPE</h4>
+            <h4 style='color:#1e40af; margin-top:0;'>📊 Interpretasi MAPE</h4>
             <p style='color:#374151;'>MAPE mengukur rata-rata persentase kesalahan prediksi.</p>
             <ul style='color:#374151;'>
                 <li><b>XGBoost:</b> {metrics['XGBoost']['MAPE (%)']:.4f}% error</li>
